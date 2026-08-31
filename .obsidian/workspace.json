@@ -4,21 +4,73 @@
     "type": "split",
     "children": [
       {
-        "id": "f076ca584845b8f7",
+        "id": "789d0349f0444f5c",
         "type": "tabs",
+        "dimension": 41.89008042895443,
         "children": [
           {
-            "id": "76b873df64b4ef07",
+            "id": "c28692e3c8f78c1d",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AAA学习日常/周计划/任务.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "任务"
+            }
+          },
+          {
+            "id": "b67c0db755b2d5a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git/Git.md",
+                "file": "ALearning_人工智能/Python/特性专题/函数编译顺序.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git"
+              "title": "函数编译顺序"
+            }
+          }
+        ]
+      },
+      {
+        "id": "4843c399cf095d56",
+        "type": "tabs",
+        "dimension": 58.10991957104557,
+        "children": [
+          {
+            "id": "99cc84cf2c2ab35a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/Python/09_读写文件.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "09_读写文件"
+            }
+          },
+          {
+            "id": "ee30793d5f4148e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/Python/01_print().md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01_print()"
             }
           }
         ]
@@ -41,7 +93,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -53,8 +107,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:\"音视频/\" ",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -78,7 +132,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 321.5
+    "width": 200
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -94,7 +148,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git/Git.md",
+                "file": "AAA学习日常/周计划/任务.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +158,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Git 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -113,12 +167,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "git/Git.md",
+                "file": "AAA学习日常/周计划/任务.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Git 的出链列表"
+              "title": "出链"
             }
           },
           {
@@ -142,81 +196,91 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git/Git.md",
+                "file": "AAA学习日常/周计划/任务.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Git 的大纲"
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "5a1a70aa5d3d5152",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 447.0999755859375
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "oz-clear-unused-images:Clear Unused Images": false
+      "oz-clear-unused-images:Clear Unused Images": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "76b873df64b4ef07",
+  "active": "2034f8f7830ade55",
   "lastOpenFiles": [
-    "C++/补充的零散笔记/触发移动构造,移动赋值的时机.md",
-    "git/Git.md",
-    "C++/恋恋风尘/并发编程/22.无锁队列.md",
-    "Obsidian Vault.zip",
-    "C++/恋恋风尘/并发编程/22.优化.md",
-    "C++/恋恋风尘/并发编程/23.无锁并发设计的四条原则.md",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801185001.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801184303.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801184216.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801183924.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801183453.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801183350.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801180455.png",
-    "C++/恋恋风尘/并发编程/20.利用引用计数实现无锁并发栈.md",
-    "C++/恋恋风尘/并发编程/21.利用内存模型优化无锁栈.md",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801175458.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801175427.png",
-    "C++/恋恋风尘/并发编程/src/Pasted image 20250801175036.png",
-    "C++/恋恋风尘/并发编程/12.通过内存顺序实现内存模型.md",
-    "C++/恋恋风尘/并发编程/11.原子操作和内存模型.md",
-    "C++/cmake/初学/01. 用Hello World打开构建世界的大门.md",
-    "C++/恋恋风尘/并发编程/19.风险指针的运用.md",
-    "C++/恋恋风尘/并发编程/18.线程安全的无锁栈实现.md",
-    "C++/cmake/初学/07.CMake目录分层设计实践.md",
-    "C++/cmake/初学/06.生成器表达式.md",
-    "C++/cmake/初学/05.函数和宏.md",
-    "C++/cmake/初学/04.CMake控制流程.md",
-    "C++/cmake/初学/03.CMake语法之变量.md",
-    "C++/cmake/初学/02.从一个小目标开始.md",
-    "!Pasted image 20250728192356.png.md",
-    "C++/cmake/src",
-    "C++/cmake/初学/src",
-    "C++/cmake/初学",
-    "C++/cmake",
-    "C++/恋恋风尘/并发编程/16.线程安全的查找表.md",
-    "C++/补充的零散笔记/extern.md",
-    "C++/恋恋风尘/并发编程/13.无锁并发队列.md",
-    "C++/恋恋风尘/并发编程/17.线程安全的链表.md",
-    "未命名.canvas",
-    "2025-07-20.md",
-    "C++/恋恋风尘/并发编程/15.基于锁实现线程安全的队列和栈容器.md",
-    "C++/b站大佬系列讲解/C++语法/2.类/4.友元类与友元函数.md",
-    "C++/恋恋风尘/基础语法/src",
-    "C++/恋恋风尘/基础语法",
-    "C++/恋恋风尘/并发编程/src",
-    "C++/恋恋风尘/并发编程",
-    "C++/恋恋风尘"
+    "ALearning_人工智能/Python/09_读写文件.md",
+    "ALearning_人工智能/Python/src/Pasted image 20260901003627.png",
+    "ALearning_人工智能/Python/01_print().md",
+    "ALearning_人工智能/Python/00 base_py().md",
+    "AAA学习日常/周计划/任务.md",
+    "ALearning_人工智能/Python/07_def函数.md",
+    "工具使用/Obisidian的使用/01.md",
+    "ALearning_人工智能/Python/src/Pasted image 20260831225249.png",
+    "ALearning_人工智能/Python/特性专题/函数编译顺序.md",
+    "ALearning_人工智能/Python/特性专题/顺序or关键字传参.md",
+    "ALearning_人工智能/Python/05_for循环.md",
+    "ALearning_人工智能/Python/特性专题",
+    "ALearning_人工智能/Python/06_if条件.md",
+    "AAA学习日常/Gemini指令临时存.md",
+    "ALearning_人工智能/Python/04_while循环.md",
+    "ALearning_人工智能/Python/03_自变量variable.md",
+    "工具使用/jypter的使用/快捷键.md",
+    "工具使用/jypter的使用",
+    "工具使用/vscode使用/敲python基础的时候.md",
+    "工具使用/vscode使用/问题解决/vscode 下在C盘怎么办.md",
+    "ALearning_人工智能/环境/SS-如何迁移envs,pkgs文件夹.md",
+    "工具使用/vscode使用/问题解决",
+    "ALearning_人工智能/环境/AA-问题合集.md",
+    "ALearning_人工智能/环境/基础环境.md",
+    "ALearning_人工智能/Python/02_数学运算.md",
+    "未命名.base",
+    "ALearning_人工智能/Python/src/Pasted image 20260828060901.png",
+    "ALearning_人工智能/Python/src/Pasted image 20260828032229.png",
+    "ALearning_人工智能/Python/src",
+    "工具使用/Obisidian的使用/src/Pasted image 20260827221535.png",
+    "工具使用/Obisidian的使用/src/Pasted image 20260827221509.png",
+    "工具使用/Obisidian的使用/src/Pasted image 20260827221406.png",
+    "工具使用/Obisidian的使用/src",
+    "工具使用/Obisidian的使用",
+    "工具使用/vscode使用/src/Pasted image 20260827205004.png",
+    "DEEP_LEARNING库使用.md",
+    "src/Pasted image 20260827034126.png",
+    "src",
+    "工具使用/Git的使用",
+    "工具使用/未命名.md",
+    "工具使用/vscode使用/src/Pasted image 20260827023417.png",
+    "工具使用/vscode使用/src",
+    "Learn_C++/恋恋风尘/并发编程/19.风险指针的运用.md",
+    "AAA生活日常/想买的东西.md",
+    "AAA学习日常/乱七八糟的bug问题/未命名 1.md",
+    "未命名.canvas"
   ]
 }
