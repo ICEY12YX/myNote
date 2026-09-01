@@ -51,12 +51,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/09_读写文件.md",
+                "file": "ALearning_人工智能/Python/07_def函数.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "09_读写文件"
+              "title": "07_def函数"
             }
           },
           {
@@ -215,11 +215,13 @@
               "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 447.0999755859375
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -234,14 +236,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2034f8f7830ade55",
+  "active": "c28692e3c8f78c1d",
   "lastOpenFiles": [
+    "ALearning_人工智能/Python/07_def函数.md",
+    "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/Python/09_读写文件.md",
+    "AAA学习日常/周计划/src/Pasted image 20260901045924.png",
+    "AAA学习日常/周计划/src",
     "ALearning_人工智能/Python/src/Pasted image 20260901003627.png",
     "ALearning_人工智能/Python/01_print().md",
     "ALearning_人工智能/Python/00 base_py().md",
-    "AAA学习日常/周计划/任务.md",
-    "ALearning_人工智能/Python/07_def函数.md",
     "工具使用/Obisidian的使用/01.md",
     "ALearning_人工智能/Python/src/Pasted image 20260831225249.png",
     "ALearning_人工智能/Python/特性专题/函数编译顺序.md",
@@ -276,8 +280,6 @@
     "src",
     "工具使用/Git的使用",
     "工具使用/未命名.md",
-    "工具使用/vscode使用/src/Pasted image 20260827023417.png",
-    "工具使用/vscode使用/src",
     "Learn_C++/恋恋风尘/并发编程/19.风险指针的运用.md",
     "AAA生活日常/想买的东西.md",
     "AAA学习日常/乱七八糟的bug问题/未命名 1.md",

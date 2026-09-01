@@ -150,3 +150,6 @@ py报错`NameError: name 'p' is not defined`
     ![[Pasted image 20260831225249.png]]
 * **避坑指南**：
     以后如果遇到代码逻辑明明不对却能跑通，点击上方菜单栏的 `Kernel -> Restart`（重启内核），清除记忆再跑一次，幽灵 Bug 就会原形毕露。
+
+重启在这里
+![[Pasted image 20260901045924.png|548]]
