@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 41.89008042895443,
+        "dimension": 26.31578947368421,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -30,12 +30,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/特性专题/函数编译顺序.md",
+                "file": "ALearning_人工智能/Python/特性专题/顺序 or 关键字传参.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "函数编译顺序"
+              "title": "顺序 or 关键字传参"
             }
           }
         ]
@@ -43,37 +43,62 @@
       {
         "id": "4843c399cf095d56",
         "type": "tabs",
-        "dimension": 58.10991957104557,
+        "dimension": 73.68421052631578,
         "children": [
           {
-            "id": "99cc84cf2c2ab35a",
+            "id": "3238bf85b72696b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/07_def函数.md",
+                "file": "ALearning_人工智能/Python/01_PY基础1/13_dictionary字典.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07_def函数"
+              "title": "13_dictionary字典"
             }
           },
           {
-            "id": "ee30793d5f4148e4",
+            "id": "bc214132a17a437c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/01_print().md",
+                "file": "ALearning_人工智能/Python/特性专题/set.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01_print()"
+              "title": "set"
+            }
+          },
+          {
+            "id": "0caaf6f12a453566",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/Python/特性专题/dictionary.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "dictionary"
+            }
+          },
+          {
+            "id": "bc1d8e459a5cd101",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -107,7 +132,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "with open",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -238,51 +263,52 @@
   },
   "active": "c28692e3c8f78c1d",
   "lastOpenFiles": [
-    "ALearning_人工智能/Python/07_def函数.md",
+    "ALearning_人工智能/Python/特性专题/set.md",
     "AAA学习日常/周计划/任务.md",
-    "ALearning_人工智能/Python/09_读写文件.md",
+    "ALearning_人工智能/Python/特性专题/dictionary.md",
+    "ALearning_人工智能/Python/01_PY基础1/20_set找不同.md",
+    "ALearning_人工智能/Python/特性专题/list.md",
+    "ALearning_人工智能/Python/01_PY基础1/19_pickle存放数据.md",
+    "ALearning_人工智能/Python/01_PY基础1/18_深浅拷贝.md",
+    "ALearning_人工智能/Python/01_PY基础1/17_zip 和 lambda 和 map.md",
+    "ALearning_人工智能/Python/特性专题/Iterator迭代器.md",
+    "ALearning_人工智能/Python/01_PY基础1/16_try错误处理.md",
+    "ALearning_人工智能/Python/01_PY基础1/09_读写文件.md",
+    "ALearning_人工智能/Python/01_PY基础1/15_pass.md",
+    "ALearning_人工智能/Python/01_PY基础1/14_import引入模块.md",
+    "ALearning_人工智能/Python/01_PY基础1/13_dictionary字典.md",
+    "ALearning_人工智能/Python/01_PY基础1/01_print().md",
+    "ALearning_人工智能/Python/01_PY基础1/12_元组列表.md",
+    "ALearning_人工智能/Python/特性专题/tuple.md",
+    "ALearning_人工智能/Python/特性专题/Generater生成器.md",
+    "未命名 1.md",
+    "未命名.md",
+    "未命名.base",
+    "ALearning_人工智能/Python/01_PY基础1/03_自变量variable.md",
+    "ALearning_人工智能/Python/特性专题/私有属性相关.md",
+    "ALearning_人工智能/Python/01_PY基础1/11_input输入.md",
+    "ALearning_人工智能/Python/01_PY基础1/10_class类.md",
+    "ALearning_人工智能/Python/特性专题/继承.md",
+    "ALearning_人工智能/Python/特性专题/init函数.md",
+    "ALearning_人工智能/Python/01_PY基础1",
     "AAA学习日常/周计划/src/Pasted image 20260901045924.png",
     "AAA学习日常/周计划/src",
-    "ALearning_人工智能/Python/src/Pasted image 20260901003627.png",
-    "ALearning_人工智能/Python/01_print().md",
-    "ALearning_人工智能/Python/00 base_py().md",
-    "工具使用/Obisidian的使用/01.md",
-    "ALearning_人工智能/Python/src/Pasted image 20260831225249.png",
-    "ALearning_人工智能/Python/特性专题/函数编译顺序.md",
-    "ALearning_人工智能/Python/特性专题/顺序or关键字传参.md",
-    "ALearning_人工智能/Python/05_for循环.md",
+    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260901003627.png",
+    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260831225249.png",
     "ALearning_人工智能/Python/特性专题",
-    "ALearning_人工智能/Python/06_if条件.md",
-    "AAA学习日常/Gemini指令临时存.md",
-    "ALearning_人工智能/Python/04_while循环.md",
-    "ALearning_人工智能/Python/03_自变量variable.md",
-    "工具使用/jypter的使用/快捷键.md",
     "工具使用/jypter的使用",
-    "工具使用/vscode使用/敲python基础的时候.md",
-    "工具使用/vscode使用/问题解决/vscode 下在C盘怎么办.md",
-    "ALearning_人工智能/环境/SS-如何迁移envs,pkgs文件夹.md",
     "工具使用/vscode使用/问题解决",
-    "ALearning_人工智能/环境/AA-问题合集.md",
-    "ALearning_人工智能/环境/基础环境.md",
-    "ALearning_人工智能/Python/02_数学运算.md",
-    "未命名.base",
     "ALearning_人工智能/Python/src/Pasted image 20260828060901.png",
-    "ALearning_人工智能/Python/src/Pasted image 20260828032229.png",
-    "ALearning_人工智能/Python/src",
+    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260828032229.png",
+    "ALearning_人工智能/Python/01_PY基础1/src",
     "工具使用/Obisidian的使用/src/Pasted image 20260827221535.png",
     "工具使用/Obisidian的使用/src/Pasted image 20260827221509.png",
     "工具使用/Obisidian的使用/src/Pasted image 20260827221406.png",
     "工具使用/Obisidian的使用/src",
     "工具使用/Obisidian的使用",
     "工具使用/vscode使用/src/Pasted image 20260827205004.png",
-    "DEEP_LEARNING库使用.md",
     "src/Pasted image 20260827034126.png",
     "src",
-    "工具使用/Git的使用",
-    "工具使用/未命名.md",
-    "Learn_C++/恋恋风尘/并发编程/19.风险指针的运用.md",
-    "AAA生活日常/想买的东西.md",
-    "AAA学习日常/乱七八糟的bug问题/未命名 1.md",
     "未命名.canvas"
   ]
 }
