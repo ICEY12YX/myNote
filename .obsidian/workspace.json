@@ -6,7 +6,6 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 26.31578947368421,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -27,78 +26,55 @@
           {
             "id": "b67c0db755b2d5a1",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/特性专题/顺序 or 关键字传参.md",
+                "file": "AAA学习日常/Gemini指令临时存.md",
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
-              "title": "顺序 or 关键字传参"
-            }
-          }
-        ]
-      },
-      {
-        "id": "4843c399cf095d56",
-        "type": "tabs",
-        "dimension": 73.68421052631578,
-        "children": [
-          {
-            "id": "3238bf85b72696b9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/Python/01_PY基础1/13_dictionary字典.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "13_dictionary字典"
+              "title": "Gemini指令临时存"
             }
           },
           {
-            "id": "bc214132a17a437c",
+            "id": "a057ade30a3f1747",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/Python/特性专题/set.md",
+                "file": "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "set"
-            }
-          },
-          {
-            "id": "0caaf6f12a453566",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/Python/特性专题/dictionary.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "dictionary"
-            }
-          },
-          {
-            "id": "bc1d8e459a5cd101",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
+              "title": "01"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
+      },
+      {
+        "id": "6a35cf029748b468",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86b300c90b2c544a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/3B1B/未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -157,7 +133,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 263.1000061035156
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -229,19 +205,9 @@
               "icon": "lucide-list",
               "title": "大纲"
             }
-          },
-          {
-            "id": "5a1a70aa5d3d5152",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -261,54 +227,54 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c28692e3c8f78c1d",
+  "active": "a057ade30a3f1747",
   "lastOpenFiles": [
-    "ALearning_人工智能/Python/特性专题/set.md",
-    "AAA学习日常/周计划/任务.md",
-    "ALearning_人工智能/Python/特性专题/dictionary.md",
-    "ALearning_人工智能/Python/01_PY基础1/20_set找不同.md",
-    "ALearning_人工智能/Python/特性专题/list.md",
-    "ALearning_人工智能/Python/01_PY基础1/19_pickle存放数据.md",
-    "ALearning_人工智能/Python/01_PY基础1/18_深浅拷贝.md",
-    "ALearning_人工智能/Python/01_PY基础1/17_zip 和 lambda 和 map.md",
-    "ALearning_人工智能/Python/特性专题/Iterator迭代器.md",
-    "ALearning_人工智能/Python/01_PY基础1/16_try错误处理.md",
-    "ALearning_人工智能/Python/01_PY基础1/09_读写文件.md",
-    "ALearning_人工智能/Python/01_PY基础1/15_pass.md",
-    "ALearning_人工智能/Python/01_PY基础1/14_import引入模块.md",
-    "ALearning_人工智能/Python/01_PY基础1/13_dictionary字典.md",
-    "ALearning_人工智能/Python/01_PY基础1/01_print().md",
-    "ALearning_人工智能/Python/01_PY基础1/12_元组列表.md",
-    "ALearning_人工智能/Python/特性专题/tuple.md",
-    "ALearning_人工智能/Python/特性专题/Generater生成器.md",
-    "未命名 1.md",
+    "ALearning_人工智能/理论课程/3B1B/未命名.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908055452.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908054503.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908054210.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053837.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053818.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053809.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053754.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053552.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908053030.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src/Pasted image 20260908052936.png",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/未命名.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/00_base.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/src",
+    "ALearning_人工智能/理论课程/course/Machine_Learning",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/00_base.md",
+    "ALearning_人工智能/理论课程/3B1B",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/喵喵喵喵.md",
+    "工具使用/ai_api_key/沉浸式翻译为例.md",
+    "工具使用/Obisidian的使用/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/Representing_Systems_of_Equations_as_Matrices_ZH.md",
     "未命名.md",
-    "未命名.base",
-    "ALearning_人工智能/Python/01_PY基础1/03_自变量variable.md",
-    "ALearning_人工智能/Python/特性专题/私有属性相关.md",
-    "ALearning_人工智能/Python/01_PY基础1/11_input输入.md",
-    "ALearning_人工智能/Python/01_PY基础1/10_class类.md",
-    "ALearning_人工智能/Python/特性专题/继承.md",
-    "ALearning_人工智能/Python/特性专题/init函数.md",
-    "ALearning_人工智能/Python/01_PY基础1",
-    "AAA学习日常/周计划/src/Pasted image 20260901045924.png",
-    "AAA学习日常/周计划/src",
-    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260901003627.png",
-    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260831225249.png",
-    "ALearning_人工智能/Python/特性专题",
-    "工具使用/jypter的使用",
-    "工具使用/vscode使用/问题解决",
-    "ALearning_人工智能/Python/src/Pasted image 20260828060901.png",
-    "ALearning_人工智能/Python/01_PY基础1/src/Pasted image 20260828032229.png",
-    "ALearning_人工智能/Python/01_PY基础1/src",
-    "工具使用/Obisidian的使用/src/Pasted image 20260827221535.png",
-    "工具使用/Obisidian的使用/src/Pasted image 20260827221509.png",
-    "工具使用/Obisidian的使用/src/Pasted image 20260827221406.png",
-    "工具使用/Obisidian的使用/src",
-    "工具使用/Obisidian的使用",
-    "工具使用/vscode使用/src/Pasted image 20260827205004.png",
-    "src/Pasted image 20260827034126.png",
-    "src",
+    "[[.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/喵喵喵.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111.md",
+    "1.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_2_ZH.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111-zh-CN-translation.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_中文翻译.md",
+    "AAA学习日常/Gemini指令临时存.md",
+    "工具使用/加速器/盘古加速器.md",
+    "工具使用/加速器",
+    "ALearning_人工智能/环境/AA-问题合集.md",
+    "ALearning_人工智能/环境/基础环境.md",
+    "ALearning_人工智能/环境/SS-如何迁移envs,pkgs文件夹.md",
+    "AAA学习日常/周计划/任务.md",
+    "工具使用/ai_api_key/src",
+    "ALearning_人工智能/Python/特性专题/Representing_Systems_of_Equations_as_Matrices_ZH 1.md",
+    "工具使用/ai_api_key",
+    "ALearning_人工智能/未命名.canvas",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science",
+    "ALearning_人工智能/理论课程/course",
+    "ALearning_人工智能/Python/03_PY库/00_base.md",
     "未命名.canvas"
   ]
 }

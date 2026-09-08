@@ -188,6 +188,7 @@ print(dict_c)  # 输出: {'apple': 100, 'pear': 2, 'banana': 3}
 
 ```python
 fruits = ["apple", "banana", "apple", "pear", "banana", "apple"]
+# 上面这个有的水果出现了好几遍
 count_dict = {}
 
 for fruit in fruits:
