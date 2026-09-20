@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 41.62198391420911,
+        "dimension": 16.181229773462782,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -54,43 +54,57 @@
               "title": "未命名 1"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "6a35cf029748b468",
         "type": "tabs",
-        "dimension": 58.37801608579089,
+        "dimension": 83.81877022653721,
         "children": [
           {
-            "id": "a057ade30a3f1747",
+            "id": "3544c7bde443f911",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/3B1B/calculus/02.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "02"
-            }
-          },
-          {
-            "id": "26510d51307eee2d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
+                "file": "ALearning_人工智能/理论课程/3B1B/differential_equations/01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "01"
             }
+          },
+          {
+            "id": "71a9185f41249011",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/3B1B/differential_equations/00_base.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00_base"
+            }
+          },
+          {
+            "id": "ba94daf4aaa47e44",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AAA生活日常/Game/逆转裁判/世代1/1-2 逆转姐妹.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1-2 逆转姐妹"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -149,7 +163,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 263.1000061035156
+    "width": 263.1000061035156,
+    "collapsed": true
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -242,36 +257,41 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "a057ade30a3f1747",
+  "active": "ba94daf4aaa47e44",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910100056.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910100005.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095954.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095935.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095918.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095626.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095244.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095212.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910095130.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910094948.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src/Pasted image 20260910094929.png",
-    "ALearning_人工智能/理论课程/3B1B/calculus/01.md",
-    "ALearning_人工智能/理论课程/3B1B/calculus/src",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/00_base.md",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/01.md",
+    "AAA生活日常/Game/逆转裁判/世代1/1-2 逆转姐妹.md",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002946.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002941.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002935.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002849.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002840.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002832.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002820.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260917002622.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260916230937.png",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src/Pasted image 20260916230802.png",
+    "ALearning_人工智能/理论课程/3B1B/probability_theory/00_base.md",
     "ALearning_人工智能/理论课程/3B1B/未命名 1.md",
-    "AAA学习日常/Gemini指令临时存.md",
+    "ALearning_人工智能/理论课程/3B1B/deep_learning",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations/src",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/00_base.md",
     "ALearning_人工智能/理论课程/3B1B/calculus/02.md",
+    "AAA学习日常/周计划/任务.md",
+    "ALearning_人工智能/理论课程/3B1B/calculus/01.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
+    "ALearning_人工智能/理论课程/3B1B/calculus/src",
+    "AAA学习日常/Gemini指令临时存.md",
     "未命名.md",
     "DEEP_LEARNING库使用.md",
-    "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
-    "ALearning_人工智能/理论课程/3B1B/未命名 1",
-    "ALearning_人工智能/理论课程/3B1B/未命名",
+    "ALearning_人工智能/理论课程/3B1B/differential_equations",
+    "ALearning_人工智能/理论课程/3B1B/probability_theory",
     "ALearning_人工智能/理论课程/3B1B/calculus/00_base.md",
-    "ALearning_人工智能/理论课程/3B1B/linear_algebra/00_base.md",
     "ALearning_人工智能/理论课程/3B1B/calculus",
     "ALearning_人工智能/理论课程/3B1B/linear_algebra/02.md",
     "ALearning_人工智能/理论课程/3B1B/未命名.md",
     "未命名.canvas",
-    "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/3B1B/linear_algebra/未命名.md",
     "ALearning_人工智能/理论课程/3B1B/linear_algebra/src",
     "ALearning_人工智能/理论课程/course/Machine_Learning",
@@ -286,11 +306,6 @@
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/喵喵喵.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111.md",
     "1.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_2_ZH.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111-zh-CN-translation.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_中文翻译.md",
-    "工具使用/加速器",
-    "工具使用/ai_api_key/src",
     "ALearning_人工智能/未命名.canvas"
   ]
 }
