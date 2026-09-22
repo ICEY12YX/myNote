@@ -26,6 +26,8 @@ file.close()
 * **疑问解答 (`except Exception as e:` 是什么意思？)**：
     * except是用来捕获异常的,如果try里面的代码出现异常,就会执行except里面的代码
     * `Exception` 是 Python 里所有常见报错的“老祖宗”, 即==所有错误类型的基类==。不管 `try` 里面报了什么错（找不到文件、类型错误等），它都能一把接住，防止整个程序直接崩溃死机。
+        所以这里还能填别的
+        ![[Pasted image 20260921132548.png|261]]![[Pasted image 20260921132605.png|434]]
     * `as e` 的意思是：“把刚才抓到的那个具体错误信息，起个**代号**叫 `e`”。
 
 #### 模块 2：被误解的 `else` 分支与隐形 Bug
@@ -55,6 +57,7 @@ try:
     with open("not_exist_file", "r") as file:
         content = file.read()
         print("文件存在，内容是:", content)
+        file.write("fanfanfan")
 except Exception as e:
     print(f"出错了，错误详情: {e}")
     response = input("要不要新建一个? (y/n)")
@@ -64,5 +67,7 @@ except Exception as e:
             print("创建并写入成功！")
 # 不需要写 else，也不需要写 file.close()，with 语句全自动帮你安全打理！
 ```
-
+此时
+**只要 try 块里任何一句抛出异常，try 块后面的句子立刻全部跳过，直接跳到对应的 except。**
+![[Pasted image 20260921133331.png]]
 ---

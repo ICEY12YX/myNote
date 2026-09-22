@@ -12,6 +12,7 @@ while a:
         a = False
     else:
         pass  # 这啥意思
+        #这里写continue的话 下面这句print就不会执行
     print("still in while")
 print("finish")
 ```
