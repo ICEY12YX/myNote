@@ -1,5 +1,5 @@
 ___
-原版[[[111]]]
+原版[[111]]
 沉浸式翻译免费[[111_中文翻译]]
 gpt免费版[[111-zh-CN-translation]]
 gemini-3.8flash [[Representing_Systems_of_Equations_as_Matrices_ZH]]
