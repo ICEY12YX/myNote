@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 19.305019305019304,
+        "dimension": 36.78618857901727,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -67,14 +67,28 @@
               "icon": "lucide-file",
               "title": "要做的"
             }
+          },
+          {
+            "id": "2a70daa9ef7e7594",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/英文原版/C1_W1_Lab_2_linear_systems_as_matrices.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "C1_W1_Lab_2_linear_systems_as_matrices"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       },
       {
         "id": "89145c3b69f3daf1",
         "type": "tabs",
-        "dimension": 80.6949806949807,
+        "dimension": 63.213811420982736,
         "children": [
           {
             "id": "3aac3807eef38cfc",
@@ -82,16 +96,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/linear_01.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/01.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "linear_01"
+              "title": "01"
             }
           },
           {
-            "id": "ca8f011368797329",
+            "id": "24136ab31d334a1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -103,23 +117,8 @@
               "icon": "lucide-file",
               "title": "英文"
             }
-          },
-          {
-            "id": "0aa9c736dd3c136a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/01.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "01"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -153,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#weight权重",
+                "query": "tag:#row_echelon_form",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -174,13 +173,11 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 263.1000061035156,
-    "collapsed": true
+    "width": 263.1000061035156
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -273,54 +270,54 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "0aa9c736dd3c136a",
+  "active": "3aac3807eef38cfc",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260923101941.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924173035.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924172859.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924172804.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924172752.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924172715.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924172413.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924171830.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924171801.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924171631.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924171349.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src/Pasted image 20260924171202.png",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/英文.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/C1_W1_Lab_2_linear_systems_as_matrices_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/作业链接.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/C1_W1_Lab_2_linear_systems_as_matrices_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/C1_W1_Lab_1_introduction_to_numpy_arrays_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/英文原版/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/英文原版/C1_W1_Lab_2_linear_systems_as_matrices.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/英文原版/C1_W1_Lab_1_introduction_to_numpy_arrays.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/英文原版",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/检查知识/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/英文原版/C1_W1_Lab_2_linear_systems_as_matrices.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/C1_W1_Lab_1_introduction_to_numpy_arrays_ch.md",
+    "工具使用/Coursera的使用/lab.md",
+    "工具使用/Coursera的使用/src",
+    "工具使用/Coursera的使用",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/英文原版/C1_W1_Lab_1_introduction_to_numpy_arrays.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/英文原版/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/Lab1_introduction_to_numpy_arrays_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/note/00_base.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/linear_01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/Lab1_introduction_to_numpy_arrays_ch0.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/作业链接.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/00_base.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/未命名.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
     "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/未来可以看的教程.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183920.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183847.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183727.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183458.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183403.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183338.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183308.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183222.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922183148.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/src/Pasted image 20260922182958.png",
-    "字幕提取/句子系统 _ Coursera-zh-CN-translation.srt",
-    "字幕提取/未确认 922167.crdownload",
-    "字幕提取/未确认 86413.crdownload",
-    "字幕提取/句子系统 _ Coursera--translation.srt",
-    "字幕提取/未确认 410403.crdownload",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/检查知识/01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/检查知识",
-    "字幕提取/线性代数应用 II _ Coursera-zh-CN-translation.srt",
-    "字幕提取/未确认 52632.crdownload",
-    "字幕提取/线性代数应用 II _ Coursera-plain-text.txt",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/00_base.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/00_base.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/code_artifact.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/00_base.md",
-    "[111.md",
-    "工具使用/杂七杂八ai工具/提取视频文字.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/未命名.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/喵喵喵喵.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/喵喵喵.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111-zh-CN-translation.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_中文翻译.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111_2_ZH.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/111.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/翻译测试/Representing_Systems_of_Equations_as_Matrices_ZH.md",
-    "ALearning_人工智能/Python/特性专题/set.md",
-    "ALearning_人工智能/Python/特性专题/dictionary.md",
-    "ALearning_人工智能/Python/future list.md",
-    "ALearning_人工智能/Python/01_PY基础1/20_set找不同.md",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
