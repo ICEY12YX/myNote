@@ -216,8 +216,10 @@ y = np.array(y)
 ```python
 a = np.random.rand(1000000)
 b = np.random.rand(1000000)
-
+print(a)
+print(b)
 ```
+![[Pasted image 20261002203104.png]]
 
 借助 `time.time()` 记录时间戳，测试我们自己编写的循环版本 `dot(x,y)` 需要耗费多少毫秒：
 

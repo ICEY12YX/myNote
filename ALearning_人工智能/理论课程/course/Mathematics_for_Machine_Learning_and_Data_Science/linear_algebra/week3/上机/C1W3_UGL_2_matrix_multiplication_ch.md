@@ -4,6 +4,10 @@ ___
 在本实验中，你将使用 `NumPy` 内置函数来执行矩阵乘法（Matrix Multiplication），并一探它在机器学习（Machine Learning）应用中的具体发挥空间。
 
 ___
+- [[#常用工具包|常用工具包]]
+- [[#1 - 矩阵乘法的定义|1 - 矩阵乘法的定义]]
+- [[#2 - 使用 Python 执行矩阵乘法|2 - 使用 Python 执行矩阵乘法]]
+- [[#3 - 矩阵运算约定与广播机制（Broadcasting）|3 - 矩阵运算约定与广播机制（Broadcasting）]]
 
 ___
 
@@ -35,13 +39,16 @@ B = np.array([[2, 2], [5, 7], [4, 4]])
 print("Matrix B (3 by 2):\n", B)
 
 ```
+![[Pasted image 20261002202043.png]]
 
-你可以直接调用 `NumPy` 的内置函数 `np.matmul()` 来计算矩阵 $A$ 和 $B$ 的乘积：
+
+你可以直接调用 `NumPy` 的内置函数 💛`np.matmul()` 来计算矩阵 $A$ 和 $B$ 的乘积：
 
 ```python
 np.matmul(A, B)
 
 ```
+![[Pasted image 20261002202153.png]]
 
 该操作会返回一个形状为 $3 \times 2$ 的 `np.array`。此外，Python 专门提供的矩阵乘法运算符 `@` 在这里同样适用，并且会输出完全一致的结果：
 
@@ -49,10 +56,9 @@ np.matmul(A, B)
 A @ B
 
 ```
+![[Pasted image 20261002202156.png]]
 
 ## 3 - 矩阵运算约定与广播机制（Broadcasting）
-
-
 
 在数学规则中，矩阵乘法成立的前提是：前一个矩阵 $A$ 的列数必须严格等于后一个矩阵 $B$ 的行数 (你可以回头复习第 1 节中的定义，不满足此条件则行列之间根本无法进行对应维度的点积运算)。
 
@@ -65,6 +71,8 @@ except ValueError as err:
     print(err)
 
 ```
+输出:
+    `matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 2)`
 
 ```python
 try:
@@ -73,11 +81,13 @@ except ValueError as err:
     print(err)
 
 ```
+输出:
+    `matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 2)`
 
-因此，在进行矩阵乘法时，必须对维度保持高度敏感——第一个矩阵的列数务必与第二个矩阵的行数保持一致。掌握这一规律，对于后续深入理解神经网络（Neural Networks）及其内部运转逻辑至关重要。
+因此，==在进行矩阵乘法时，必须对维度保持高度敏感==——第一个矩阵的列数务必与第二个矩阵的行数保持一致。掌握这一规律，对于后续深入理解神经网络（Neural Networks）及其内部运转逻辑至关重要。
 
 不过，针对向量（Vector）之间的相乘，`NumPy` 巧妙地提供了一套便捷规则。我们先定义两个相同维度的向量 $x$ 和 $y$  (在概念上可将其理解为两个 $3 \times 1$ 的矩阵)。观察向量 $x$ 的结构：
-
+    (仅仅是概念上可以这么理解, 代码里还是shape还是 `(3,)` )
 ```python
 x = np.array([1, -2, -5])
 y = np.array([4, 3, -1])
@@ -88,15 +98,20 @@ print("Shape of vector x, reshaped to a matrix:", x.reshape((3, 1)).shape)
 print("Number of dimensions of vector x, reshaped to a matrix:", x.reshape((3, 1)).ndim)
 
 ```
+![[Pasted image 20261002203333.png]]
 
 按照标准矩阵乘法约定，两个 $3 \times 1$ 的矩阵相乘是未定义的。照常理推断，执行下面的单元格应该抛出错误，但让我们看看实际的运行输出：
 
 ```python
+x = np.array([1, -2, -5])
+y = np.array([4, 3, -1])
+
 np.matmul(x,y)
 
 ```
+![[Pasted image 20261002202547.png]]
 
-代码不仅没有报错，返回的结果恰好是点积 $x \cdot y\,$！ 原来，底层自动将一维向量 $x$ 转置为了 $1 \times 3$ 的行向量，从而顺利完成了等价于 $x^Ty$ 的矩阵乘法。这项特性虽然极度方便，但在 Python 编程中一定要多加留心，避免因随意依赖隐式转换而写出逻辑错误的边缘代码。下面的单元格就会明确抛出错误：
+代码不仅没有报错，返回的结果恰好是点积 $x \cdot y\,$！ 原来，==底层自动将一维向量 $x$ 转置为了 $1 \times 3$ 的行向量，从而顺利完成了等价于 $x^Ty$ 的矩阵乘法。==这项特性虽然极度方便，但在 Python 编程中一定要多加留心，避免因随意依赖隐式转换而写出逻辑错误的边缘代码。下面的单元格就会明确抛出错误：
 
 ```python
 try:
@@ -105,6 +120,8 @@ except ValueError as err:
     print(err)
 
 ```
+输出
+    `matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 1)`
 
 此时你可能会好奇：原本用于求点积的 `np.dot()` 函数能否直接用于矩阵乘法？ 让我们来测试一下：
 
@@ -112,6 +129,7 @@ except ValueError as err:
 np.dot(A, B)
 
 ```
+![[Pasted image 20261002202721.png]]
 
 完全可行！ 这背后依赖的是 Python 科学计算中著名的 **广播机制（Broadcasting）**：`NumPy` 自动将点积计算广播（Broadcasting）扩展到了全部行与全部列之间，从而计算出完整的乘积矩阵。广播机制在很多日常运算中同样大显身手，例如：
 
@@ -119,12 +137,10 @@ np.dot(A, B)
 A - 2
 
 ```
+![[Pasted image 20261002202754.png]]
 
-从严谨的数学定义来看，一个 $3 \times 3$ 的矩阵 $A$ 减去一个标量是未定义的；但 Python 借助广播机制，将该标量自动扩展为一个对应的 $3 \times 3$ `np.array`，并按元素逐一相减。矩阵乘法最典型的工程实战场景之一便是线性回归（Linear Regression）模型，在本周后续的编程作业中你将亲手实现它！
+==从严谨的数学定义来看，一个 $3 \times 3$ 的矩阵 $A$ 减去一个标量是未定义的==；但 Python 借助**广播机制**，将该标量自动扩展为一个对应的 $3 \times 3$ `np.array`，并按元素逐一相减。矩阵乘法最典型的工程实战场景之一便是线性回归（Linear Regression）模型，在本周后续的编程作业中你将亲手实现它！
 
 祝贺你，顺利完成了本节实验！
 
-```python
-
-
-```
+总之就是`np.matmul`和`np.dot` 和 `@` 都能实现一维向量点积 和 多维矩阵相乘
