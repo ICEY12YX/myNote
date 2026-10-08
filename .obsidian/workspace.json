@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 36.78618857901727,
+        "dimension": 46.37917005695687,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -67,31 +67,17 @@
               "icon": "lucide-file",
               "title": "英文"
             }
-          },
-          {
-            "id": "a99438f632c1a13b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_UGL_2_matrix_multiplication.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "C1W3_UGL_2_matrix_multiplication"
-            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       },
       {
         "id": "89145c3b69f3daf1",
         "type": "tabs",
-        "dimension": 63.213811420982736,
+        "dimension": 53.62082994304313,
         "children": [
           {
-            "id": "3aac3807eef38cfc",
+            "id": "2fd77ad270c8ce7e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -105,12 +91,12 @@
             }
           },
           {
-            "id": "e63ba88b673e75b3",
+            "id": "3477f0c84acc2c47",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/note/01.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/note/01.md",
                 "mode": "source",
                 "source": false
               },
@@ -118,7 +104,8 @@
               "title": "01"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -152,7 +139,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "conda",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -270,54 +257,53 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "3aac3807eef38cfc",
+  "active": "3477f0c84acc2c47",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版/C1W4_Assignment.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版/C1_W4_Lab_1_Interpreting_eigenvalues_and_eigenvectors.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/C1W4_Assignment_ch.md",
+    "ALearning_人工智能/Python/特性专题/关于数组冒号的问题.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008182922.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008182903.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008182327.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008182041.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008181945.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008180538.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008180532.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/outputjhh.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008175331.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src/Pasted image 20261008175312.png",
+    "ALearning_人工智能/Python/特性专题/numpy/reshape用法.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/英文.md",
+    "ALearning_人工智能/Python/特性专题/numpy",
+    "AAA学习日常/周计划/任务.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/C1_W1_Lab_1_introduction_to_numpy_arrays_ch.md",
+    "ALearning_人工智能/Python/01_PY基础1/12_元组列表.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/C1_W4_Lab_1_Interpreting_eigenvalues_and_eigenvectors_ch.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/01.md",
+    "ALearning_人工智能/Python/特性专题/list.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版/C1_W4_Lab_1_Interpreting_eigenvalues_and_eigenvectors.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_UGL_2_matrix_multiplication.md",
+    "ALearning_人工智能/理论课程/3B1B/linear_algebra/02.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/note/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版/C1W4_Assignment.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_1_vector_operations_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_2_matrix_multiplication_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_3_linear_transformations_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/C1W4_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003011948.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003011905.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003011559.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003010630.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003010104.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261003010047.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261002223024.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261002223014.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261002222848.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src/Pasted image 20261002222838.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_UGL_2_matrix_multiplication.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_UGL_1_vector_operations.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/公式符号/英文.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/C1_W4_Lab_1_Interpreting_eigenvalues_and_eigenvectors_ch.md",
     "ALearning_人工智能/环境/基础环境.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/note",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/解释函数1.md",
-    "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/src",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_Assignment.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版/C1W3_UGL_3_linear_transformations.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/C1W2_UGL_solving_linear_systems_3_variables_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/note/01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/C1W2_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/英文原版/C1W2_Assignment.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_3_linear_transformations.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_2_matrix_multiplication.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_Assignment.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/C1W3_UGL_2_matrix_multiplication.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/note/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/note",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/英文原版",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
