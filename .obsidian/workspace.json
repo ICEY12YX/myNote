@@ -69,21 +69,20 @@
             }
           },
           {
-            "id": "fbfd902e31098be3",
+            "id": "246cf98ccb6573f1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Lab_1_differentiation_in_python_ch.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Assignment.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C2_W1_Lab_1_differentiation_in_python_ch"
+              "title": "C2_W2_Assignment"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "008903b748626b2d",
@@ -91,12 +90,12 @@
         "dimension": 66.15281501340483,
         "children": [
           {
-            "id": "4935a6a04c291aac",
+            "id": "b143eb0bd2919bf4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/01.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
                 "mode": "source",
                 "source": false
               },
@@ -105,7 +104,7 @@
             }
           },
           {
-            "id": "b143eb0bd2919bf4",
+            "id": "3b9cdf462fdf90ff",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -117,22 +116,9 @@
               "icon": "lucide-file",
               "title": "02"
             }
-          },
-          {
-            "id": "1ce0ae3f9d26aff1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "C2_W2_Assignment_ch"
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -166,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#non-differentiable",
+                "query": "tag:#concave_up点是最小值点",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -191,8 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 341.5,
-    "collapsed": true
+    "width": 341.5
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -285,25 +270,35 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "4935a6a04c291aac",
+  "active": "2034f8f7830ade55",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010061511.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010061451.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010061141.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010060909.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010060501.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010060152.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010060037.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010055812.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010055743.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010055712.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src/Pasted image 20261010055642.png",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/公式符号/英文.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054549.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054541.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054522.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054456.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054446.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054336.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011054152.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011053946.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011053813.png",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src/Pasted image 20261011053639.png",
+    "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/note/02.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Lab_1_Optimization_Using_Gradient_Descent_in_One_Variable_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/公式符号/英文.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Assignment.md",
+    "ALearning_人工智能/Python/特性专题/numpy/np.polyfit.md",
+    "ALearning_人工智能/Python/特性专题/未命名",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Lab_2_Optimization_Using_Gradient_Descent_in_Two_Variables_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Lab_1_Optimization_Using_Gradient_Descent_in_One_Variable.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Lab_1_Optimization_Using_Gradient_Descent_in_One_Variable_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/src",
+    "ALearning_人工智能/Python/future list.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Lab_1_differentiation_in_python_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_3_Optimization_Using_Newtons_Method_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_2_Classification_with_Perceptron_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_1_Regression_with_Perceptron_ch.md",
@@ -314,25 +309,14 @@
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Assignment.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/note/01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Lab_1_differentiation_in_python_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/英文原版/C2_W1_Assignment.md",
-    "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/英文原版/C2_W1_Lab_1_differentiation_in_python.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/src",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Lab_2_Optimization_Using_Gradient_Descent_in_Two_Variables.md",
-    "AAA学习日常/Gemini指令临时存.md",
-    "ALearning_人工智能/环境/基础环境.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Lab_1_Optimization_Using_Gradient_Descent_in_One_Variable.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Assignment.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/note/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/公式符号",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week5/上机/英文原版",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week5/上机",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
