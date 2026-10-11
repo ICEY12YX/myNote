@@ -7,5 +7,5 @@ ___
 ##  可能本地同步到github上的时候,连接不上
 注意: 提交分支的时候, 科学上网工具开这个模式
     否则vscode链接不上github
-![[Pasted image 20260827034126.png]]
+![[Pasted image 20260827034126.webp]]
 

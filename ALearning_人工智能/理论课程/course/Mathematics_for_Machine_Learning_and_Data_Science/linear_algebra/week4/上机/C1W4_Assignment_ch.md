@@ -109,7 +109,7 @@ for t in range(m):
 print(X)
 
 ```
-![[Pasted image 20261004061315.png]]
+![[Pasted image 20261004061315.webp]]
 
 
 当步数 $m$ 变得非常大时，==预测 $X_m$ 中的稳态概率==具有极大的实用价值——它能告诉我们，用户在网络世界里漫游许久之后，最有可能在哪些网页上流连。换句话说，我们能够洞察到底哪些网页最终汇聚了最多的互联网流量。
@@ -122,7 +122,7 @@ eigenvals, eigenvecs = np.linalg.eig(P)
 print(f'Eigenvalues of P:\n{eigenvals}\n\nEigenvectors of P\n{eigenvecs}')
 
 ```
-![[Pasted image 20261004061421.png]]
+![[Pasted image 20261004061421.webp]]
 
 不难发现，==输出中恰好有一个特征值的大小为 $1$，而其余四个特征值的绝对值都小于 1==。事实证明，这正是所有转移矩阵所共有的神奇特质。实际上，这一类矩阵具备极为丰富的优良数学性质，在数学界被统称为**马尔可夫矩阵（Markov Matrix）**。
 
@@ -139,11 +139,11 @@ X_inf = eigenvecs[:,0]
 print(f"Eigenvector corresponding to the eigenvalue 1:\n{X_inf[:,np.newaxis]}")
 
 ```
-![[Pasted image 20261004061749.png]]
+![[Pasted image 20261004061749.webp]]
 解释
-    ![[Pasted image 20261004062058.png]]
-    ![[Pasted image 20261004062109.png]]
-    ![[Pasted image 20261004062225.png]]
+    ![[Pasted image 20261004062058.webp]]
+    ![[Pasted image 20261004062109.webp]]
+    ![[Pasted image 20261004062225.webp]]
 
 ### 练习 2
 
@@ -165,7 +165,7 @@ print("Result of multiplication:" + str(X_check))
 print("Check that PX=X element by element:" + str(np.isclose(X_inf, X_check, rtol=1e-10)))
 
 ```
-![[Pasted image 20261004062430.png]]
+![[Pasted image 20261004062430.webp]]
 
 ```python
 # 运行测试用例检验你的代码
@@ -180,7 +180,7 @@ X_inf = X_inf/sum(X_inf)
 print(f"Long-run probabilities of being at each webpage:\n{X_inf[:,np.newaxis]}")
 
 ```
-![[Pasted image 20261004062555.png]]
+![[Pasted image 20261004062555.webp]]
 
 
 这意味着，在网络中持续浏览很久很久之后，用户停留在网页 1 的概率约为 0.394，在网页 2 的概率为 0.134，在网页 3 的概率为 0.114，在网页 4 的概率为 0.085，而在网页 5 的概率为 0.273。
@@ -194,7 +194,7 @@ print(f"Long-run probabilities of being at each webpage:\n{X_inf[:,np.newaxis]}"
 ## 2 - 特征值与特征向量的应用：主成分分析（PCA）
 
 前情提要
-![[Pasted image 20261008163735.png]]
+![[Pasted image 20261008163735.webp]]
 
 在理论课上我们学过，特征值与特征向量最经典、最强大的舞台之一，就是降维算法——主成分分析（Principal Component Analysis，简称 PCA）。
 
@@ -226,7 +226,7 @@ height, width = imgs[0].shape
 print(f'\nYour dataset has {len(imgs)} images of size {height}x{width} pixels\n')
 
 ```
-![[Pasted image 20261008164747.png]]
+![[Pasted image 20261008164747.webp]]
 这次输出就是宽高了
 
 接下来不妨随机画出一张图像瞧瞧。你可以调用灰度颜色映射 'gray' 来绘制黑白画面，也可以随心所欲多看几张萌猫头像。
@@ -235,7 +235,7 @@ print(f'\nYour dataset has {len(imgs)} images of size {height}x{width} pixels\n'
 plt.imshow(imgs[0], cmap='gray')
 
 ```
-![[Pasted image 20261004062822.png]]
+![[Pasted image 20261004062822.webp]]
 
 在数字图像处理中，我们可以==将每一个像素点都看作一个独立的特征变量==。把图像保持为二维矩阵形式固然便于人类用肉眼直观欣赏，但在针对每个特征变量进行数学矩阵运算时却显得笨拙低效。
 
@@ -251,20 +251,20 @@ imgs_flatten = np.array([im.reshape(-1) for im in imgs])
 print(f'imgs_flatten shape: {imgs_flatten.shape}')
 
 ```
-![[Pasted image 20261008164927.png]]
+![[Pasted image 20261008164927.webp]]
 行数是图像的个数  列数是每个图像的像素数
 就是现在每个像素算一个维度 (跟像素的位置没关系了?)
 
 解释
-    ![[Pasted image 20261008165906.png]]
+    ![[Pasted image 20261008165906.webp]]
 
 **注意**
 - imgs是图像列表 im是每个元素, 先把每个元素im展平 再存到新的array imgs_flatten
 - 所以最后的矩阵变成 第一列 是每张图第一个像素(比如左上角第一个) 第二列是第二个像素
 
 **预想接下来会发生什么:**
-    ![[Pasted image 20261008170438.png]]
-    ![[Pasted image 20261008170508.png]]
+    ![[Pasted image 20261008170438.webp]]
+    ![[Pasted image 20261008170508.webp]]
     这步等会解释
 ## 2.2 - 计算协方差矩阵
 
@@ -322,9 +322,9 @@ def center_data(Y):
 ```
 [[reshape用法]]
 理解
-    ![[Pasted image 20261004063953.png]]
-    ![[Pasted image 20261004064104.png]]
-    ![[Pasted image 20261004065008.png]]
+    ![[Pasted image 20261004063953.webp]]
+    ![[Pasted image 20261004064104.webp]]
+    ![[Pasted image 20261004065008.webp]]
 
 现在，将写好的 `center_data` 函数应用到先前展平的图像数据 `imgs_flatten` 上吧！
 
@@ -378,7 +378,7 @@ cov_matrix = get_cov_matrix(X)
 print(f'Covariance matrix shape: {cov_matrix.shape}')
 
 ```
-![[Pasted image 20261004065238.png]]
+![[Pasted image 20261004065238.webp]]
 
 ```python
 # 运行测试用例检验你的代码
@@ -401,13 +401,13 @@ eigenvals, eigenvecs = scipy.sparse.linalg.eigsh(cov_matrix, k=55)
 print(f'Ten largest eigenvalues: \n{eigenvals[-10:]}')
 
 ```
-![[Pasted image 20261008172827.png]]
+![[Pasted image 20261008172827.webp]]
 解释
-    ![[Pasted image 20261004070206.png]]
-    ![[Pasted image 20261004070213.png]]
+    ![[Pasted image 20261004070206.webp]]
+    ![[Pasted image 20261004070213.webp]]
     但是好像有点问题
-    ![[Pasted image 20261004070341.png]] 这样才不报错
-    ![[Pasted image 20261008182327.png]]
+    ![[Pasted image 20261004070341.webp]] 这样才不报错
+    ![[Pasted image 20261008182327.webp]]
 
 在上面的代码中，我们==固定了随机数种子（Random Seed），以确保每次代码重新运行时都能得到完全一致的特征向量。==这是因为对于任意一个特征向量，都存在两个模长为 1 的有效数学表达：它们落在同一条直线上，但指向恰好相反。例如下面这两个向量：
 
@@ -424,9 +424,9 @@ eigenvecs = eigenvecs[:,::-1]
 print(f'Ten largest eigenvalues: \n{eigenvals[:10]}')
 
 ```
-![[Pasted image 20261008172818.png]]
+![[Pasted image 20261008172818.webp]]
 解释
-    ![[Pasted image 20261004070708.png]]
+    ![[Pasted image 20261004070708.webp]]
     [[关于数组冒号的问题]]
 
 至此，求出的每一个特征向量都代表着一个独立的主成分。对应最大特征值的特征向量就是第一主成分（First Principal Component），对应第二大特征值的特征向量则是第二主成分，依此类推。
@@ -441,16 +441,16 @@ for n in range(4):
         ax[n,k].set_title(f'component number {n*4+k+1}')
 #怎么显示出来的
 ```
-![[Pasted image 20261004070849.png]]
-![[Pasted image 20261004070900.png]]
+![[Pasted image 20261004070849.webp]]
+![[Pasted image 20261004070900.webp]]
 
 仔细观察这些主成分图像，你能看出它们分别捕捉到了猫咪面部的哪些视觉特征吗？
 
 理解
     首先上面 输入矩阵是 55x4096
     那算出的特征向量 每个就是 1x4096  那不就是一副图片的像素数, 那就当然可以把他当做图像显示了
-    ![[Pasted image 20261008174339.png]]
-    ![[Pasted image 20261008174449.png]]
+    ![[Pasted image 20261008174339.webp]]
+    ![[Pasted image 20261008174449.webp]]
 
 ### 2.4 利用 PCA 转换中心化后的数据
 
@@ -481,7 +481,7 @@ def perform_PCA(X, eigenvecs, k):
 
 ```
 解释
-    ![[Pasted image 20261004071537.png]]
+    ![[Pasted image 20261004071537.webp]]
 
 运行这个函数，尝试将图像数据一口气降维至仅有两个主成分的分离空间：
 
@@ -490,7 +490,7 @@ Xred2 = perform_PCA(X, eigenvecs,2)
 print(f'Xred2 shape: {Xred2.shape}')
 
 ```
-![[Pasted image 20261008174537.png]]
+![[Pasted image 20261008174537.webp]]
 
 ```python
 # 运行测试用例检验你的代码
@@ -508,7 +508,7 @@ w4_unittest.test_check_PCA(perform_PCA)
 utils.plot_reduced_data(Xred2)
 
 ```
-![[outputkdjk.png]]
+![[outputkdjk.webp]]
 
 
 从几何直觉上推断：如果两个点在二维投影图上靠得非常近，那么它们所对应的原始猫咪照片在现实中大概率也长得非常相似。
@@ -525,7 +525,7 @@ ax[2].set_title("Image 16")
 plt.suptitle("Similar cats")
 
 ```
-![[Pasted image 20261008174858.png]]
+![[Pasted image 20261008174858.webp]]
 瞧，这三只猫咪都有着白色的口鼻区域，且双眼周围都环绕着一圈深色毛发，长相确实极为相像！
 
 反过来，我们再挑选三张在二维平面上相距甚远的图像样本——例如右侧中部的 18 号、顶部中央的 41 号以及左下方的 51 号，同样将它们绘制出来：
@@ -541,7 +541,7 @@ ax[2].set_title("Image 12")
 plt.suptitle("Different cats")
 
 ```
-![[Pasted image 20261004072018.png]]
+![[Pasted image 20261004072018.webp]]
 
 果不其然，这三只猫咪的外貌风格迥异：一只浑身通黑，一只通体雪白，而第三只则是黑白杂糅的花猫。
 
@@ -568,7 +568,7 @@ def reconstruct_image(Xred, eigenvecs):
 
 ```
 理解
-    ![[Pasted image 20261008180538.png]]
+    ![[Pasted image 20261008180538.webp]]
     Xred 55 x n (这个配发表对于每个模版(中的每个像素)是不变的)
     eigenvecs  4096 x 55
     `eigenvecs[:,:Xred.shape[1]]`  4096 x n
@@ -577,13 +577,13 @@ def reconstruct_image(Xred, eigenvecs):
     想一下矩阵相乘的过程就能大概理解了
 
 为什么有损失 
-    ![[Pasted image 20261008181945.png]]
-    ![[Pasted image 20261008182041.png]]
+    ![[Pasted image 20261008181945.webp]]
+    ![[Pasted image 20261008182041.webp]]
     (前面我们规定了求 55个特征向量 所以这边最多55个模版, 最多按维数应该是4096个模版)
 
 重要
-    ![[Pasted image 20261008182903.png]]
-    ![[Pasted image 20261008182922.png]]
+    ![[Pasted image 20261008182903.webp]]
+    ![[Pasted image 20261008182922.webp]]
     而且这两个都是独立操作 彼此不是你操作  所以不能理解为正过来反过来算!!!!!  都应该当做独立的算法来记 
 
 让我们来比对一下，在选用不同数量的主成分时，重构出的图像质量到底有何天壤之别：
@@ -615,7 +615,7 @@ ax[1,2].imshow(Xrec30[1].reshape(height,width), cmap='gray')
 ax[1,2].set_title('reconstructed from 30 components', size=20)
 
 ```
-![[outputff 1.png]]
+![[outputff 1.webp]]
 
 肉眼可见，==随着纳入的主成分数量逐步攀升，重构出的图像变得越来越清晰、细腻，并迅速向原图逼近！==令人惊叹的是，即便是仅仅使用 1 个成分的极度压缩状态下，图像依然勾勒出了猫咪眼睛和鼻子的核心轮廓。
 
@@ -638,7 +638,7 @@ explained_variance = eigenvals/sum(eigenvals)
 plt.plot(np.arange(1,56), explained_variance)
 
 ```
-![[Pasted image 20261008175312.png]]
+![[Pasted image 20261008175312.webp]]
 
 正如曲线上所呈现的，解释方差比重衰减得极快，在超过第 20 个主成分之后，后续成分所蕴含的方差信息已经变得微乎其微。
 
@@ -652,7 +652,7 @@ plt.plot(np.arange(1,56), explained_cum_variance)
 plt.axhline(y=0.95, color='r')
 
 ```
-![[Pasted image 20261008175331.png]]
+![[Pasted image 20261008175331.webp]]
 
 图中的红色横虚线标出了 95% 的信息保留基准线。这意味着，如果你希望让压缩后的模型保留原始图像 95% 的核心信息与方差特征，你总共仅需保留 35 个主成分即可。
 
@@ -685,7 +685,7 @@ ax[3,1].set_title('Reconstructed', size=20)
 
 
 ```
-![[outputjhh.png]]
+![[outputjhh.webp]]
 
 绝大多数重构出来的图像在视觉上都极为出色，而我们仅仅用 35 个数字就完整保留了原本多达 4096 个像素变量的视觉神韵，节省了海量的内存与存储开销！
 

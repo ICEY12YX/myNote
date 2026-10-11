@@ -4,29 +4,29 @@ ___
 取值范围[0, 255]
 ## RGBA8888
 每个通道占8位，即一个字节
-![[Pasted image 20250524201910.png]]
+![[Pasted image 20250524201910.webp]]
 ___
 ## RGB565
 R占5位，G占6位，B占5位
 (但是排列是B在前)
-![[Pasted image 20250524202006.png]]
+![[Pasted image 20250524202006.webp]]
 ___
 ## 图像的像素阵列
 P代表一个像素pixel
-![[Pasted image 20250524202142.png]]
+![[Pasted image 20250524202142.webp]]
 
 <mark style="background: #ABF7F7A6;">为了内存对齐，会使用stride来填充</mark>                                                                                                                                                                                                                                 
 
 ### 为什么要内存对齐
-![[Pasted image 20250524205143.png]]
-![[Pasted image 20250526170133.png]]
-![[Pasted image 20250526170147.png]]
+![[Pasted image 20250524205143.webp]]
+![[Pasted image 20250526170133.webp]]
+![[Pasted image 20250526170147.webp]]
 ___
 ## stride
 Stride 是图像在内存中<mark style="background: #FFF3A3A6;">每行</mark>像素实际占用的字节数，它可能比图像的**实际宽度更大**（为了内存对齐而填充多余字节）
 
-![[Pasted image 20250524204628.png]]
-![[Pasted image 20250524204759.png]]
+![[Pasted image 20250524204628.webp]]
+![[Pasted image 20250524204759.webp]]
 ___
 # YUV
 Y代表Luma亮度，U代表Chroma色度，V代表Contrast对比度
@@ -35,23 +35,23 @@ Y代表Luma亮度，U代表Chroma色度，V代表Contrast对比度
 (3/2=(1+1+4)/4像素)
 
 ## 完全,水平,垂直采样
-![[Pasted image 20250526171119.png]]
+![[Pasted image 20250526171119.webp]]
 
-![[Pasted image 20250526172720.png]]
-![[Pasted image 20250526173059.png]]
-![[Pasted image 20250526173111.png]]
+![[Pasted image 20250526172720.webp]]
+![[Pasted image 20250526173059.webp]]
+![[Pasted image 20250526173111.webp]]
 ___
 ## YUV420p
 (Y1,Y2,Y9,Y10,共享U1,V1)
-![[Pasted image 20250526174418.png]]
+![[Pasted image 20250526174418.webp]]
 ___
 ## YUV420sp
 UV分量交错存储
-![[Pasted image 20250526174842.png]]
+![[Pasted image 20250526174842.webp]]
 ___
 ## NV21
 (和上面有点区别,但是差不多)
-![[Pasted image 20250526174918.png]]
+![[Pasted image 20250526174918.webp]]
 ___
 # 一些代码
 ## RGB转YUV
@@ -98,11 +98,11 @@ void rgb_to_yuv(int8_t *yuv, int *rgb, int width, int height) {
 ```
 
 **key1**
-![[Pasted image 20250524185456.png]]
+![[Pasted image 20250524185456.webp]]
 
 **key2**
-![[Pasted image 20250526191819.png]]![[Pasted image 20250526191912.png]]
-![[Pasted image 20250526192004.png]]
+![[Pasted image 20250526191819.webp]]![[Pasted image 20250526191912.webp]]
+![[Pasted image 20250526192004.webp]]
 就是5/4
 ___
 ## NV21转换为YUV420p
@@ -120,8 +120,8 @@ static void nv21_to_yuv420p(int8_t *dst, int8_t *src, int len) {
 ```
 ___
 ## YUV旋转
-![[Pasted image 20250526193430.png]]
-![[Pasted image 20250526193501.png]]
+![[Pasted image 20250526193430.webp]]
+![[Pasted image 20250526193501.webp]]
 
 ```cpp
 static void yuv420p_rotate90(int8_t *dst, const int8_t *src, int width, int height) {
@@ -149,14 +149,14 @@ static void yuv420p_rotate90(int8_t *dst, const int8_t *src, int width, int heig
     }
 }
 ```
-![[Pasted image 20250527161702.png]]
-![[Pasted image 20250527161714.png]]
+![[Pasted image 20250527161702.webp]]
+![[Pasted image 20250527161714.webp]]
 
 
 
 Y分量
 下面应该说错了,原图第一列 变 变第一行
-![[Pasted image 20250526194001.png]]
+![[Pasted image 20250526194001.webp]]
 
 U分量,V分量同理,offset是偏移值
 

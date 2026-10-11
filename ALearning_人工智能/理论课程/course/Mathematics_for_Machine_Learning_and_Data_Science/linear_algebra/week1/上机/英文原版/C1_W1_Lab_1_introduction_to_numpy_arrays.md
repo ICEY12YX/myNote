@@ -185,7 +185,7 @@ print(rand_arr)
 # 2 - Multidimensional Arrays #
 With NumPy you can also create arrays with more than one dimension. In the above examples, you dealt with 1-D arrays, where you can access their elements using a single index. A multidimensional array has more than one column. Think of a multidimensional array as an excel sheet where each row/column represents a dimension.
 
-![[Pasted image 20260924151401.png]]
+![[Pasted image 20260924151401.webp]]
 
 ```python
 # Create a 2 dimensional array (2-D)

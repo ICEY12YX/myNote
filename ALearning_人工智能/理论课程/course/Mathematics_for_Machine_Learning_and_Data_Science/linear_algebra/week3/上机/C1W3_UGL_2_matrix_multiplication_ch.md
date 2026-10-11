@@ -39,7 +39,7 @@ B = np.array([[2, 2], [5, 7], [4, 4]])
 print("Matrix B (3 by 2):\n", B)
 
 ```
-![[Pasted image 20261002202043.png]]
+![[Pasted image 20261002202043.webp]]
 
 
 你可以直接调用 `NumPy` 的内置函数 💛`np.matmul()` 来计算矩阵 $A$ 和 $B$ 的乘积：
@@ -48,7 +48,7 @@ print("Matrix B (3 by 2):\n", B)
 np.matmul(A, B)
 
 ```
-![[Pasted image 20261002202153.png]]
+![[Pasted image 20261002202153.webp]]
 
 该操作会返回一个形状为 $3 \times 2$ 的 `np.array`。此外，Python 专门提供的矩阵乘法运算符 `@` 在这里同样适用，并且会输出完全一致的结果：
 
@@ -56,7 +56,7 @@ np.matmul(A, B)
 A @ B
 
 ```
-![[Pasted image 20261002202156.png]]
+![[Pasted image 20261002202156.webp]]
 
 ## 3 - 矩阵运算约定与广播机制（Broadcasting）
 
@@ -98,7 +98,7 @@ print("Shape of vector x, reshaped to a matrix:", x.reshape((3, 1)).shape)
 print("Number of dimensions of vector x, reshaped to a matrix:", x.reshape((3, 1)).ndim)
 
 ```
-![[Pasted image 20261002203333.png]]
+![[Pasted image 20261002203333.webp]]
 
 按照标准矩阵乘法约定，两个 $3 \times 1$ 的矩阵相乘是未定义的。照常理推断，执行下面的单元格应该抛出错误，但让我们看看实际的运行输出：
 
@@ -109,7 +109,7 @@ y = np.array([4, 3, -1])
 np.matmul(x,y)
 
 ```
-![[Pasted image 20261002202547.png]]
+![[Pasted image 20261002202547.webp]]
 
 代码不仅没有报错，返回的结果恰好是点积 $x \cdot y\,$！ 原来，==底层自动将一维向量 $x$ 转置为了 $1 \times 3$ 的行向量，从而顺利完成了等价于 $x^Ty$ 的矩阵乘法。==这项特性虽然极度方便，但在 Python 编程中一定要多加留心，避免因随意依赖隐式转换而写出逻辑错误的边缘代码。下面的单元格就会明确抛出错误：
 
@@ -129,7 +129,7 @@ except ValueError as err:
 np.dot(A, B)
 
 ```
-![[Pasted image 20261002202721.png]]
+![[Pasted image 20261002202721.webp]]
 
 完全可行！ 这背后依赖的是 Python 科学计算中著名的 **广播机制（Broadcasting）**：`NumPy` 自动将点积计算广播（Broadcasting）扩展到了全部行与全部列之间，从而计算出完整的乘积矩阵。广播机制在很多日常运算中同样大显身手，例如：
 
@@ -137,7 +137,7 @@ np.dot(A, B)
 A - 2
 
 ```
-![[Pasted image 20261002202754.png]]
+![[Pasted image 20261002202754.webp]]
 
 ==从严谨的数学定义来看，一个 $3 \times 3$ 的矩阵 $A$ 减去一个标量是未定义的==；但 Python 借助**广播机制**，将该标量自动扩展为一个对应的 $3 \times 3$ `np.array`，并按元素逐一相减。矩阵乘法最典型的工程实战场景之一便是线性回归（Linear Regression）模型，在本周后续的编程作业中你将亲手实现它！
 

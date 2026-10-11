@@ -66,7 +66,7 @@ plot_vectors([v], [f"\(v\)"], ["black"])
 
 ```
 [[解释函数1]]
-![[output.png]]
+![[output.webp]]
 
 
 向量的核心特征在于其 **范数 (Norm，即长度或模长)** 与 **方向 (Direction)**，而==**与它在空间中的具体位置无关**==。不过，为了直观和作图方便，我们==通常将坐标原点 (在 $\mathbb{R}^2$ 中即点 $(0,0)$) 作为向量的起点。==
@@ -84,12 +84,12 @@ plot_vectors([v, 2*v, -2*v], [f"\(v\)", f"$2v$", f"\(-2v\)"], ["black", "green",
 
 ```
 (这个函数不止可以画一个向量, 所以每个输入参数是列表的形式)
-![[output1.png]]
+![[output1.webp]]
 ### 1.3 - 向量加法
 
 **向量加法 (Sum of vectors)** 通过对应位置的分量相加来实现：若有两个向量 $v=\begin{bmatrix}           v_1 & v_2 & \ldots & v_n  \end{bmatrix}^T\in\mathbb{R}^n$ 和
 $w=\begin{bmatrix}           w_1 & w_2 & \ldots & w_n  \end{bmatrix}^T\in\mathbb{R}^n$，两者的和即为 $v + w=\begin{bmatrix}           v_1 + w_1 & v_2 + w_2 & \ldots & v_n + w_n  \end{bmatrix}^T\in\mathbb{R}^n$。几何学中的 **平行四边形定则 (Parallelogram law)** 直观展示了向量加法的物理意义：若将从同一点出发的两个向量 $u$ 和 $v$ 视作平行四边形的两条邻边 (大小与方向均保持对应)，那么两向量相加所得的向量和 $u+v$，恰好就是从该公共顶点引出的对角线：
-![[Pasted image 20261001213236.png]]
+![[Pasted image 20261001213236.webp]]
 在 Python 中，你可以直接使用常规的 `+` 运算符，也可以调用 `NumPy` 的内置函数 `np.add()`。取消下面代码中的注释行，你可以亲自验证两种方式的结果完全一致：
 
 ```python
@@ -100,13 +100,13 @@ plot_vectors([v, w, v + w], [f"\(v\)", f"\(w\)", f"\(v + w\)"], ["black", "black
 # plot_vectors([v, w, np.add(v, w)], [f"\(v\)", f"\(w\)", f"\(v + w\)"], ["black", "black", "red"])
 
 ```
-![[output2.png]]
+![[output2.webp]]
 
 
 向量写成`([[1],[3]])`  就是竖着的1,3 
 python里面习惯这样写
 记住横着的向量才是不正常的 要转置的
-![[Pasted image 20261001195155.png|258]]
+![[Pasted image 20261001195155.webp|258]]
 
 ### 1.4 - 向量的范数
 
@@ -116,7 +116,7 @@ python里面习惯这样写
 print("Norm of a vector v is", np.linalg.norm(v))
 
 ```
-![[Pasted image 20261001213103.png]]
+![[Pasted image 20261001213103.webp]]
 (根号10)
 
 ## 2 - 点积
@@ -157,7 +157,7 @@ def dot(x, y):
 print("The dot product of x and y is", dot(x, y))
 
 ```
-![[Pasted image 20261001213435.png]]
+![[Pasted image 20261001213435.webp]]
 
 
 由于点积在科学计算中极其常用，`NumPy` 线性代数库提供了更为高效的封装函数💛 `np.dot()`：
@@ -174,10 +174,10 @@ y = [4, 3, -1]
 print("np.dot(x,y) function returns dot product of x and y:", np.dot(x, y)) 
 
 ```
-![[Pasted image 20261001213454.png]]
+![[Pasted image 20261001213454.webp]]
 解释
-    ![[Pasted image 20261001215024.png]]
-    ![[Pasted image 20261001215051.png]]
+    ![[Pasted image 20261001215024.webp]]
+    ![[Pasted image 20261001215051.webp]]
     所以dot 应该理解为 矩阵乘法 的函数
 
 
@@ -192,7 +192,7 @@ except TypeError as err:
     print(err)
 
 ```
-![[Pasted image 20261001215224.png]]
+![[Pasted image 20261001215224.webp]]
 
 鉴于 `np.dot()` 与 `@` 都是工程实践中的高频用法，最佳实践是==将向量统一声明为 `NumPy` 数组，以规避潜在的类型错误。==我们不妨将 $x$ 和 $y$ 正式转换为 `NumPy` 数组：
 
@@ -219,7 +219,7 @@ b = np.random.rand(1000000)
 print(a)
 print(b)
 ```
-![[Pasted image 20261002203104.png]]
+![[Pasted image 20261002203104.webp]]
 
 借助 `time.time()` 记录时间戳，测试我们自己编写的循环版本 `dot(x,y)` 需要耗费多少毫秒：
 
@@ -233,7 +233,7 @@ print("Dot product: ", c)
 print ("Time for the loop version:" + str(1000*(toc-tic)) + " ms")
 
 ```
-![[Pasted image 20261001215427.png]]
+![[Pasted image 20261001215427.webp]]
 
 随后，测试高度优化的向量化版本性能：
 
@@ -245,7 +245,7 @@ print("Dot product: ", c)
 print ("Time for the vectorized version, np.dot() function: " + str(1000*(toc-tic)) + " ms")
 
 ```
-![[Pasted image 20261001215452.png]]
+![[Pasted image 20261001215452.webp]]
 减少好多!!!!
 
 ```python
@@ -256,7 +256,7 @@ print("Dot product: ", c)
 print ("Time for the vectorized version, @ function: " + str(1000*(toc-tic)) + " ms")
 
 ```
-![[Pasted image 20261001215516.png]]
+![[Pasted image 20261001215516.webp]]
 
 测试结果显而易见：向量化带来的吞吐提升和算力加速是极其惊人的！
 
@@ -267,7 +267,7 @@ print ("Time for the vectorized version, @ function: " + str(1000*(toc-tic)) + "
 $$x\cdot y = \lvert x\rvert \lvert y\rvert \cos(\theta),\tag{2}$$
 
 其中 $\theta$ 表示两向量之间的空间夹角：
-![[Pasted image 20261001215612.png]]
+![[Pasted image 20261001215612.webp]]
 
 这个几何性质为我们==判断两个向量是否垂直（正交，Orthogonal）==提供了非常优雅的途径。若向量 $x$ 与 $y$ 相互正交 (即夹角恰好为 $90^{\circ}$)，由于 $\cos(90^{\circ})=0$，这就必然推导出：**任意两个相互正交的向量，其点积必然恒等于 $0$**。我们不妨选取两个已知相互正交的标准基向量 $i$ 与 $j$ 进行实测验证：
 
@@ -277,7 +277,7 @@ j = np.array([0, 1, 0])
 print("The dot product of i and j is", dot(i, j))
 
 ```
-![[Pasted image 20261001215621.png]]
+![[Pasted image 20261001215621.webp]]
 
 ### 2.5 - 点积的应用：向量相似度
 

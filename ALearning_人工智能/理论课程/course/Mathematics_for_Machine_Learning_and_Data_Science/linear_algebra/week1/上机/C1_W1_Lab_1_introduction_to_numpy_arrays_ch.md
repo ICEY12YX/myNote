@@ -75,7 +75,7 @@ NumPy 中的数组对象被称为💛 `ndarray`，全称为“n 维数组  (n-di
 one_dimensional_arr = np.array([10, 12])
 print(one_dimensional_arr)
 ```
-![[Pasted image 20260924144222.png]]
+![[Pasted image 20260924144222.webp]]
 
 ## 1.3 - 如何创建 NumPy 数组 ##
 
@@ -87,7 +87,7 @@ a = np.array([1, 2, 3])
 print(a)
 
 ```
-![[Pasted image 20260924150450.png]]
+![[Pasted image 20260924150450.webp]]
 
 另一种构建数组的方法是使用 `np.arange()`。该函数可以在给定区间内，生成由等间距数值组成的数组。如果你想了解该函数支持的具体参数，Jupyter Notebook 提供了非常便捷的查询技巧：只需用鼠标点击该函数名称，再按下键盘上的💙 `Shift+Tab` 组合键，就能直接调出其说明文档。不妨立即尝试查看 `np.arange()` 的内置文档说明。
 
@@ -97,8 +97,8 @@ b = np.arange(3)
 print(b)
 
 ```
-![[Pasted image 20260924144819.png]]
-![[Pasted image 20260924150346.png]]
+![[Pasted image 20260924144819.webp]]
+![[Pasted image 20260924150346.webp]]
 
 ```python
 # 创建一个从 1 开始、到 20 结束、步长为 3 的数组
@@ -106,8 +106,8 @@ c = np.arange(1, 20, 3)
 print(c)
 
 ```
-![[Pasted image 20260924144831.png]]
-![[Pasted image 20260924150429.png]]
+![[Pasted image 20260924144831.webp]]
+![[Pasted image 20260924150429.webp]]
 
 
 如果你希望在 0 到 100 这一区间内，均匀采集生成 5 个等间距的数值，该怎么做？显然，这里需要向函数传入 3 个关键参数：起点数值（此处为 0）、终点数值（此处为 100）以及生成的元素总数（此处为 5）。针对这种需求，NumPy 特意提供了专用的 `np.linspace()` 函数。
@@ -128,21 +128,21 @@ lin_spaced_arr_int = np.linspace(0, 100, 5, dtype=int)
 print(lin_spaced_arr_int)
 
 ```
-![[Pasted image 20260924150037.png]]
+![[Pasted image 20260924150037.webp]]
 
 ```python
 c_int = np.arange(1, 20, 3, dtype=int)
 print(c_int)
 
 ```
-![[Pasted image 20260924150052.png]]
+![[Pasted image 20260924150052.webp]]
 
 ```python
 b_float = np.arange(3, dtype=float)
 print(b_float)
 
 ```
-![[Pasted image 20260924150302.png]]
+![[Pasted image 20260924150302.webp]]
 
 ```python
 char_arr = np.array(['Welcome to Math for ML!'])
@@ -150,7 +150,7 @@ print(char_arr)
 print(char_arr.dtype) # 打印该数组的数据类型
 
 ```
-![[Pasted image 20260924150653.png]]
+![[Pasted image 20260924150653.webp]]
 
 你注意到 `char_arr` 数组的数据类型输出是 `<U23` 了吗？  
 这意味着该字符串（`'Welcome to Math for ML!'`）在小端序架构（`<`）上是一个 23 个字符（23）的 Unicode 字符串（`U`）。你可以[在这里](https://numpy.org/doc/stable/user/basics.types.html)了解更多关于数据类型的信息。`
@@ -170,7 +170,7 @@ ones_arr = np.ones(3)
 print(ones_arr)
 
 ```
-![[Pasted image 20260924150838.png]]
+![[Pasted image 20260924150838.webp]]
 
 ```python
 # 创建一个形状为 3、全部由 0 组成的新数组
@@ -178,7 +178,7 @@ zeros_arr = np.zeros(3)
 print(zeros_arr)
 
 ```
-![[Pasted image 20260924150902.png]]
+![[Pasted image 20260924150902.webp]]
 
 ```python
 # 创建一个形状为 3 的新数组，不对内存数据进行初始化
@@ -193,14 +193,14 @@ rand_arr = np.random.rand(3)
 print(rand_arr)
 
 ```
-![[Pasted image 20260924151234.png]]
-![[Pasted image 20260924151226.png]]
+![[Pasted image 20260924151234.webp]]
+![[Pasted image 20260924151226.webp]]
 
 
 # 2 - Multidimensional Arrays 多维数组 #
 
 利用 NumPy，你还能轻松构建多维数组。在上文示例中，我们接触的都是一维数组，只需单个下标索引即可定位其中的元素。而多维数组则拥有多列结构。你可以把多维数组直观地类比为 Excel 表格，其中的每一行、每一列都映射着不同的维度。
-![[Pasted image 20260924151352.png]]
+![[Pasted image 20260924151352.webp]]
 
 ```python
 # 创建一个二维数组（2-D）
@@ -208,7 +208,7 @@ two_dim_arr = np.array([[1,2,3], [4,5,6]])
 print(two_dim_arr)
 
 ```
-![[Pasted image 20260924151440.png]]
+![[Pasted image 20260924151440.webp]]
 
 构建多维数组的另一种常见思路，是对现有一维数组进行形状重塑  (reshaping) 。使用 `np.reshape()` 函数，可以把原数组中的元素按照指定的新结构重新排列。
 
@@ -232,7 +232,7 @@ one_dim_arr = np.array([1, 2, 3, 4, 5, 6])
 multi_dim_arr = one_dim_arr.reshape(2, 3)
 print(multi_dim_arr)
 ```
-![[Pasted image 20260924151717.png]]
+![[Pasted image 20260924151717.webp]]
 
 ## 2.1 - 查看数组的 size, shape and dimension 大小、形状与维度 ##
 
@@ -242,7 +242,7 @@ print(multi_dim_arr)
 * `ndarray.shape` - 存储数组的形状元组，元组中的每个数值分别对应各维度上的长度。
 * `ndarray.size` - 存储数组内包含的元素总数。
 
-![[Pasted image 20260924151717.png]]
+![[Pasted image 20260924151717.webp]]
 ```python
 # 二维数组 multi_dim_arr 的维度
 multi_dim_arr.ndim #2
@@ -286,7 +286,7 @@ multiplication = arr_1 * arr_2
 print(multiplication)
 
 ```
-![[Pasted image 20260924152031.png]]
+![[Pasted image 20260924152031.webp]]
 
 ## 3.1 - 向量与标量相乘（广播机制） ##
 
@@ -300,8 +300,8 @@ vector = np.array([1, 2])
 print(vector * 1.6)
 
 ```
-![[Pasted image 20260924152203.png]]
-![[Pasted image 20260924152220.png]]
+![[Pasted image 20260924152203.webp]]
+![[Pasted image 20260924152220.webp]]
 
 # 4 - Indexing and slicing 索引与切片 #
 
@@ -322,7 +322,7 @@ print(type(a))
 print(a[0])
 
 ```
-![[Pasted image 20260924152523.png]]
+![[Pasted image 20260924152523.webp]]
 
 对于形状为 `n` 维的多维数组，如果想要精确锁定某个元素，必须依次传入 `n` 个坐标索引，每个维度对应一个索引值。
 
@@ -396,7 +396,7 @@ sliced_arr_1 = two_dim[0:2]
 sliced_arr_1
 
 ```
-![[Pasted image 20260924153609.png]]
+![[Pasted image 20260924153609.webp]]
 
 ```python
 # 类似地，对二维数组进行切片，获取最后两行数据
@@ -404,7 +404,7 @@ sliced_two_dim_rows = two_dim[1:3]
 print(sliced_two_dim_rows)
 
 ```
-![[Pasted image 20260924153619.png]]
+![[Pasted image 20260924153619.webp]]
 
 ```python
 sliced_two_dim_cols = two_dim[:, 1]  # 意思是取所有行的第1列
@@ -413,7 +413,7 @@ print(sliced_two_dim_cols)
 sliced_two_dim_subarray = two_dim[0:2, 0:2]  # 意思是取前两行前两列的子数组
 print(sliced_two_dim_subarray)
 ```
-![[Pasted image 20260924153642.png]]
+![[Pasted image 20260924153642.webp]]
 
 # 5 - 堆叠 #
 
@@ -433,7 +433,7 @@ print(f'a1:\n{a1}')
 print(f'a2:\n{a2}')
 
 ```
-![[Pasted image 20260924153900.png]]
+![[Pasted image 20260924153900.webp]]
 
 ```python
 # 将数组进行垂直堆叠
@@ -441,7 +441,7 @@ vert_stack = np.vstack((a1, a2))
 print(vert_stack)
 
 ```
-![[Pasted image 20260924154405.png]]
+![[Pasted image 20260924154405.webp]]
 
 ```python
 # 将数组进行水平堆叠
@@ -449,7 +449,7 @@ horz_stack = np.hstack((a1, a2))
 print(horz_stack)
 
 ```
-![[Pasted image 20260924154414.png]]
+![[Pasted image 20260924154414.webp]]
 
 ## 练习题 ##
 
@@ -471,6 +471,6 @@ import ipywidgets as widgets
 q1 = quiz.mcq(quiz.question1, quiz.solution1)
 
 ```
-![[Pasted image 20260924154637.png]]
+![[Pasted image 20260924154637.webp]]
 
 恭喜你圆满完成本专项课程的首个实验手册！

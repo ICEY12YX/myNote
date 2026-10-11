@@ -123,9 +123,9 @@ def swap_rows(M, row_index_1, row_index_2):
 
 ```
 解释
-    ![[Pasted image 20260929224816.png]]
-    ![[Pasted image 20260929224941.png]]
-    ![[Pasted image 20260929225038.png]]
+    ![[Pasted image 20260929224816.webp]]
+    ![[Pasted image 20260929224941.webp]]
+    ![[Pasted image 20260929225038.webp]]
 
 让我们通过简单的例子来感受其实际效果。观察以下矩阵 $M$：
 
@@ -138,7 +138,7 @@ M = np.array([
 print(M)
 
 ```
-![[Pasted image 20260929225127.png]]
+![[Pasted image 20260929225127.webp]]
 
 
 对调第 $0$ 行与第 $2$ 行：
@@ -148,7 +148,7 @@ M_swapped = swap_rows(M, 0, 2)
 print(M_swapped)
 
 ```
-![[Pasted image 20260929225118.png]]
+![[Pasted image 20260929225118.webp]]
 
 ### 3.2 - 从指定位置开始查找某列的首个非零元
 
@@ -193,8 +193,8 @@ def get_index_first_non_zero_value_from_column(M, column, starting_row):
 
 ```
 解释
-    ![[Pasted image 20260929225543.png]]
-    ![[Pasted image 20260929225617.png]]
+    ![[Pasted image 20260929225543.webp]]
+    ![[Pasted image 20260929225617.webp]]
 
 让我们通过实操来检验该函数的表现。定义如下矩阵：
 
@@ -210,7 +210,7 @@ N = np.array([
 print(N)
 
 ```
-![[Pasted image 20260929225948.png]]
+![[Pasted image 20260929225948.webp]]
 
 
 若从第 0 行开始向下检索第 0 列的非零元素，该函数将如期返回 -1：
@@ -275,7 +275,7 @@ def get_index_first_non_zero_value_from_row(M, row, augmented = False):
 print(N)
 
 ```
-![[Pasted image 20260929233518.png]]
+![[Pasted image 20260929233518.webp]]
 
 若不显式传递 `augmented` 参数，函数默认按照普通矩阵处理。
 
@@ -286,7 +286,7 @@ print(f'第 2 行输出: {get_index_first_non_zero_value_from_row(N, 2)}')
 print(f'第 3 行输出: {get_index_first_non_zero_value_from_row(N, 3)}')
 
 ```
-![[Pasted image 20260929233619.png]]
+![[Pasted image 20260929233619.webp]]
 
 现在，我们传入 `augmented = True` 参数。这会指示算法将 $N$ 视作增广矩阵，因此最后一列常数项将从检索范围中被剥除。此时第 3 行的输出结果将截然不同：由于排除了最后一列，系数矩阵对应行已空无一物，故同样返回 `-1`：
 
@@ -294,7 +294,7 @@ print(f'第 3 行输出: {get_index_first_non_zero_value_from_row(N, 3)}')
 print(f'第 3 行输出: {get_index_first_non_zero_value_from_row(N, 3, augmented = True)}')
 
 ```
-![[Pasted image 20260929233644.png]]
+![[Pasted image 20260929233644.webp]]
 
 ### 3.4 - 构造增广矩阵
 
@@ -324,13 +324,13 @@ B = np.array([[1], [5], [7]])
 print(augmented_matrix(A,B))
 
 ```
-![[Pasted image 20260929233755.png]]
+![[Pasted image 20260929233755.webp]]
 
 必须B定义成那样, 否则
-![[Pasted image 20260929233846.png]]
+![[Pasted image 20260929233846.webp]]
 
 要么这样
-![[Pasted image 20260929233922.png]]
+![[Pasted image 20260929233922.webp]]
 
 ## 4 - 行阶梯形矩阵
 
@@ -576,7 +576,7 @@ def row_echelon_form(A, B):
 
 ```
 解释
-    ![[Pasted image 20260929235219.png]]
+    ![[Pasted image 20260929235219.webp]]
 
 ```python
 A = np.array([[1,2,3],[0,1,0], [0,0,5]])
@@ -584,7 +584,7 @@ B = np.array([[1], [2], [4]])
 row_echelon_form(A,B)
 
 ```
-![[Pasted image 20260930001245.png]]
+![[Pasted image 20260930001245.webp]]
 
 ```python
 w2_unittest.test_row_echelon_form(row_echelon_form)

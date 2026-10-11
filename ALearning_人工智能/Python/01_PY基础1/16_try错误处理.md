@@ -27,7 +27,7 @@ file.close()
     * except是用来捕获异常的,如果try里面的代码出现异常,就会执行except里面的代码
     * `Exception` 是 Python 里所有常见报错的“老祖宗”, 即==所有错误类型的基类==。不管 `try` 里面报了什么错（找不到文件、类型错误等），它都能一把接住，防止整个程序直接崩溃死机。
         所以这里还能填别的
-        ![[Pasted image 20260921132548.png|261]]![[Pasted image 20260921132605.png|434]]
+        ![[Pasted image 20260921132548.webp|261]]![[Pasted image 20260921132605.webp|434]]
     * `as e` 的意思是：“把刚才抓到的那个具体错误信息，起个**代号**叫 `e`”。
 
 #### 模块 2：被误解的 `else` 分支与隐形 Bug
@@ -69,5 +69,5 @@ except Exception as e:
 ```
 此时
 **只要 try 块里任何一句抛出异常，try 块后面的句子立刻全部跳过，直接跳到对应的 except。**
-![[Pasted image 20260921133331.png]]
+![[Pasted image 20260921133331.webp]]
 ---

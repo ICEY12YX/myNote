@@ -110,7 +110,7 @@ df = pd.read_csv('data/prices.csv')
 ```python
 print(df)
 ```
-![[Pasted image 20261010022352.png]]
+![[Pasted image 20261010022352.webp]]
 
 如果只想打印列名列表，可以调用 DataFrame 的 `columns` 属性：
 
@@ -118,7 +118,7 @@ print(df)
 print(df.columns)
 
 ```
-![[Pasted image 20261010022421.png]]
+![[Pasted image 20261010022421.webp]]
 
 观察输出的表格和列名，你可以看出提供的是每月的价格 (单位为美元) ，而你只需要提取 `price_supplier_a_dollars_per_item` 和 `price_supplier_b_dollars_per_item` 这两列的数据。在实际的工业场景中，数据集往往庞大得多，在输入模型之前需要进行彻底的审查和数据清洗。但这不属于本课程的讨论重点。
 
@@ -128,7 +128,7 @@ print(df.columns)
 df.date
 
 ```
-![[Pasted image 20261010022502.png]]
+![[Pasted image 20261010022502.webp]]
 
 ### 练习 1
 
@@ -152,7 +152,7 @@ print("Average of the prices, supplier A:", np.mean(prices_A))
 print("Average of the prices, supplier B:", np.mean(prices_B))
 
 ```
-![[Pasted image 20261010022922.png]]
+![[Pasted image 20261010022922.webp]]
 
 ##### **预期输出**
 
@@ -181,7 +181,7 @@ plt.legend()
 plt.show()
 
 ```
-![[Pasted image 20261010023013.png|370]]
+![[Pasted image 20261010023013.webp|370]]
 
 单看这些历史数据，你能直接判断出和哪家供应商合作利润更高吗？正如在第 [1.3](https://www.google.com/search?q=%231.3) 节中讨论过的，我们需要找出一个能让公式 $(2)$ 取得最小值的 $\omega \in \left[0, 1\right]$。
 
@@ -215,7 +215,7 @@ print("L(omega = 0.8) =",L_of_omega(0.8, prices_A, prices_B))
 print("L(omega = 1) =",L_of_omega(1, prices_A, prices_B))
 
 ```
-![[Pasted image 20261010023315.png]]
+![[Pasted image 20261010023315.webp]]
 (这里随意代入了几个 omega值输出看看)
 
 ##### **预期输出**
@@ -274,7 +274,7 @@ print("L(omega = 0) =",L_array[0])
 print("L(omega = 1) =",L_array[N-1])
 
 ```
-![[Pasted image 20261010024240.png]]
+![[Pasted image 20261010024240.webp]]
 
 ##### **预期输出**
 
@@ -300,7 +300,7 @@ L_opt = L_array[i_opt]
 print(f'omega_min = {omega_opt:.3f}\nL_of_omega_min = {L_opt:.7f}')
 
 ```
-![[Pasted image 20261010024356.png]]
+![[Pasted image 20261010024356.webp]]
 
 这个结果表明，基于历史数据，将 $\omega = 0.702$ 设为供应商 A 和供应商 B 之间的份额分配比例是最划算的。也就是说，计划将产品 P 总量的 $70.2\%$ 交给公司 A 供应，剩下的 $29.8\%$ 交给公司 B 供应，是一个非常合理的商业决策。
 
@@ -336,7 +336,7 @@ print("dLdOmega(omega = 0) =",dLdOmega_array[0])
 print("dLdOmega(omega = 1) =",dLdOmega_array[N-1])
 
 ```
-![[Pasted image 20261010024738.png]]
+![[Pasted image 20261010024738.webp]]
 
 ##### **预期输出**
 
@@ -360,7 +360,7 @@ dLdOmega_opt_2 = dLdOmega_array[i_opt_2]
 print(f'omega_min = {omega_opt_2:.3f}\ndLdOmega_min = {dLdOmega_opt_2:.7f}')
 
 ```
-![[Pasted image 20261010024953.png]]
+![[Pasted image 20261010024953.webp]]
 
 结果完全一致：$\omega = 0.702$。让我们将 $\mathcal{L}\left(\omega\right)$ 和 $\frac{d\mathcal{L}}{d\omega}$ 的图像绘制出来，直观地观察一下函数 $\mathcal{L}\left(\omega\right)$ 的极小值点，以及它的导数穿越 $0$ 轴的位置：
 
@@ -384,6 +384,6 @@ plt.legend()
 plt.show()
 
 ```
-![[Pasted image 20261010025011.png|406]]
+![[Pasted image 20261010025011.webp|406]]
 
 恭喜你完成了本周的作业！这个例子生动地展示了优化问题在现实商业世界中的真实应用场景，并让你有机会亲手探索并解决了一个单变量函数的最小化问题。接下来，准备好迎接多变量函数优化的挑战吧！

@@ -147,7 +147,7 @@ print(np.linalg.solve(A_2, b_2))
 
 ```
 
-![[Pasted image 20260929200840.png]]
+![[Pasted image 20260929200840.webp]]
 
 正如你所见，程序抛出了一个 `LinAlgError` 异常，提示==这是一个奇异矩阵==。你可以通过计算该矩阵的行列式来亲自验证这一原因：
 

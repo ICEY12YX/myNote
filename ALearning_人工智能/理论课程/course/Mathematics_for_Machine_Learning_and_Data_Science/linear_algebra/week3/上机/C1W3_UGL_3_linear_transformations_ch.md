@@ -332,7 +332,7 @@ e2 = np.array([[0], [1]])
 plot_transformation(T_hscaling, e1, e2)
 
 ```
-![[Pasted image 20261002210959.png]]
+![[Pasted image 20261002210959.webp]]
 从图中可以清晰地看出，经历线性变换后，原本的多边形在水平方向上被明显拉伸展平了。
 
 ### 4.2 - 示例 2：沿 y 轴（垂直轴）对称翻转
@@ -357,7 +357,7 @@ print("Original vectors:\n e1= \n", e1,"\n e2=\n", e2,
       "\n\n Result of the transformation (matrix form):\n", transformation_result_reflection_yaxis)
 
 ```
-![[Pasted image 20261002211042.png]]
+![[Pasted image 20261002211042.webp]]
 
 你可以将其几何效果可视化呈现出来：
 
@@ -365,7 +365,7 @@ print("Original vectors:\n e1= \n", e1,"\n e2=\n", e2,
 plot_transformation(T_reflection_yaxis, e1, e2)
 
 ```
-![[Pasted image 20261002211340.png]]
+![[Pasted image 20261002211340.webp]]
 
 
 二维空间中还有许多经典线性变换等待你去探索。而掌握了上述核心思路后，你已经具备了亲自构建并可视化任意变换的基础能力。
@@ -381,7 +381,7 @@ plot_transformation(T_reflection_yaxis, e1, e2)
 下面就是一个==利用线性变换大幅简化图像生成工作量==的经典案例：
 
 这株巴恩斯利蕨类植物（Barnsley Fern）中的所有子叶片形态高度自相似，每一片都可以简单地通过母叶片经由一次线性变换直接生成。
-![[Pasted image 20261002211518.png]]
+![[Pasted image 20261002211518.webp]]
 接下来我们看一个对叶片图像连续施加两次几何变换的简易例子。在图像处理领域，我们可以直接借助强大的 `OpenCV` 库。首先加载并展示原始图像：
 
 ```python
@@ -389,7 +389,7 @@ img = cv2.imread('images/leaf_original.png', 0)
 plt.imshow(img)
 
 ```
-![[Pasted image 20261002211813.png]]
+![[Pasted image 20261002211813.webp]]
 
 
 当然，这只是一张极其简单的叶片素材（并非专业美术设计中的复杂案例），但足以帮助你清晰理解如何将多个连续变换串联起来。我们先将图像顺时针旋转 90 度，接着对其施加错切变换（Shear Transformation，其变形效果示意如下）：
@@ -402,7 +402,7 @@ image_rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
 plt.imshow(image_rotated)
 
 ```
-![[Pasted image 20261002211843.png]]
+![[Pasted image 20261002211843.webp]]
 
 第二步，施加错切变换，得到如下变形结果：
 
@@ -422,7 +422,7 @@ image_rotated_sheared = cv2.warpPerspective(image_rotated, M, (int(cols), int(ro
 plt.imshow(image_rotated_sheared)
 
 ```
-![[Pasted image 20261002212040.png]]
+![[Pasted image 20261002212040.webp]]
 
 假如我们将这两次变换的顺序调换一下呢？你觉得最后生成的画面会一样吗？ 运行下面的代码验证你的直觉：
 
@@ -432,7 +432,7 @@ image_sheared_rotated = cv2.rotate(image_sheared, cv2.ROTATE_90_CLOCKWISE)
 plt.imshow(image_sheared_rotated)
 
 ```
-![[Pasted image 20261002212058.png]]
+![[Pasted image 20261002212058.webp]]
 
 对比最后两张图片，可以非常直观地看出它们的呈现截然不同。这是因为==线性变换在底层严格等价于矩阵乘法==；若连续施加变换矩阵 $A$ 和 $B$，计算本质上是在对向量 $v$ 执行复合运算 $B(Av)=(BA)v$。千万别忘了：==在普遍情况下，矩阵乘法是 **不满足交换律的** （即通常 $BA\neq AB$）！==让我们在代码里亲手验证这一事实：定义分别代表 90 度顺时针旋转与沿 x 轴错切的两个变换矩阵：
 
@@ -444,7 +444,7 @@ print("90 degrees clockwise rotation matrix:\n", M_rotation_90_clockwise)
 print("Matrix for the shear along x-axis:\n", M_shear_x)
 
 ```
-![[Pasted image 20261002215208.png]]
+![[Pasted image 20261002215208.webp]]
 
 现在来观察它们的乘积 `M_rotation_90_clockwise @ M_shear_x` 与 `M_shear_x @ M_rotation_90_clockwise` 是否各不相同：
 
@@ -453,7 +453,7 @@ print("M_rotation_90_clockwise by M_shear_x:\n", M_rotation_90_clockwise @ M_she
 print("M_shear_x by M_rotation_90_clockwise:\n", M_shear_x @ M_rotation_90_clockwise)
 
 ```
-![[Pasted image 20261002215234.png]]
+![[Pasted image 20261002215234.webp]]
 
 这个简单生动的例子清晰地提醒我们：在实际工程落地时，深入理解背后的数学对象与其内在性质是多么重要。
 

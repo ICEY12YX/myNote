@@ -3,23 +3,21 @@ ___
 
 在本次实验中，你将使用基于单个感知机的神经网络 (Neural Network) 模型来解决一个简单的分类问题 (Classification Problem) 。
 
-# 目录
+___
+- [[#依赖库|依赖库]]
+- [[#1 - 简单分类问题|1 - 简单分类问题]]
+- [[#2 - 带有激活函数的单感知机神经网络|2 - 带有激活函数的单感知机神经网络]]
+	- [[#2 - 带有激活函数的单感知机神经网络#2.1 - 神经网络结构|2.1 - 神经网络结构]]
+	- [[#2 - 带有激活函数的单感知机神经网络#2.2 - 数据集|2.2 - 数据集]]
+	- [[#2 - 带有激活函数的单感知机神经网络#2.3 - 定义激活函数|2.3 - 定义激活函数]]
+- [[#3 - 神经网络模型的代码实现|3 - 神经网络模型的代码实现]]
+	- [[#3 - 神经网络模型的代码实现#3.1 - 定义神经网络结构|3.1 - 定义神经网络结构]]
+	- [[#3 - 神经网络模型的代码实现#3.2 - 初始化模型参数|3.2 - 初始化模型参数]]
+	- [[#3 - 神经网络模型的代码实现#3.3 - 训练循环|3.3 - 训练循环]]
+	- [[#3 - 神经网络模型的代码实现#3.4 - 在 nn_model() 中整合前述模块并执行预测|3.4 - 在 nn_model() 中整合前述模块并执行预测]]
+- [[#4 - 在更大规模数据集上的表现|4 - 在更大规模数据集上的表现]]
 
-* 1 - 简单分类问题
-* 2 - 带有激活函数的单感知机神经网络
-* 2.1 - 神经网络结构
-* 2.2 - 数据集
-* 2.3 - 定义激活函数
-
-
-* 3 - 神经网络模型的代码实现
-* 3.1 - 定义神经网络结构
-* 3.2 - 初始化模型参数
-* 3.3 - 训练循环
-* 3.4 - 在 nn_model() 中整合前述模块并执行预测
-
-
-* 4 - 在更大规模数据集上的表现
+___
 
 ## 依赖库
 
@@ -42,9 +40,13 @@ np.random.seed(3)
 
 ## 1 - 简单分类问题
 
-分类 (Classification) 旨在识别某个观测样本具体归属于哪一个预设类别。当目标类别仅有两个时，这类任务被称为二分类问题 (Binary Classification Problem) 。下面来看一个直观的例子。
+**分类 (Classification)** 旨在识别某个观测样本具体归属于哪一个预设类别。当目标类别仅有两个时，这类任务被称为**二分类问题 (Binary Classification Problem)** 。下面来看一个直观的例子。
 
-假设你手头有一组句子，希望将其归类为“开心 (happy) ”或“愤怒 (angry) ”两类。通过文本分析，你发现所有句子中仅包含两个特征词：*aack* 和 *beep*。对于数据集中的每个句子 (即单个数据样本) ，我们统计这两个词出现的频次 ($x_1$ 与 $x_2$) 并进行对比：如果 *beep* 出现的次数更多 ($x_2 > x_1$)，该句子应归类为“愤怒”；反之 ($x_2 <= x_1$)，则归类为“开心”。从几何视角来看，这意味着在二维特征空间中必然存在一条直线，能够将这两类样本清晰切分。
+假设你手头有一组句子，希望将其归类为“开心 (happy) ”或“愤怒 (angry) ”两类。
+通过文本分析，你发现所有句子中仅包含两个特征词：*aack* 和 *beep*。对于数据集中的每个句子 (即单个数据样本) ，我们统计这两个词出现的频次 ($x_1$ 与 $x_2$) 并进行对比：
+    - 如果 *beep* 出现的次数更多 ($x_2 > x_1$)，该句子应归类为“愤怒”；
+    - 反之 ($x_2 <= x_1$)，则归类为“开心”。
+从几何视角来看，这意味着在二维特征空间中必然存在一条直线，能够将这两类样本清晰切分。
 
 我们以包含 4 个极简句子的数据集为例：
 
@@ -53,7 +55,9 @@ np.random.seed(3)
 * "Beep aack..."
 * "!?"
 
-在这些样本中，$x_1$ 和 $x_2$ 的取值非 0 即 1。将这些点绘制在二维坐标平面上，可以清晰地观察到所有样本观测值分属于“愤怒” (红色) 与“开心” (蓝色) 两个类别，并且可以用一条直线充当决策边界 (Decision Boundary) 将它们划开。图中展示了这样一条分割线示例。
+在这些样本中，$x_1$ 和 $x_2$ 的取值非 0 即 1。
+    这里就定死了 这些词语要么就出现1次,要么不出现 没有出现多次的情况
+将这些点绘制在二维坐标平面上，可以清晰地观察到所有样本观测值分属于“愤怒” (红色) 与“开心” (蓝色) 两个类别，并且可以用一条直线充当**决策边界 (Decision Boundary)** 将它们划开。图中展示了这样一条分割线示例。
 
 ```python
 fig, ax = plt.subplots()
@@ -74,56 +78,72 @@ plt.plot()
 
 ```
 
-这条直线是仅凭肉眼观察散点分布直观选取的。此类任务在机器学习中被称为具有两类线性可分样本 (Linearly Separable Classes) 的分类问题。
+这条直线是仅凭肉眼观察散点分布直观选取的。此类任务在机器学习中被称为具有**两类线性可分样本 (Linearly Separable Classes)** 的分类问题。
+    ![[Pasted image 20261011211546.webp|396]]
 
-直线方程 $x_1-x_2+0.5 = 0$ (或写为 $x_2 = x_1 + 0.5$) 能够作为该问题的分类边界。所有位于该直线之上、满足 $x_1-x_2+0.5 < 0$ (即 $x_2 > x_1 + 0.5$) 的坐标点 $(x_1, x_2)$ 均被判定为红色类别；而位于直线下方、满足 $x_1-x_2+0.5 > 0$ ($x_2 < x_1 + 0.5$) 的点则归属于蓝色类别。因此，分类任务可以重新形式化为：针对通用直线方程 $w_1x_1+w_2x_2+b=0$，求解出理想的参数 $w_1$、$w_2$ 以及阈值截距 $b$，使其所确定的直线恰好成为最优决策边界。
+直线方程 $x_1-x_2+0.5 = 0$ (或写为 $x_2 = x_1 + 0.5$) 能够作为该问题的分类边界。
+    这条直线是这里写死的
+- 所有位于该直线之上、满足 $x_1-x_2+0.5 < 0$ (即 $x_2 > x_1 + 0.5$) 的坐标点 $(x_1, x_2)$ 均被判定为红色类别；
+- 而位于直线下方、满足 $x_1-x_2+0.5 > 0$ ($x_2 < x_1 + 0.5$) 的点则归属于蓝色类别。
+因此，分类任务可以重新形式化为：针对通用直线方程 $w_1x_1+w_2x_2+b=0$，求解出理想的参数 $w_1$、$w_2$ 以及阈值截距 $b$，使其所确定的直线恰好成为==最优决策边界==。
 
-在这个极简场景中，仅凭目测散点图就能直接推算出决策边界参数：$w_1 = 1$，$w_2 = -1$，$b = 0.5$。但如果面对更为错综复杂的现实数据，又该如何自动寻优？答案是构建一个简单的神经网络！接下来，我们先针对当前示例搭建神经网络模型，随后再将其推广应用于更具挑战性的复杂任务中。
+在这个极简场景中，==仅凭目测==散点图就能直接推算出决策边界参数：$w_1 = 1$，$w_2 = -1$，$b = 0.5$。但如果面对更为错综复杂的现实数据，又该如何自动寻优？答案是构建一个简单的神经网络！接下来，我们先针对当前示例搭建神经网络模型，随后再将其推广应用于更具挑战性的复杂任务中。
 
 ## 2 - 带有激活函数的单感知机神经网络
 
-在之前的实验中，你已经动手搭建并训练过由单个感知机 (Perceptron) 构成的网络模型。在本节中，我们将复用类似的拓扑结构，但为其引入非线性激活函数 (Activation Function) 。在此设定下，单个感知机本质上扮演着一个可微阈值判决器的角色。
+在之前的实验中，你已经动手搭建并训练过由**单个感知机 (Perceptron)** 构成的网络模型。在本节中，我们将复用类似的拓扑结构，但为其引入**非线性激活函数 (Activation Function)** 。在此设定下，单个感知机本质上扮演着一个可微阈值判决器的角色。
 
 ### 2.1 - 神经网络结构
 
 该神经网络的各计算组件结构如下图所示：
+![[Pasted image 20261011215603.webp|554]]
 
-与先前的实验类似，输入层 (Input Layer) 包含 $x_1$ 和 $x_2$ 两个特征节点。权重向量 (Weight Vector)  $W = \begin{bmatrix} w_1 & w_2\end{bmatrix}$ 与偏置 (Bias)  ($b$) 是在模型训练过程中需要被不断更新优化的可学习参数。前向传播 (Forward Propagation) 的初始计算步骤与先前完全一致——对于任意给定的训练样本 $x^{(i)} = \begin{bmatrix} x_1^{(i)} & x_2^{(i)}\end{bmatrix}$：
+
+与先前的实验类似，**输入层 (Input Layer)** 包含 $x_1$ 和 $x_2$ 两个特征节点。**权重向量 (Weight Vector)**  $W = \begin{bmatrix} w_1 & w_2\end{bmatrix}$ 与**偏置 (Bias)**  ($b$) 是在模型训练过程中需要被不断更新优化的可学习参数。**前向传播 (Forward Propagation)** 的初始计算步骤与先前完全一致——对于任意给定的训练样本 $x^{(i)} = \begin{bmatrix} x_1^{(i)} & x_2^{(i)}\end{bmatrix}$：
 
 $$z^{(i)} = w_1x_1^{(i)} + w_2x_2^{(i)} + b = Wx^{(i)} + b.\tag{1}$$
+    注意这条分界线 其实是 w1​x1​+w2​x2​+b=0  等于别的值的时候就是等于z是要被分类的
 
-然而在分类场景下，我们不能直接将连续实数 $z^{(i)}$ 作为最终输出。一种直观离散方案是将计算结果与 0 进行比对：当数值小于 0 时归类为 0 (蓝色) ，大于 0 则归类为 1 (红色) ，随后将预测错误的样本比例定义为代价函数并执行反向传播 (Backward Propagation) 。
+然而==在分类场景下，我们不能直接将连续实数 $z^{(i)}$ 作为最终输出。==
+一种直观离散方案是将计算结果与 0 进行比对：当数值小于 0 时归类为 0 (蓝色) ，大于 0 则归类为 1 (红色) ，随后将预测错误的样本比例定义为代价函数并执行**反向传播 (Backward Propagation)** 。
 
-但这种离散阶跃方式 (即单位阶跃函数) 存在导数处处为 0 的数学缺陷。相比之下，基于连续映射的方案在优化中表现出显著优势，并广泛应用于更深层的现代神经网络中。因此，我们在此采用连续形式：为单感知机配备 Sigmoid 激活函数。
-
+但==这种离散阶跃方式 (即单位阶跃函数) 存在导数处处为 0 的数学缺陷==。相比之下，基于连续映射的方案在优化中表现出显著优势，并广泛应用于更深层的现代神经网络中。
+因此，我们在此采用连续形式：为单感知机配备 **Sigmoid 激活函数**。
+    ==把连续数映射到0-1之间==
 Sigmoid 激活函数的数学形式定义如下：
 
 $$a = \sigma\left(z\right) = \frac{1}{1+e^{-z}}.\tag{2}$$
 
-经过非线性平滑映射后，我们可以设定 0.5 作为判定阈值：若连续输出 $a > 0.5$ 则判定为类别 1 (红色) ，反之则归为类别 0 (蓝色) 。综合以上各个环节，配备 Sigmoid 激活函数的单感知机神经网络在单个样本上的前向运算可严谨表述为：
+经过非线性平滑映射后，我们可以==设定 0.5 作为判定阈值==：若连续输出 $a > 0.5$ 则判定为类别 1 (红色) ，反之则归为类别 0 (蓝色) 。综合以上各个环节，配备 Sigmoid 激活函数的单感知机神经网络在单个样本上的前向运算可严谨表述为：
 
+$$
 \begin{align}
 z^{(i)} &=  W x^{(i)} + b,\
-a^{(i)} &= \sigma\left(z^{(i)}\right).\\tag{3}
+a^{(i)} &= \sigma\left(z^{(i)}\right).\tag{3}
 \end{align}
+$$
 
-若将全部 $m$ 个训练样本按列整合为一个形状为 ($2 \times m$) 的输入矩阵 $X$，我们可以对矩阵运算结果执行逐元素激活。由此，整个批处理模型可以紧凑地表示为：
+若将全部 $m$ 个训练样本按列整合为一个==形状为 ($2 \times m$) 的输入矩阵 $X$==，我们可以对矩阵运算结果执行逐元素激活。由此，整个批处理模型可以紧凑地表示为：
+    下面的A就是上一个实验的 Y hat
 
+$$
 \begin{align}
 Z &=  W X + b,\
-A &= \sigma\left(Z\right),\\tag{4}
+A &= \sigma\left(Z\right),\tag{4}
 \end{align}
+$$
 
 在此计算中，标量偏置 $b$ 借助广播机制自动扩展为形状为 ($1 \times m$) 的行向量。
 
-处理二分类任务时，最为标准的准则函数是对数损失 (Log Loss) ，其对应的代价函数 (Cost Function) 定义如下：
+处理二分类任务时，最为标准的准则函数是**对数损失 (Log Loss)** ，其对应的**代价函数 (Cost Function)** 定义如下：
 
 $$\mathcal{L}\left(W, b\right) = \frac{1}{m}\sum_{i=1}^{m} L\left(W, b\right) = \frac{1}{m}\sum_{i=1}^{m}  \large\left(\small -y^{(i)}\log\left(a^{(i)}\right) - (1-y^{(i)})\log\left(1- a^{(i)}\right)  \large  \right) \small,\tag{5}$$
 
 其中 $y^{(i)} \in \{0,1\}$ 代表样本的真实分类标签，而 $a^{(i)}$ 则对应前向传播得到的连续预测概率 (即矩阵 $A$ 中的元素) 。
 
-模型训练的目标是最小化该代价函数。为了实现梯度下降法 (Gradient Descent) ，我们利用微积分中的链式法则 (Chain Rule) 分别求解各项偏导数 (Partial Derivative) ：
+模型训练的目标是最小化该代价函数。为了实现**梯度下降法 (Gradient Descent)** ，我们利用微积分中的**链式法则 (Chain Rule)** 分别求解各项**偏导数 (Partial Derivative)** ：
 
+$$
 \begin{align}
 \frac{\partial \mathcal{L} }{ \partial w_1 } &=
 \frac{1}{m}\sum_{i=1}^{m} \frac{\partial L }{ \partial a^{(i)}}
@@ -133,11 +153,18 @@ $$\mathcal{L}\left(W, b\right) = \frac{1}{m}\sum_{i=1}^{m} L\left(W, b\right) = 
 \frac{\partial a^{(i)} }{ \partial z^{(i)}}\frac{\partial z^{(i)} }{ \partial w_2},\tag{6}\
 \frac{\partial \mathcal{L} }{ \partial b } &=
 \frac{1}{m}\sum_{i=1}^{m} \frac{\partial L }{ \partial a^{(i)}}
-\frac{\partial a^{(i)} }{ \partial z^{(i)}}\frac{\partial z^{(i)} }{ \partial b}.
+\frac{\partial a^{(i)} }{ \partial z^{(i)}}\frac{\partial z^{(i)} }{ \partial b}
 \end{align}
+$$
+解释
+    因为多了 #sigmoid_function 所以偏导 变了1项多了1项 
+    对比一下
+    ![[Pasted image 20261011032512.webp|447]]
+
 
 在基础推导中，已知中间项偏导存在对消特性：$\frac{\partial L }{ \partial a^{(i)}}\frac{\partial a^{(i)} }{ \partial z^{(i)}} = \left(a^{(i)} - y^{(i)}\right)$，且 $\frac{\partial z^{(i)}}{ \partial w_1} = x_1^{(i)}$，$\frac{\partial z^{(i)}}{ \partial w_2} = x_2^{(i)}$，$\frac{\partial z^{(i)}}{ \partial b} = 1$。将这些代入公式 $(6)$ 中，偏导数可精简整理为：
 
+$$
 \begin{align}
 \frac{\partial \mathcal{L} }{ \partial w_1 } &=
 \frac{1}{m}\sum_{i=1}^{m} \left(a^{(i)} - y^{(i)}\right)x_1^{(i)},\
@@ -146,9 +173,11 @@ $$\mathcal{L}\left(W, b\right) = \frac{1}{m}\sum_{i=1}^{m} L\left(W, b\right) = 
 \frac{\partial \mathcal{L} }{ \partial b } &=
 \frac{1}{m}\sum_{i=1}^{m} \left(a^{(i)} - y^{(i)}\right).
 \end{align}
+$$
 
 值得注意的是，公式 $(7)$ 推导所得的梯度表达式与前序多元线性回归章节完全一致。因此，利用线性代数可以将其完美表述为矩阵形式：
 
+$$
 \begin{align}
 \frac{\partial \mathcal{L} }{ \partial W } &=
 \begin{bmatrix} \frac{\partial \mathcal{L} }{ \partial w_1 } &
@@ -156,25 +185,42 @@ $$\mathcal{L}\left(W, b\right) = \frac{1}{m}\sum_{i=1}^{m} L\left(W, b\right) = 
 \frac{\partial \mathcal{L} }{ \partial b } &= \frac{1}{m}\left(A - Y\right)\mathbf{1}.
 \tag{8}
 \end{align}
+$$
 
 其中 $\left(A - Y\right)$ 为形状是 ($1 \times m$) 的误差数组，$X^T$ 为形状是 ($m \times 2$) 的输入转置矩阵，$\mathbf{1}$ 代表维度为 ($m \times 1$) 的全 1 向量。
+    关于几个矩阵的shape 具体请复习上一个实验  ,一样的
 
 随后，按照标准梯度更新步长对参数进行迭代修正：
 
+$$
 \begin{align}
 W &= W - \alpha \frac{\partial \mathcal{L} }{ \partial W },\
 b &= b - \alpha \frac{\partial \mathcal{L} }{ \partial b },
 \tag{9}\end{align}
+$$
 
 式中 $\alpha$ 代表学习率 (Learning Rate) 。将该更新过程置于循环中持续迭代，直至代价函数平稳收敛。
 
-训练完成后，针对任意输入样本 $x$，只需通过前向计算获得激活值 $a$，并依据阈值规则完成类别离散化：
+训练完成后，针对任意输入样本 $x$，==只需通过前向计算获得激活值 $a$，并依据阈值规则完成类别离散化==：
 
 $$\hat{y} = \begin{cases} 1 & \mbox{若 } a > 0.5 \\ 0 & \mbox{其他情况 } \end{cases}\tag{10}$$
 
+所以我们上面那个a 是没有通过阈值 进行最终分类的  
+a只是 经过sigmoid以后的 0-1 的数
+用a和输出答案的y比较
+    (这个y, 应该要么0,要么1  就是已经分类的)
+解释
+    ![[Pasted image 20261011214903.webp]]
+    ![[Pasted image 20261011215032.webp|571]]
+
+
 ### 2.2 - 数据集
 
-下面生成实验所用的人工数据集。以下代码将构建 $m=30$ 个离散坐标点 $(x_1, x_2)$，其中 $x_1, x_2 \in \{0,1\}$，并按列保存在形状为 $(2 \times m)$ 的 NumPy 数组 `X` 中。标签生成逻辑设定为：当且仅当 $x_1 = 0$ 且 $x_2 = 1$ 时 $y = 1$ (红色) ，其余组合全部标记为 $y = 0$ (蓝色) ，最终存放在形状为 $(1 \times m)$ 的数组 `Y` 中。
+下面生成实验所用的 训练数据集。以下代码将构建 $m=30$ 个离散坐标点 $(x_1, x_2)$，其中 $x_1, x_2 \in \{0,1\}$，并按列保存在形状为 $(2 \times m)$ 的 NumPy 数组 `X` 中。
+    就是随机生成30个输入数据 (还是上面一样, 词只会出现0或1次)
+输入数据对应的输出的 情感标签逻辑设定为：当且仅当 $x_1 = 0$ 且 $x_2 = 1$ 时 $y = 1$ (红色) ，其余组合全部标记为 $y = 0$ (蓝色) ，最终存放在形状为 $(1 \times m)$ 的数组 `Y` 中。
+    输入我们随机生成了, 也不能少了输出
+
 
 ```python
 m = 30
@@ -192,6 +238,13 @@ print ('The shape of Y is: ' + str(Y.shape))
 print ('I have m = %d training examples!' % (X.shape[1]))
 
 ```
+![[Pasted image 20261011215127.webp]]
+
+解释
+    ![[Pasted image 20261011215712.webp]]
+    ![[Pasted image 20261011215815.webp]]
+    ![[Pasted image 20261011215919.webp]]
+    (括号里写我们唯一要判为1的两个都要满足的条件就好了)
 
 ### 2.3 - 定义激活函数
 
@@ -206,19 +259,22 @@ print("sigmoid(0) = " + str(sigmoid(0)))
 print("sigmoid(3.5) = " + str(sigmoid(3.5)))
 
 ```
+![[Pasted image 20261011220021.webp|306]]
 
-该函数支持对 NumPy 数组进行无缝的逐元素广播运算：
+该函数==支持==对 NumPy 数组进行无缝的逐元素==广播==运算：
 
 ```python
 print(sigmoid(np.array([-2, 0, 3.5])))
 
 ```
+![[Pasted image 20261011220051.webp]]
 
 ## 3 - 神经网络模型的代码实现
 
-该分类网络的具体实现与先前的回归模型整体结构非常接近，主要的改动仅体现在前向传播 `forward_propagation` 和代价计算 `compute_cost` 两个函数中！
+该分类网络的具体实现与先前的回归模型整体结构非常接近，==主要的改动仅体现在前向传播 `forward_propagation` 和代价计算 `compute_cost` 两个函数中==！
 
 ### 3.1 - 定义神经网络结构
+    一样
 
 根据数组 `X` 和 `Y` 的维度形态提取两个核心尺寸变量：
 
@@ -246,8 +302,10 @@ print("The size of the input layer is: n_x = " + str(n_x))
 print("The size of the output layer is: n_y = " + str(n_y))
 
 ```
+![[Pasted image 20261011220126.webp]]
 
 ### 3.2 - 初始化模型参数
+    一样
 
 实现 `initialize_parameters()` 函数，将形状为 $(n_y \times n_x) = (1 \times 1)$ 的权重矩阵初始化为微小的高斯随机数，并将形状为 $(n_y \times 1) = (1 \times 1)$ 的偏置向量初始化为全零。
 
@@ -273,14 +331,19 @@ print("W = " + str(parameters["W"]))
 print("b = " + str(parameters["b"]))
 
 ```
+![[Pasted image 20261011220209.webp]]
 
 ### 3.3 - 训练循环
+    输出时多套一个 sigmoid
 
 依照第 2.1 节中的公式 $(4)$ 实现前向传播函数 `forward_propagation()`：
+
+$$
 \begin{align}
 Z &=  W X + b,\
 A &= \sigma\left(Z\right).
 \end{align}
+$$
 
 ```python
 def forward_propagation(X, parameters):
@@ -306,12 +369,14 @@ A = forward_propagation(X, parameters)
 print("Output vector A:", A)
 
 ```
+![[Pasted image 20261011220300.webp]]
 
 此时参数均由随机数生成，模型尚未经过迭代训练。
 
 接下来，根据公式 $(5)$ 编写用于监督学习的对数损失代价函数：
 
 $$\mathcal{L}\left(W, b\right)  = \frac{1}{m}\sum_{i=1}^{m}  \large\left(\small -y^{(i)}\log\left(a^{(i)}\right) - (1-y^{(i)})\log\left(1- a^{(i)}\right)  \large  \right) \small.$$
+    损失函数公式不一样
 
 ```python
 def compute_cost(A, Y):
@@ -331,6 +396,7 @@ def compute_cost(A, Y):
 
     # 计算对数概率并汇总代价值
     logprobs = - np.multiply(np.log(A),Y) - np.multiply(np.log(1 - A),1 - Y)
+    # logprobs = - (np.log(A) * Y) - (np.log(1 - A) * (1 - Y)) 也可以写成这样
     cost = 1/m * np.sum(logprobs)
     
     return cost
@@ -338,13 +404,18 @@ def compute_cost(A, Y):
 print("cost = " + str(compute_cost(A, Y)))
 
 ```
+![[Pasted image 20261011221656.webp]]
+[[矩阵乘法]]
 
 依照公式 $(8)$ 计算反向传播梯度：
 
+$$
 \begin{align}
 \frac{\partial \mathcal{L} }{ \partial W } &= \frac{1}{m}\left(A - Y\right)X^T,\
 \frac{\partial \mathcal{L} }{ \partial b } &= \frac{1}{m}\left(A - Y\right)\mathbf{1}.
 \end{align}
+$$
+    一样
 
 ```python
 def backward_propagation(A, X, Y):
@@ -377,12 +448,16 @@ print("dW = " + str(grads["dW"]))
 print("db = " + str(grads["db"]))
 
 ```
+![[Pasted image 20261011221710.webp]]
 
 依照公式 $(9)$ 更新模型参数：
 
+$$
 \begin{align}
 W &= W - \alpha \frac{\partial \mathcal{L} }{ \partial W },\
 b &= b - \alpha \frac{\partial \mathcal{L} }{ \partial b }.\end{align}
+$$
+    一样
 
 ```python
 def update_parameters(parameters, grads, learning_rate=1.2):
@@ -420,10 +495,13 @@ print("W updated = " + str(parameters_updated["W"]))
 print("b updated = " + str(parameters_updated["b"]))
 
 ```
+![[Pasted image 20261011221748.webp]]
 
 ### 3.4 - 在 nn_model() 中整合前述模块并执行预测
 
 在主函数 `nn_model()` 中整合搭建完整的感知机训练流程。
+
+    一样
 
 ```python
 def nn_model(X, Y, num_iterations=10, learning_rate=1.2, print_cost=False):
@@ -473,6 +551,7 @@ print("W = " + str(parameters["W"]))
 print("b = " + str(parameters["b"]))
 
 ```
+![[Pasted image 20261011221904.webp|298]]
 
 观察训练输出可以发现，在迭代大约 40 次之后，代价函数虽仍在微幅降低，但下降趋势已趋于平缓。这表明训练已基本收敛，可以适时终止优化。最终学得的参数既可用于绘制几何分割线，也可直接用于样本推理。下面我们将决策边界可视化呈现出来。
 
@@ -492,6 +571,10 @@ def plot_decision_boundary(X, Y, parameters):
 plot_decision_boundary(X, Y, parameters)
 
 ```
+![[Pasted image 20261011222511.webp|425]]
+解释
+    ![[Pasted image 20261011222443.webp|536]]
+    ![[Pasted image 20261011222458.webp|505]]
 
 对新输入的样本点执行分类预测：
 
@@ -522,12 +605,13 @@ print(f"Coordinates (in the columns):\n{X_pred}")
 print(f"Predictions:\n{Y_pred}")
 
 ```
+![[Pasted image 20261011222610.webp|298]]
 
 对于结构如此小巧轻便的单神经元模型而言，这样的预测精度表现已经相当出色！
 
 ## 4 - 在更大规模数据集上的表现
 
-接下来，借助 `sklearn.datasets` 模块中的 `make_blobs` 函数合成一个规模更大、分布更为紧凑逼真的数据集：
+接下来，借助 `sklearn.datasets` 模块中的💛 `make_blobs` 函数合成一个规模更大、分布更为紧凑逼真的数据集：
 
 ```python
 # 构建数据集
@@ -537,12 +621,17 @@ samples, labels = make_blobs(n_samples=n_samples,
                              cluster_std=1.4,
                              random_state=0)
 
-X_larger = np.transpose(samples)
+X_larger = np.transpose(samples) # 就是转置
 Y_larger = labels.reshape((1,n_samples))
 
 plt.scatter(X_larger[0, :], X_larger[1, :], c=Y_larger, cmap=colors.ListedColormap(['blue', 'red']));
 
 ```
+![[Pasted image 20261011222705.webp|438]]
+解释
+    ![[Pasted image 20261011222939.webp|476]]
+    ![[Pasted image 20261011223018.webp|511]]
+    ![[Pasted image 20261011223114.webp|526]]
 
 让神经网络在全量数据上完整迭代 100 轮：
 
@@ -552,6 +641,7 @@ print("W = " + str(parameters_larger["W"]))
 print("b = " + str(parameters_larger["b"]))
 
 ```
+![[Pasted image 20261011223421.webp]]
 
 可视化模型在大规模数据集上学到的决策边界：
 
@@ -559,12 +649,10 @@ print("b = " + str(parameters_larger["b"]))
 plot_decision_boundary(X_larger, Y_larger, parameters_larger)
 
 ```
+![[Pasted image 20261011223440.webp|462]]
 
 不妨动手调整迭代轮数 `num_iterations` 与学习率 `learning_rate` 的超参数配置，探索模型收敛轨迹与决策边界形态的变化规律。
+    可以试试learning_rate 调小  发现此时迭代次数不够找到分类线了  此时要把迭代次数调大
+    learning_rate也不是越大越好 , 50比20的迭代收敛次数多
 
 恭喜你圆满完成本次实验！
-
-```python
-
-
-```

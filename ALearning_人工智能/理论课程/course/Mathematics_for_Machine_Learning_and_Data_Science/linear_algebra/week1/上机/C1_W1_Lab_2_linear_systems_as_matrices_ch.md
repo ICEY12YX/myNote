@@ -74,7 +74,7 @@ print("\nArray b:")
 print(b)
 
 ```
-![[Pasted image 20260924160217.png]]
+![[Pasted image 20260924160217.webp]]
 
 那么，矩阵 $A$ 和向量 $b$ 的维度分别是什么呢？
 
@@ -88,7 +88,7 @@ print(f"Shape of b: {b.shape}")
 # print(f"Shape of A: {np.shape(b)}")
 
 ```
-![[Pasted image 20260924160329.png]]
+![[Pasted image 20260924160329.webp]]
 
 在课堂上，你曾动手用笔算解开过简单的二元一次方程组。但在计算机科学中，我们需要一套更通用、程序化的方法来解决规模更大的方程组。在本实验中，NumPy 为我们提供了一个非常便捷的求解工具。
 
@@ -103,7 +103,7 @@ x = np.linalg.solve(A, b)
 print(f"Solution: {x}")
 
 ```
-![[Pasted image 20260924160800.png]]
+![[Pasted image 20260924160800.webp]]
 
 输出数组中的第一个元素是 $x_1$ 的解，第二个元素是 $x_2$ 的解。你可以尝试将求得的 $x_1$ 和 $x_2$ 带回原始方程组中，验证等式是否完全吻合。
 
@@ -122,7 +122,7 @@ d = np.linalg.det(A)
 print(f"Determinant of matrix A: {d:.2f}")
 
 ```
-![[Pasted image 20260924160910.png]]
+![[Pasted image 20260924160910.webp]]
 
 正如我们所料，计算出的行列式是一个非零数值，这完全符合该方程组具有唯一解的数学规律。
 
@@ -143,7 +143,7 @@ A_system = np.hstack((A, b.reshape((2, 1))))
 print(A_system)
 
 ```
-![[Pasted image 20260924161038.png]]
+![[Pasted image 20260924161038.webp]]
 
 我们顺便复习一下如何==提取矩阵中的单行数据==，这在后续进行矩阵行变换操作时非常实用。由于 Python 的索引从 0 开始计数，因此要获取矩阵的第二行，我们需要使用下标 `1`：
 
@@ -151,7 +151,7 @@ print(A_system)
 print(A_system[1])
 
 ```
-![[Pasted image 20260924161113.png]]
+![[Pasted image 20260924161113.webp]]
 
 ### 2.2 - 解的几何图像表示
 
@@ -164,7 +164,7 @@ print(A_system[1])
 plot_lines(A_system)
 
 ```
-![[Pasted image 20260924161253.png|421]]
+![[Pasted image 20260924161253.webp|421]]
 
 可以清晰地看到，这两条直线恰好相交于点 $(x_1, x_2) = (-1, 2)$，这正是方程组的唯一解。
 
@@ -188,7 +188,7 @@ d_2 = np.linalg.det(A_2)
 print(f"Determinant of matrix A_2: {d_2:.2f}")
 
 ```
-![[Pasted image 20260924161341.png]]
+![[Pasted image 20260924161341.webp]]
 
 行列式计算结果等于 0，这说明该方程组绝不可能存在唯一确定的解。
 ==**它要么拥有无穷多组解，要么完全无解。**==
@@ -201,7 +201,7 @@ except np.linalg.LinAlgError as err:
     print(err)
 
 ```
-![[Pasted image 20260924161432.png]]
+![[Pasted image 20260924161432.webp]]
 
 我们将该方程组拼接成增广矩阵并查看：
 
@@ -210,13 +210,13 @@ A_2_system = np.hstack((A_2, b_2.reshape((2, 1))))
 print(A_2_system)
 
 ```
-![[Pasted image 20260924161630.png]]
+![[Pasted image 20260924161630.webp]]
 
 ```python
 plot_lines(A_2_system)
 
 ```
-![[Pasted image 20260924161826.png]]
+![[Pasted image 20260924161826.webp]]
 
 正如几何推断的那样，平面上的两条直线彼此平行，永不相交，因此方程组无解。
 
@@ -238,7 +238,7 @@ A_3_system = np.hstack((A_2, b_3.reshape((2, 1))))
 print(A_3_system)
 
 ```
-![[Pasted image 20260924161856.png]]
+![[Pasted image 20260924161856.webp]]
 
 通过行变换化简，对应的等价方程组为：
 
@@ -257,4 +257,4 @@ $$x_1=3x_2-7, \tag{5}$$
 plot_lines(A_3_system)
 
 ```
-![[Pasted image 20260924161915.png]]
+![[Pasted image 20260924161915.webp]]

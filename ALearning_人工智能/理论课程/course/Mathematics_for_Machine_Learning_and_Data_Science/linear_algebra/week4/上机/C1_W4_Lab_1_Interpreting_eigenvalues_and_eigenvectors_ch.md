@@ -50,7 +50,7 @@ e2 = np.array([[0],[1]])
 utils.plot_transformation(A, e1, e2, vector_name='e');
 
 ```
-![[Pasted image 20261004052602.png]]
+![[Pasted image 20261004052602.webp]]
 
 可以看到，在经过矩阵 $A$ 的变换之后，原本的两个基向量 $e_1$ 与 $e_2$ 无论在长度还是方向上都发生了改变。
 那么，我们能否找到这样一组特殊的基向量：
@@ -80,16 +80,16 @@ A_eig = np.linalg.eig(A)
 print(f"Matrix A:\n{A} \n\nEigenvalues of matrix A:\n{A_eig[0]}\n\nEigenvectors of matrix A:\n{A_eig[1]}")
 
 ```
-![[Pasted image 20261004053015.png]]
+![[Pasted image 20261004053015.webp]]
 理解
-    ![[Pasted image 20261004053138.png]]
-    ![[Pasted image 20261004053230.png]]
-    ![[Pasted image 20261004053320.png]]
-    ![[Pasted image 20261004053343.png]]
+    ![[Pasted image 20261004053138.webp]]
+    ![[Pasted image 20261004053230.webp]]
+    ![[Pasted image 20261004053320.webp]]
+    ![[Pasted image 20261004053343.webp]]
     
 
 切记，返回元组的第一个元素包含全部特征值，第二个元素则是**一列列**排布的特征向量。
-    ![[Pasted image 20261004053831.png|399]]
+    ![[Pasted image 20261004053831.webp|399]]
 
 这意味着==第一个特征向量==可以通过切片代码 `A_eig[1][:,0]` (所有行,0列) 提取，而==第二个特征向量==则通过 `A_eig[1][:,1]` 提取。
 
@@ -99,7 +99,7 @@ print(f"Matrix A:\n{A} \n\nEigenvalues of matrix A:\n{A_eig[0]}\n\nEigenvectors 
 utils.plot_transformation(A, A_eig[1][:,0], A_eig[1][:,1]);
 
 ```
-![[Pasted image 20261004053649.png]]
+![[Pasted image 20261004053649.webp]]
 
 正如图像所呈现的那样，$v_1$ 的长度被拉伸至原先的 4 倍；而 $v_2$ 的指向完全反转，这相当于乘以了缩放倍数 -1。然而不可思议的是，这两个向量始终与它们原本所指的轴线方向保持平行，因此完全符合特征向量的定义。
 
@@ -126,9 +126,9 @@ print(f"Matrix A:\n {A_reflection_yaxis} \n\nEigenvalues of matrix A:\n {A_refle
 utils.plot_transformation(A_reflection_yaxis, A_reflection_yaxis_eig[1][:,0],A_reflection_yaxis_eig[1][:,1]);
 
 ```
-![[Pasted image 20261004054010.png]]
+![[Pasted image 20261004054010.webp]]
 (发现此时 特征向量就是1,0  0,1 基向量)
-![[Pasted image 20261004054019.png]]
+![[Pasted image 20261004054019.webp]]
 
 在目前接触到的所有示例中，我们处理的都是 2 $\times$ 2 矩阵，而且它们都拥有 2 个互不相同的特征值和 2 个不同的特征向量。这时一个自然的问题便浮出水面：==对于平面上的任何线性变换，是否总能找到两个不同的特征向量？==正如你在课程中所学到的那样，很遗憾，答案是==否定的==。在接下来的示例中，你就会看到这样一种反例。
 
@@ -156,11 +156,11 @@ print(f"Matrix A_shear_x:\n {A_shear_x}\n\nEigenvalues of matrix A_shear_x:\n {A
 utils.plot_transformation(A_shear_x, A_shear_x_eig[1][:,0], A_shear_x_eig[1][:,1]);
 
 ```
-![[Pasted image 20261004054208.png]]
-![[Pasted image 20261004054218.png]]
+![[Pasted image 20261004054208.webp]]
+![[Pasted image 20261004054218.webp]]
 解释
-    ![[Pasted image 20261004054513.png]]
-    ![[Pasted image 20261004054657.png]]
+    ![[Pasted image 20261004054513.webp]]
+    ![[Pasted image 20261004054657.webp]]
     反正可能底层库会在张成空间中 填满输出的特征值,特征向量
 
 ```python
@@ -172,7 +172,7 @@ print(f"Matrix A_rotation:\n {A_rotation}\n\nEigenvalues of matrix A_rotation:\n
 
 
 ```
-![[Pasted image 20261004054323.png]]
+![[Pasted image 20261004054323.webp]]
 
 
 可以看到，控制台虽然输出了两个特征值，但它们实际上是**复数**。请注意，==在 Python 中，复数的虚数单位是用字母 `j` 来表示的，而非数学中更常见的 $i$。==
@@ -197,8 +197,8 @@ print(f"Matrix A_identity:\n {A_identity}\n\nEigenvalues of matrix A_identity:\n
       f"\n\nEigenvectors of matrix A_identity\n {A_identity_eig[1]}")
 
 ```
-![[Pasted image 20261004054934.png]]
-![[Pasted image 20261004054942.png]]
+![[Pasted image 20261004054934.webp]]
+![[Pasted image 20261004054942.webp]]
 
 
 正如你所看到的，`np.linalg.eig()` 函数输出了两个数值相等的特征值 $\lambda = 1$，这完全正确。然而，==输出所给出的特征向量列表并没有（也不可能）涵盖平面上的全部向量。==在代数上可以严格证明，平面上的任意非零向量都是单位矩阵的特征向量。==软件往往只会返回一组正交基，无法直接展示这“无限可能”==，所以千万要留心！这也正是为什么深入理解代码与算法模型背后的数学机理如此至关重要。
@@ -215,8 +215,8 @@ print(f"Matrix A_scaling:\n {A_scaling}\n\nEigenvalues of matrix A_scaling:\n {A
       f"\n\nEigenvectors of matrix A_scaling\n {A_scaling_eig[1]}")
 
 ```
-![[Pasted image 20261004055029.png]]
-![[Pasted image 20261004055036.png]]
+![[Pasted image 20261004055029.webp]]
+![[Pasted image 20261004055036.webp]]
 
 ### 2.4 - 示例 4：向 x 轴的正交投影
 
@@ -237,8 +237,8 @@ print(f"Matrix A_projection:\n {A_projection}\n\nEigenvalues of matrix A_project
       f"\n\nEigenvectors of matrix A_projection\n {A_projection_eig[1]}")
 
 ```
-![[Pasted image 20261004055114.png]]
-![[Pasted image 20261004055128.png]]
+![[Pasted image 20261004055114.webp]]
+![[Pasted image 20261004055128.webp]]
 
 该矩阵拥有两个实数特征值，==其中一个特征值恰好为 $0$。==这完全合情合理，❤️❤️❤️因为==**特征值 $\lambda$ 是允许等于 $0$ 的！**==
 (应该是特征向量 0,0 没意义  特征值还是可以是0的)

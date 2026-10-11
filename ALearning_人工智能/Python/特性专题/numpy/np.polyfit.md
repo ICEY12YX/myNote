@@ -1,8 +1,8 @@
 ___
 # 用法功能
-![[Pasted image 20261011005840.png|619]]
-![[Pasted image 20261011010003.png|620]]
-![[Pasted image 20261011010037.png|615]]
+![[Pasted image 20261011005840.webp|619]]
+![[Pasted image 20261011010003.webp|620]]
+![[Pasted image 20261011010037.webp|615]]
 
 ___
 # 范德蒙行列式

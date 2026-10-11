@@ -73,7 +73,7 @@ w = T(v)
 print("Original vector:\n", v, "\n\n Result of the transformation:\n", w)
 
 ```
-![[Pasted image 20261002220143.png]]
+![[Pasted image 20261002220143.webp]]
 
 ### 1.2 - 线性变换
 
@@ -100,7 +100,7 @@ print("T(k*v):\n", T(k*v), "\n k*T(v):\n", k*T(v), "\n\n")
 print("T(u+v):\n", T(u+v), "\n\n T(u)+T(v):\n", T(u)+T(v))
 
 ```
-![[Pasted image 20261002220133.png]]
+![[Pasted image 20261002220133.webp]]
 
 ### 1.3 - 用矩阵乘法定义的变换
 
@@ -130,7 +130,7 @@ w = L(v)
 print("Original vector:\n", v, "\n\n Result of the transformation:\n", w)
 
 ```
-![[Pasted image 20261002220200.png]]
+![[Pasted image 20261002220200.webp]]
 
 ## 2 - 平面上的标准变换
 
@@ -155,11 +155,11 @@ print('Shape: ',img.shape)
 print(img)
 
 ```
-![[Pasted image 20261002220539.png]]
+![[Pasted image 20261002220539.webp]]
 本来以为shape,会呈现出图像宽高的信息
 为什么只有2行
 可能图像变成txt 就是这样的吧
-![[Pasted image 20261002221133.png]]
+![[Pasted image 20261002221133.webp]]
 
 这幅图像在数据结构上表现为一个 $2 \times 329076$ 的矩阵，其中==**每一列都代表二维平面上的一个点向量**==。因此，调用 `img[0]` 便能取出所有点的 $x$ 坐标，调用 `img[1]` 则能取出对应的 $y$ 坐标。现在，我们把这幅原始图像绘制出来：
 
@@ -170,7 +170,7 @@ plt.scatter(img[0], img[1], s = 0.001, color = 'black')
 # img[0] 表示所有像素点的 x 坐标，img[1] 表示所有像素点的 y 坐标。
 # s=0.001 表示每个点的大小非常小，color="black" 表示点的颜色为黑色。
 ```
-![[Pasted image 20261002221252.png]]
+![[Pasted image 20261002221252.webp]]
 就像是拼豆那样 把图片画出来了
 
 ### 2.1 - 水平缩放（拉伸）
@@ -200,7 +200,7 @@ print("Original vectors:\n e1= \n", e1, "\n e2=\n", e2,
       "\n\n Result of the transformation (matrix form):\n", transformation_result_hscaling)
 
 ```
-![[Pasted image 20261002221331.png]]
+![[Pasted image 20261002221331.webp]]
 
 
 为了帮助你直观理解变换带来的几何形变，我们编写了可视化工具函数，将输入向量与变换后的对应向量绘制在一起。底层绘图细节无需过多纠结，直接运行下方单元格即可：
@@ -209,7 +209,7 @@ print("Original vectors:\n e1= \n", e1, "\n e2=\n", e2,
 utils.plot_transformation(T_hscaling,e1,e2)
 
 ```
-![[Pasted image 20261002221359.png]]
+![[Pasted image 20261002221359.webp]]
 
 
 现在，让我们把这种变换真正应用到那张树叶点云图像上，看看整体画面的变化：
@@ -219,7 +219,7 @@ plt.scatter(img[0], img[1], s=0.001, color="red")
 plt.scatter(T_hscaling(img)[0], T_hscaling(img)[1], s=0.001, color="grey")
 #T_hscaling(img)[0] 意思是传入整个img,得到的输出取[0] 就是0行
 ```
-![[Pasted image 20261002221516.png]]
+![[Pasted image 20261002221516.webp]]
 (红色的是未做变换的 之所以看上去比上面那张图小 因为图的x,y坐标轴范围不一样)
 显而易见，变换后的灰色叶片在水平方向上被明显拉宽了！
 
@@ -243,7 +243,7 @@ print("Original vectors:\n e1= \n", e1,"\n e2=\n", e2,
       "\n\n Result of the transformation (matrix form):\n", transformation_result_reflection_yaxis)
 
 ```
-![[Pasted image 20261002221843.png]]
+![[Pasted image 20261002221843.webp]]
 
 我们可以将这个镜像反射过程进行图形化渲染：
 
@@ -251,7 +251,7 @@ print("Original vectors:\n e1= \n", e1,"\n e2=\n", e2,
 utils.plot_transformation(T_reflection_yaxis, e1, e2)
 
 ```
-![[Pasted image 20261002221856.png]]
+![[Pasted image 20261002221856.webp]]
 
 
 ```python
@@ -260,7 +260,7 @@ plt.scatter(
     T_reflection_yaxis(img)[0], T_reflection_yaxis(img)[1], s=0.001, color="grey"
 )
 ```
-![[Pasted image 20261002221926.png]]
+![[Pasted image 20261002221926.webp]]
 
 ### 2.3 标量缩放
 
@@ -313,13 +313,13 @@ plt.scatter(img[0], img[1], s = 0.001, color = 'black')
 plt.scatter(T_stretch(2,img)[0], T_stretch(2,img)[1], s = 0.001, color = 'grey')
 
 ```
-![[Pasted image 20261002222301.png]]
+![[Pasted image 20261002222301.webp]]
 
 ```python
 utils.plot_transformation(lambda v: T_stretch(2, v), e1,e2)
 
 ```
-![[Pasted image 20261002222315.png]]
+![[Pasted image 20261002222315.webp]]
 
 ### 2.4 水平错切变换
 
@@ -371,13 +371,13 @@ plt.scatter(img[0], img[1], s = 0.001, color = 'black')
 plt.scatter(T_hshear(2,img)[0], T_hshear(2,img)[1], s = 0.001, color = 'grey')
 
 ```
-![[Pasted image 20261002222708.png]]
+![[Pasted image 20261002222708.webp]]
 
 ```python
 utils.plot_transformation(lambda v: T_hshear(2, v), e1,e2)
 
 ```
-![[Pasted image 20261002222719.png]]
+![[Pasted image 20261002222719.webp]]
 
 
 ### 2.5 旋转变换
@@ -429,13 +429,13 @@ plt.scatter(img[0], img[1], s = 0.001, color = 'black')
 plt.scatter(T_rotation(np.pi,img)[0], T_rotation(np.pi,img)[1], s = 0.001, color = 'grey')
 
 ```
-![[Pasted image 20261002222838.png]]
+![[Pasted image 20261002222838.webp]]
 
 ```python
 utils.plot_transformation(lambda v: T_rotation(np.pi, v), e1,e2)
 
 ```
-![[Pasted image 20261002222848.png]]
+![[Pasted image 20261002222848.webp]]
 
 
 ### 练习 4
@@ -486,13 +486,13 @@ plt.scatter(img[0], img[1], s = 0.001, color = 'black')
 plt.scatter(T_rotation_and_stretch(np.pi,2,img)[0], T_rotation_and_stretch(np.pi,2,img)[1], s = 0.001, color = 'grey')
 
 ```
-![[Pasted image 20261002223014.png]]
+![[Pasted image 20261002223014.webp]]
 
 ```python
 utils.plot_transformation(lambda v: T_rotation_and_stretch(np.pi, 2, v), e1,e2)
 
 ```
-![[Pasted image 20261002223024.png]]
+![[Pasted image 20261002223024.webp]]
 
 ## 3 - 神经网络（Neural Networks）
 
@@ -520,7 +520,7 @@ $$\hat{y} = w_1x_1 + w_2x_2 + b = Wx + b,\tag{6}$$
 ### 3.2 - 单感知机双输入节点的神经网络模型
 
 本例中我们仅使用一个感知机神经元，但它具有两个并行的输入节点，结构图如下所示：
-![[Pasted image 20261003010047.png]]
+![[Pasted image 20261003010047.webp]]
 
 对于单个样本数据 $x = \begin{bmatrix} x_1& x_2\end{bmatrix}$，感知机的输出计算可以借由点积写成：
 
@@ -534,7 +534,7 @@ $$WX =  \begin{bmatrix} w_1 & w_2\end{bmatrix}  \begin{bmatrix}  x_1^{(1)} & x_1
 
 整套模型的矩阵化数学表达可以精简为：
 
-![[Pasted image 20261003010104.png]]
+![[Pasted image 20261003010104.webp]]
 
 这里标量偏置 $b$ 借助**广播机制（Broadcasting）** 自动扩展为一个 ($1 \times m$) 的行向量进行加和。以上公式正是我们在前向传播计算环节中需要执行的核心运算。
 
@@ -580,7 +580,7 @@ print(parameters)
 **操作指引**：
 
 * 回顾我们模型的前向传播数学表达式：
-![[Pasted image 20261003010630.png]]
+![[Pasted image 20261003010630.webp]]
 
 
 * 你的代码逻辑应包含：
@@ -718,7 +718,7 @@ df = pd.read_csv("data/toy_dataset.csv")
 df.head()
 # 意思是显示数据框的前几行内容
 ```
-![[Pasted image 20261003011559.png]]
+![[Pasted image 20261003011559.webp]]
 
 首先把表格中的数据转换为 NumPy 数组格式，方便传递给我们编写的函数：
 
@@ -734,7 +734,7 @@ Y = np.array(df["y"]).reshape(1, -1)  # 把数组重塑成 1 行，列数让 Num
 parameters = nn_model(X,Y, num_iterations = 5000, print_cost= True)
 
 ```
-![[Pasted image 20261003011905.png]]
+![[Pasted image 20261003011905.webp]]
 ## 4 - 开启你的模型预测！
 
 拥有了训练拟合完毕的最优参数后，你就可以借助这套神经网络去预测任意未知数据的值了！ 你只需执行如下一步简单的矩阵计算：
@@ -778,7 +778,7 @@ for i in range(10):
     print(f"(x1,x2) = ({df.loc[i,'x1']:.2f}, {df.loc[i,'x2']:.2f}): Actual value: {df.loc[i,'y']:.2f}. Predicted value: {df.loc[i,'y_hat']:.2f}")
 
 ```
-![[Pasted image 20261003011948.png]]
+![[Pasted image 20261003011948.webp]]
 
 
 拟合效果相当不错对吧？祝贺你！你已经圆满完成了第三周的所有作业内容！

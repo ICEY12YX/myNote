@@ -147,9 +147,9 @@ py报错`NameError: name 'p' is not defined`
 * **为什么你的没报错？(Jupyter 幽灵陷阱)**：
     因为你使用的是交互式环境（Jupyter / IDE 终端）。你肯定在**之前的某次运行中**，不小心调用过 `functionD()`。Jupyter 的内核把 `p = 99` 永远记在了后台内存里。即便你现在把调用函数的代码删了，只要你不重启内核，`p` 就一直活着。
 确实! 重启以后报错了
-    ![[Pasted image 20260831225249.png]]
+    ![[Pasted image 20260831225249.webp]]
 * **避坑指南**：
     以后如果遇到代码逻辑明明不对却能跑通，点击上方菜单栏的 `Kernel -> Restart`（重启内核），清除记忆再跑一次，幽灵 Bug 就会原形毕露。
 
 重启在这里
-![[Pasted image 20260901045924.png|548]]
+![[Pasted image 20260901045924.webp|548]]

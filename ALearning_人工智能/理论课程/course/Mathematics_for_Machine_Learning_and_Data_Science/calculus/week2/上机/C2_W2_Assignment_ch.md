@@ -68,7 +68,7 @@ adv = pd.read_csv(path)
 adv.head()
 
 ```
-![[Pasted image 20261011004546.png]]
+![[Pasted image 20261011004546.webp]]
 
 ##### **预期输出**
 
@@ -94,7 +94,7 @@ w2_unittest.test_load_data(adv)
 adv.plot(x='TV', y='Sales', kind='scatter', c='black')
 
 ```
-![[Pasted image 20261011004610.png|476]]
+![[Pasted image 20261011004610.webp|476]]
 
 你可以使用这个数据集通过线性回归解决一个非常直观的问题：
 ==给定一个电视营销预算，预测对应的销售额。==
@@ -121,15 +121,15 @@ m_numpy, b_numpy = np.polyfit(X, Y, 1)
 print(f"Linear regression with NumPy. Slope: {m_numpy}. Intercept: {b_numpy}")
 
 ```
-![[Pasted image 20261011005643.png]]
+![[Pasted image 20261011005643.webp]]
 
 *注意*：`NumPy` 文档建议将 `Polynomial.fit` 类方法作为编写新代码时的推荐方法，因为它在数值计算上更加稳定。
 但是在这个简单的例子中，为了简便起见，你可以放心继续使用 `np.polyfit` 函数。
 
 解释
-    ![[Pasted image 20261011005840.png|619]]
-    ![[Pasted image 20261011010003.png|620]]
-    ![[Pasted image 20261011010037.png|615]]
+    ![[Pasted image 20261011005840.webp|619]]
+    ![[Pasted image 20261011010003.webp|620]]
+    ![[Pasted image 20261011010037.webp|615]]
 [[np.polyfit]]
 
 
@@ -149,7 +149,7 @@ def plot_linear_regression(X, Y, x_label, y_label, m, b, X_pred=np.array([]), Y_
 plot_linear_regression(X, Y, 'TV', 'Sales', m_numpy, b_numpy)
 
 ```
-![[Pasted image 20261011010335.png|526]]
+![[Pasted image 20261011010335.webp|526]]
 
 ### 练习 2
 
@@ -174,7 +174,7 @@ print(f"TV marketing expenses:\n{X_pred}")
 print(f"Predictions of sales using NumPy linear regression:\n{Y_pred_numpy}")
 
 ```
-![[Pasted image 20261011012354.png]]
+![[Pasted image 20261011012354.webp]]
 
 ##### **预期输出**
 
@@ -197,7 +197,7 @@ w2_unittest.test_pred_numpy(pred_numpy)
 plot_linear_regression(X, Y, 'TV', 'Sales', m_numpy, b_numpy, X_pred, Y_pred_numpy)
 
 ```
-![[Pasted image 20261011012418.png]]
+![[Pasted image 20261011012418.webp]]
 
 ### 2.2 - 使用 `Scikit-Learn` 的线性回归
 
@@ -223,7 +223,7 @@ except ValueError as err:
     print(err)
 
 ```
-![[Pasted image 20261011012650.png]]
+![[Pasted image 20261011012650.webp]]
 
 你可以使用 `reshape` 函数将数组的维度提升一维，或者也可以采用以下这种直观的方法来实现：
 
@@ -235,10 +235,10 @@ print(f"Shape of new X array: {X_sklearn.shape}")
 print(f"Shape of new Y array: {Y_sklearn.shape}")
 
 ```
-![[Pasted image 20261011013103.png]]
+![[Pasted image 20261011013103.webp]]
 修改原因
-    ![[Pasted image 20261011013125.png]]
-    ![[Pasted image 20261011013146.png]]
+    ![[Pasted image 20261011013125.webp]]
+    ![[Pasted image 20261011013146.webp]]
 ### 练习 3
 
 将处理好的 `X_sklearn` 和 `Y_sklearn` 数组传递给 `lr_sklearn.fit` 函数，以此来拟合这个线性回归模型。
@@ -257,7 +257,7 @@ b_sklearn = lr_sklearn.intercept_
 print(f"Linear regression using Scikit-Learn. Slope: {m_sklearn}. Intercept: {b_sklearn}")
 
 ```
-![[Pasted image 20261011013348.png]]
+![[Pasted image 20261011013348.webp]]
 
 ##### **预期输出**
 
@@ -296,7 +296,7 @@ print(f"TV marketing expenses:\n{X_pred}")
 print(f"Predictions of sales using Scikit_Learn linear regression:\n{Y_pred_sklearn.T}")
 
 ```
-![[Pasted image 20261011013757.png]]
+![[Pasted image 20261011013757.webp]]
 
 ##### **预期输出**
 
@@ -376,7 +376,7 @@ def E(m, b, X, Y):
 def dEdm(m, b, X, Y):
     ### START CODE HERE ### (~ 1 line of code)
     # Use the following line as a hint, replacing all None.
-    res = 1/len(Y)*np.dot(m*X + b - Y, X)
+    res = 1 / len(Y) * np.dot(m * X + b - Y, X)
     ### END CODE HERE ###
     
     return res
@@ -391,7 +391,7 @@ def dEdb(m, b, X, Y):
     return res
 ```
 解释
-    ![[Pasted image 20261011015422.png|538]]
+    ![[Pasted image 20261011015422.webp|538]]
 
 ```python
 print(dEdm(0, 0, X_norm, Y_norm))
@@ -451,7 +451,7 @@ print(gradient_descent(dEdm, dEdb, 0, 0, X_norm, Y_norm))
 print(gradient_descent(dEdm, dEdb, 1, 5, X_norm, Y_norm, learning_rate = 0.01, num_iterations = 10))
 
 ```
-![[Pasted image 20261011015624.png]]
+![[Pasted image 20261011015624.webp]]
 
 ##### **预期输出**
 
@@ -488,7 +488,7 @@ m_gd, b_gd = gradient_descent(
 print(f"Gradient descent result: m_min, b_min = {m_gd}, {b_gd}")
 
 ```
-![[Pasted image 20261011015729.png|585]]
+![[Pasted image 20261011015729.webp|585]]
 
 请一定记住，我们在之前对初始的训练数据集进行了归一化处理。为了能够输出符合真实业务场景的最终预测结果，你==需要先对待预测的 `X_pred` 数组按照相同的标准进行归一化==，然后利用刚才学习到的线性回归系数 `m_gd` 、 `b_gd` 计算出 `Y_pred` ，最后最重要的一步是，对计算得出的结果进行反归一化 (Denormalize) （也就是执行与归一化完全相反的数学还原过程）：
 
@@ -505,7 +505,7 @@ print(f"Predictions of sales using Scikit_Learn linear regression:\n{Y_pred_skle
 print(f"Predictions of sales using Gradient Descent:\n{Y_pred_gd}")
 
 ```
-![[Pasted image 20261011015855.png]]
+![[Pasted image 20261011015855.webp]]
 
 你应该已经发现，你得到了与前面几个小节中使用现成库几乎完全相同的结果。
 

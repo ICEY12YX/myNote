@@ -4,12 +4,12 @@ ___
 
 已经安装最新版本
 可直接使用快捷方式
-![[Pasted image 20250527184926.png]]
+![[Pasted image 20250527184926.webp]]
 ___
 # Elecard Video Format Analyzer
 查看某个封装格式里的具体数据
 
-![[Pasted image 20250527185150.png]]
+![[Pasted image 20250527185150.webp]]
 
 Elecard相关的视频分析软件很多
 可以在下面下载
@@ -23,26 +23,26 @@ D:\Elecard StreamEye
 
 其中有很多exe
 下面用到的是这个exe
-![[Pasted image 20250527193448.png]]
-![[Pasted image 20250527185618.png]]
+![[Pasted image 20250527193448.webp]]
+![[Pasted image 20250527185618.webp]]
 我用的情况
-![[Pasted image 20250527193914.png]]
+![[Pasted image 20250527193914.webp]]
 
 要想视频显示网格
 这两个button按下去
-![[Pasted image 20250527194030.png]]
+![[Pasted image 20250527194030.webp]]
 线是运动矢量,方块是宏块的划分方式
 ___
 # YUVPlayer
 我没用雷大佬工具包里的,是网上找个也叫YUVPlayer的(也可以下一个和雷大佬一样的)
 用YUV播放器的时候,需要调节参数,不然没法正常播
 因为播的是YUV原始文件,没有存文件头,所以需要自己配置
-![[Pasted image 20250527195908.png]]
+![[Pasted image 20250527195908.webp]]
 
 首先是size
-![[Pasted image 20250527200052.png]]
+![[Pasted image 20250527200052.webp]]
 然后是格式
-![[Pasted image 20250527200131.png]]
+![[Pasted image 20250527200131.webp]]
 ___
 # Au(Adobe的)
 这里先不下

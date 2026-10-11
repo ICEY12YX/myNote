@@ -40,12 +40,12 @@ cd %USERPROFILE%
 chdir 或 cd
 ```
 
-![[Pasted image 20250519215434.png]]
+![[Pasted image 20250519215434.webp]]
 ___
 
 # 1.初始化
 参数:
-![[Pasted image 20250519215836.png]]
+![[Pasted image 20250519215836.webp]]
 
 
 ```shell
@@ -59,9 +59,9 @@ git config –-global credential.helper store
 ```
 用于将 Git 的认证信息（用户名和密码）保存在本地，避免每次推送（git push）或拉取（git pull）代码时重复输入账号密码
 
-![[Pasted image 20250519220835.png]]
+![[Pasted image 20250519220835.webp]]
 
-![[Pasted image 20250519220819.png]]
+![[Pasted image 20250519220819.webp]]
 
 
 ```shell
@@ -69,8 +69,8 @@ git config –-global –-list
 ```
 用于 列出当前用户的所有全局 Git 配置。这些配置会影响你电脑上所有的 Git 仓库（除非某个仓库单独覆盖了这些设置）。
 
-![[Pasted image 20250519220756.png]]
-![[Pasted image 20250519220620.png]]
+![[Pasted image 20250519220756.webp]]
+![[Pasted image 20250519220620.webp]]
 ___
 # 2.创建仓库
 ## 本地新建仓库
@@ -79,18 +79,18 @@ ___
 git init     #在当前目录下建仓库
 git init my-repo #在当前目录下建一个my-repo文件夹,并在那里建仓库
 ```
-![[Pasted image 20250519221331.png]]
+![[Pasted image 20250519221331.webp]]
 
 ## 查看.git文件夹
 
 补充:
 	`ls` 命令用于 **列出当前目录下的文件和子目录**，但它的具体用法和可用性取决于你使用的环境：
 
-![[Pasted image 20250519221450.png]]
-![[Pasted image 20250519221515.png]]
+![[Pasted image 20250519221450.webp]]
+![[Pasted image 20250519221515.webp]]
 
 结果:
-![[Pasted image 20250519222623.png]]
+![[Pasted image 20250519222623.webp]]
 
 有.git文件夹就代表当前这个目录是个本地git仓库, 删掉这个.git文件夹就是删掉这个本地仓库(不是删源码,只是删掉git对当前目录的管理)
 
@@ -103,16 +103,16 @@ ___
 # 3.工作区域和文件状态
 ## 工作区域
 
-![[Pasted image 20250520134424.png]]
-![[Pasted image 20250520134258.png]]
+![[Pasted image 20250520134424.webp]]
+![[Pasted image 20250520134258.webp]]
 
 ## 文件状态
 
-![[Pasted image 20250520134546.png]]
-![[Pasted image 20250520140735.png]]
+![[Pasted image 20250520134546.webp]]
+![[Pasted image 20250520140735.webp]]
 上面应该是对的,就是命令有点错位了
 
-![[Pasted image 20250520134530.png]]
+![[Pasted image 20250520134530.webp]]
 上面这幅图只展示了2个状态,有点怪,先不管吧
 上面这些命令,后面会讲
 ___
@@ -132,9 +132,9 @@ git ls-tree -r HEAD --name-only #当前分支的最新提交中的所有文件(�
 ```
 
 项目结构:
-![[Pasted image 20250520145247.png]]
+![[Pasted image 20250520145247.webp]]
 结果:
-![[Pasted image 20250520145408.png]]
+![[Pasted image 20250520145408.webp]]
 master指主分支, 版本不同也可以叫main
 我们还没有add过仓库,所以文件都处于未跟踪的状态(所以上面显示untracked)
 
@@ -147,7 +147,7 @@ git add *.js   #添加所有 `.js` 文件的修改到暂存区
 结果:
 下面最后,指有修改了但是还没被commit提交的文件
 还说了,可以用"git rm --cached 文件名"命令取消文件的暂存
-![[Pasted image 20250520150319.png]]
+![[Pasted image 20250520150319.webp]]
 
 ```shell
 git commit -m "提交描述"  #将 `git add` 添加到暂存区的所有变更提交到本地仓库
@@ -164,14 +164,14 @@ git commit --amend -m "提交描述"  # 替换上一次提交
 只将暂存区文件,添加到本地仓库,在工作区没有add过的文件,不会commit!!!
 
 结构:
-![[Pasted image 20250520151143.png]]
+![[Pasted image 20250520151143.webp]]
 结果:
-![[Pasted image 20250520151125.png]]
-![[Pasted image 20250520153236.png]]
+![[Pasted image 20250520151125.webp]]
+![[Pasted image 20250520153236.webp]]
 
 不写-m "..." 就会转到vim可视化窗口,让我们填写本次提交的描述
 这个窗口不是很好操作,建议不要进来
-![[Pasted image 20250520152305.png]]
+![[Pasted image 20250520152305.webp]]
 
 ```shell
 git log  #按时间倒序列出所有提交记录（最新提交在最上面）
@@ -179,10 +179,10 @@ git log --oneline  #查看简洁的提交记录
 #可以配合参数,筛选这输出 略
 ```
 结果:
-![[Pasted image 20250520153419.png]]
+![[Pasted image 20250520153419.webp]]
 这个commit ==f6bcafe49726e7ec0119e72dd0a6a9f4bdce8349==  叫提交哈希
 
-![[Pasted image 20250520153832.png]]
+![[Pasted image 20250520153832.webp]]
 ___
 
 # 5.回退版本
@@ -190,14 +190,14 @@ ___
 
 **`HEAD` 是一个特殊的指针**，它代表 **当前所在的分支或提交**
 
-![[Pasted image 20250520155611.png]]
-![[Pasted image 20250520155749.png]]
+![[Pasted image 20250520155611.webp]]
+![[Pasted image 20250520155749.webp]]
 第一个父提交,就是指上一个提交
 
 ## cat命令
 
 `cat`（全称 **concatenate**）是一个用于 **查看文件内容** 或 **合并文件** 的基础命令。
-![[Pasted image 20250520161048.png]]
+![[Pasted image 20250520161048.webp]]
 
 ## reset回退
 
@@ -209,7 +209,7 @@ git reset commit-hash
 #--hard 回退到提交commit-hash,修改和暂存区就都回退到提交commit-hash时的状态,这个提交后面可能写了新的代码,然后提交了,这些都不会被保留
 ```
 
-![[Pasted image 20250520154151.png]]
+![[Pasted image 20250520154151.webp]]
 
 用处:
 回退后:
@@ -224,7 +224,7 @@ git reflog
 是 Git 中的 **"安全网"**，它记录了所有 **本地仓库中 HEAD 和分支指针的移动历史**（包括被删除的提交）。当你误操作（如 `reset --hard`、删除了分支或提交）时，可以通过它找回丢失的内容。
 
 测试:
-![[Pasted image 20250520162345.png]]
+![[Pasted image 20250520162345.webp]]
 ___
 # 6.查看差异
 
@@ -259,22 +259,22 @@ git diff HEAD~ HEAD -- src/app.js #注意"--"前面后面都有空格
 ```
 
 输出:
-![[Pasted image 20250520163329.png]]
+![[Pasted image 20250520163329.webp]]
 测试:
-![[Pasted image 20250520163149.png]]
+![[Pasted image 20250520163149.webp]]
 ___
 # 7.删除文件
 ## 方法一 直接删+add
 
 先把文件拖回收站里
 删之前
-![[Pasted image 20250520165603.png]]
+![[Pasted image 20250520165603.webp]]
 删之后
 上面没commit那段不管
 下面提示我们要把删掉的文件重新add进暂存区, 大概因为此时暂存区还有删掉的文件的数据,所以我们需要同步一下
-![[Pasted image 20250520165658.png]]
+![[Pasted image 20250520165658.webp]]
 然后我们用add .或add 文件名都可以
-![[Pasted image 20250520165922.png]]
+![[Pasted image 20250520165922.webp]]
 
 ## 方法二 git rm
 
@@ -292,16 +292,16 @@ git rm -r --cached 目录名  # 仅停止跟踪目录（保留本地文件）
 ```
 
 测试:
-![[Pasted image 20250520171220.png]]
+![[Pasted image 20250520171220.webp]]
 ___
 # 8.gitignore文件
 
 我们写好项目以后,不是所有文件都需要放到版本库中的
 像下面这些就不需要
-![[Pasted image 20250520171411.png]]
+![[Pasted image 20250520171411.webp]]
 
 所以我们可以用.gitignore文件,列出我们想忽略的文件规则,然后git会自动帮我们忽略
-![[Pasted image 20250520171347.png]]
+![[Pasted image 20250520171347.webp]]
 但是如果,某个文件已经add了,被git跟踪了,再去写.gitignore文件让git忽略的话,那个文件的修改还是会被监测到,所以不能这样
 ___
 # 9.SSH配置和克隆仓库
@@ -316,23 +316,23 @@ https://docs.github.com/zh/authentication
 
 命令: ssh-keygen
 密码我直接敲了回车
-![[Pasted image 20250520192554.png]]
+![[Pasted image 20250520192554.webp]]
 
 .pub的是公匙  没有.pub的是私匙
-![[Pasted image 20250520192752.png]]
+![[Pasted image 20250520192752.webp]]
 
 
-![[Pasted image 20250520194305.png]]
-![[Pasted image 20250520194323.png]]
+![[Pasted image 20250520194305.webp]]
+![[Pasted image 20250520194323.webp]]
 
 ## 连接远程库github
 
 先在github里面创建一个remote-repo
 然后使用ssh来 git clone
-![[Pasted image 20250520195132.png]]
+![[Pasted image 20250520195132.webp]]
 结果:
 因为我们上面配置了ssh所以成功了
-![[Pasted image 20250520195248.png]]
+![[Pasted image 20250520195248.webp]]
 
 ## 本地同步至远程
 
@@ -360,7 +360,7 @@ git push -f origin main
 #如果远程仓库有本地仓库没有的文件,直接把本地push到远程不行的,就是想把远程变的和本地一模一样,不管远程那里有什么,就用-f
 ```
 
-![[Pasted image 20250520202314.png]]
+![[Pasted image 20250520202314.webp]]
 ___
 # 10.本都仓库关联远程仓库
 
@@ -371,7 +371,7 @@ ___
 git remote -v  #列出所有远程仓库的别名+地址(SSH的)
 ```
 
-![[Pasted image 20250520203423.png]]
+![[Pasted image 20250520203423.webp]]
 前面的origin指远程仓库的别名,可以看到一般默认都叫远程仓库origin,这个名字和远程仓库叫什么名字无关
 
 ```shell
@@ -393,16 +393,16 @@ git remote rename origin upstream
 
 先创建一个远程仓库first-repo,再本地创建一个my-repo
 把my-repo关联上first-repo
-![[Pasted image 20250520204247.png]]
+![[Pasted image 20250520204247.webp]]
 注意写了上面这些,只是关联了仓库,本地仓库中的内容还没有被push进远程
 所以还得写下面这些
-![[Pasted image 20250520205708.png]]
+![[Pasted image 20250520205708.webp]]
 注意,可能版本原因,本地创建的项目主分支默认叫master,github上主分支默认叫main
 所以这样写会报错
-![[Pasted image 20250520205831.png]]
+![[Pasted image 20250520205831.webp]]
 
 还可以比如远程仓库多了一些东西,然后我要把远程同步至本地,就用git pull
-![[Pasted image 20250520211204.png]]
+![[Pasted image 20250520211204.webp]]
 ___
 # 11.分支
 ## 快速创建文件
@@ -448,25 +448,25 @@ git switch -c <分支名>  #创建并切换到新分支
 
 测试:
 先用gitKraken图形化界面创建分支,会自动切换到该分支
-![[Pasted image 20250521153825.png]]
+![[Pasted image 20250521153825.webp]]
 用git branch <分支名>创建分支,不会切换到此分支
-![[Pasted image 20250521153239.png]]
+![[Pasted image 20250521153239.webp]]
 
 现在创建了两个分支
 main里除去第一次系统自动的提交,一共三次提交,并分别创建了了3个txt
 dev在上面操作完以后创建,一共两次提交,并分别创建了了2个txt
-![[Pasted image 20250521154530.png]]
+![[Pasted image 20250521154530.webp]]
 
 分别在两个分支中用ls列出文件
 可以看到main里看不见dev分支中的文件
 而dev分支看的见main分支文件
 这是因为操作的时机导致的, dev分支上的修改还没有合并到main分支中
-![[Pasted image 20250521154757.png]]
+![[Pasted image 20250521154757.webp]]
 
 又在main创建了两个文件
 可以从图形化界面发现,这里分叉了
 这个图是从下往上看的
-![[Pasted image 20250521155243.png]]
+![[Pasted image 20250521155243.webp]]
 
 ```shell
 #合并分支
@@ -480,18 +480,18 @@ git merge -m "合并登录功能" feature-login
 ```
 
 测试:
-![[Pasted image 20250521160347.png]]
+![[Pasted image 20250521160347.webp]]
 merge以后的图
-![[Pasted image 20250521160330.png]]
+![[Pasted image 20250521160330.webp]]
 merge以后,dev分支还是存在的,除非此时手动删除
 可用git branch -d <分支名>删除已经合并过的分支,没有合并过的分支要用-D
-![[Pasted image 20250521160612.png]]
+![[Pasted image 20250521160612.webp]]
 
 ```shell
 #查看分支图
 git log --graph --oneline --decorate --all
 ```
-![[Pasted image 20250521160532.png]]
+![[Pasted image 20250521160532.webp]]
 ___
 # 12.解决合并冲突
 
@@ -513,8 +513,8 @@ ___
 比如下图左边
 此时"当前分支"为dev,目标分支为main
 (所以可以理解为 和merge思路反一反)
-![[Pasted image 20250521165142.png]]
+![[Pasted image 20250521165142.webp]]
 
 这里有个专有名词叫变基
-![[Pasted image 20250521170737.png]]
+![[Pasted image 20250521170737.webp]]
 ___

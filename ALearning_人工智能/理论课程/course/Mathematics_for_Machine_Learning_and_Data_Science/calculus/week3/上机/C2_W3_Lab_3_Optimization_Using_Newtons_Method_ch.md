@@ -1,18 +1,14 @@
 ___
 # 利用牛顿法进行优化 (Optimization Using Newton's Method)
 
+在本实验中，你将通过代码实现**牛顿法 (Newton's method)**，对一元和二元函数进行优化求解。同时，你还将把它与**梯度下降法 (gradient descent)** 进行对比，亲身体会这两种算法各自的优缺点。
 
+___
+- [[#依赖库|依赖库]]
+- [[#1 - 一元函数优化|1 - 一元函数优化]]
+- [[#2 - 二元函数优化|2 - 二元函数优化]]
 
-在本实验中，你将通过代码实现牛顿法 (Newton's method)，对一元和二元函数进行优化求解。同时，你还将把它与梯度下降法 (gradient descent) 进行对比，亲身体会这两种算法各自的优缺点。
-
-# 目录
-
-* 1 - 一元函数优化
-
-
-* 2 - 二元函数优化
-
-
+___
 
 ## 依赖库
 
@@ -27,13 +23,14 @@ from matplotlib.gridspec import GridSpec
 
 ## 1 - 一元函数优化
 
-我们将使用牛顿法来优化一元函数 $f\left(x\right)$。为了寻找到导数等于零的极值点，我们需要从某个初始点 $x_0$ 出发，计算该点处的一阶导数与二阶导数 ( $f'(x_0)$ 与 $f''(x_0)$ )，然后依据下面的递推公式迈向下一个点：
+我们将使用牛顿法来优化一元函数 $f\left(x\right)$。为了寻找到==导数等于零的极值点==，我们需要从某个初始点 $x_0$ 出发，计算该点处的一阶导数与二阶导数 ( $f'(x_0)$ 与 $f''(x_0)$ )，然后依据下面的递推公式迈向下一个点：
 
 $$x_1 = x_0 - \frac{f'(x_0)}{f''(x_0)},\tag{1}$$
 
-接着按此规律迭代循环。迭代次数 $n$ 通常也是一个可调的超参数。
+接着按此规律迭代循环。==迭代次数 $n$ 通常也是一个可调的超参数==。
 
-现在，让我们利用牛顿法来优化函数 $f\left(x\right)=e^x - \log(x)$ ( 定义域为 $x>0$ )。在代码实现中，我们先定义目标函数 $f\left(x\right)=e^x - \log(x)$ 及其一阶导数 $f'(x)=e^x - \frac{1}{x}$ 和二阶导数 $f''(x)=e^x + \frac{1}{x^2}$：
+现在，让我们利用牛顿法来优化函数 $f\left(x\right)=e^x - \log(x)$ ( 定义域为 $x>0$ )。
+在代码实现中，我们先定义目标函数 $f\left(x\right)=e^x - \log(x)$ 及其一阶导数 $f'(x)=e^x - \frac{1}{x}$ 和二阶导数 $f''(x)=e^x + \frac{1}{x^2}$：
 
 ```python
 def f_example_1(x):
@@ -51,6 +48,7 @@ print(f"f'({x_0}) = {dfdx_example_1(x_0)}")
 print(f"f''({x_0}) = {d2fdx2_example_1(x_0)}")
 
 ```
+![[Pasted image 20261011224622.webp]]
 
 绘制函数图像，直观查看它的全局最小值 (global minimum)：
 
@@ -78,13 +76,14 @@ def plot_f(x_range, y_range, f, ox_position):
 plot_f([0.001, 2.5], [-0.3, 13], f_example_1, 0.0)
 
 ```
+![[Pasted image 20261011224719.webp|399]]
 
 实现上述的牛顿法：
 
 ```python
 def newtons_method(dfdx, d2fdx2, x, num_iterations=100):
     for iteration in range(num_iterations):
-        x = x - dfdx(x) / d2fdx2(x)
+        x = x - dfdx(x) / d2fdx2(x) #主要就是这个写死的公式
         print(x)
     return x
 
@@ -93,11 +92,15 @@ def newtons_method(dfdx, d2fdx2, x, num_iterations=100):
 在这个实现中，除了需要一阶和二阶导数外，还有两个输入参数：迭代步数 `num_iterations` 和初始点 `x`。为了优化函数，我们设定好参数并调用该算法：
 
 ```python
-num_iterations_example_1 = 25; x_initial = 1.6
-newtons_example_1 = newtons_method(dfdx_example_1, d2fdx2_example_1, x_initial, num_iterations_example_1)
+num_iterations_example_1 = 25
+x_initial = 1.6
+newtons_example_1 = newtons_method(
+    dfdx_example_1, d2fdx2_example_1, x_initial, num_iterations_example_1
+)
 print("Newton's method result: x_min =", newtons_example_1)
 
 ```
+![[Pasted image 20261012004827.webp|318]]
 
 可以看到，从初始点 $x_0 = 1.6$ 出发，牛顿法仅经过 $6$ 次迭代就实现了收敛。在实际工程中，当每一步的 $x$ 变化不再明显 ( 或者一阶导数已极度接近于零 ) 时，就可以提前跳出循环。
 
@@ -116,12 +119,13 @@ gd_example_1 = gradient_descent(dfdx_example_1, x_initial, learning_rate, num_it
 print("Gradient descent result: x_min =", gd_example_1) 
 
 ```
+![[Pasted image 20261012004926.webp|338]]
 
-梯度下降法多了一个控制步长的参数——学习率 (learning rate) `learning_rate`。若在本例中将其设为 `0.1`，算法大约需要 $15$ 次迭代才会逐渐收敛 ( 目标精度达到小数点后 4-5 位 )。即使将学习率提升到 `0.2`，收敛也需要约 $12$ 次迭代，速度依然明显落后于牛顿法。
+梯度下降法多了一个控制步长的参数——学习率 (learning rate) `learning_rate`。若在本例中将其设为 `0.1`，算法大约需要 $15$ 次迭代才会逐渐收敛 ( 目标精度达到小数点后 4-5 位 )。即使将学习率提升到 `0.2`，收敛也需要约 $12$ 次迭代，==速度依然明显落后于牛顿法==。
 
-相比牛顿法，这就是梯度下降法的劣势所在：需要额外调节超参数，而且收敛速度相对较慢。但它也有显著的优势——每一步迭代都无需计算二阶导数；而在更复杂的工程场景下，求二阶导数的计算开销是极其高昂的。因此，梯度下降法单步迭代的计算成本远比牛顿法轻量得多。
+相比牛顿法，这就是==梯度下降法的劣势所在：需要额外调节超参数，而且收敛速度相对较慢。==但它也有显著的==优势——每一步迭代都无需计算二阶导数==；而在更复杂的工程场景下，求二阶导数的计算开销是极其高昂的。因此，梯度下降法单步迭代的计算成本远比牛顿法轻量得多。
 
-这就是数值优化 (numerical optimization) 的真实世界：收敛速度与最终结果高度依赖于初始参数的选择。世上没有“完美”的算法，每种方案都是利弊权衡的结果。
+这就是**数值优化 (numerical optimization)** 的真实世界：收敛速度与最终结果高度依赖于初始参数的选择。世上没有“完美”的算法，每种方案都是利弊权衡的结果。
 
 ## 2 - 二元函数优化
 
@@ -129,16 +133,18 @@ print("Gradient descent result: x_min =", gd_example_1)
 
 $$\begin{bmatrix}x_1 \\ y_1\end{bmatrix} = \begin{bmatrix}x_0 \\ y_0\end{bmatrix} -  H^{-1}\left(x_0, y_0\right)\nabla f\left(x_0, y_0\right),\tag{2}$$
 
-式中，$H^{-1}\left(x_0, y_0\right)$ 表示函数在点 $(x_0, y_0)$ 处海森矩阵 (Hessian matrix) 的逆矩阵，而 $\nabla f\left(x_0, y_0\right)$ 则为该点处的梯度向量 (gradient)。
+式中，$H^{-1}\left(x_0, y_0\right)$ 表示函数在点 $(x_0, y_0)$ 处**海森矩阵 (Hessian matrix)** 的逆矩阵，而 $\nabla f\left(x_0, y_0\right)$ 则为该点处的**梯度向量 (gradient)**。
 
 让我们用代码实现这个过程。参照讲解视频，定义测试函数 $f(x, y)$ 及其对应的梯度与海森矩阵：
 
-\begin{align}
-f\left(x, y\right) &= x^4 + 0.8 y^4 + 4x^2 + 2y^2 - xy - 0.2x^2y,\
-\nabla f\left(x, y\right) &= \begin{bmatrix}4x^3 + 8x - y - 0.4xy \ 3.2y^3 + 4y - x - 0.2x^2\end{bmatrix}, \
-H\left(x, y\right) &= \begin{bmatrix}12x^2 + 8 - 0.4y && -1 - 0.4x \ -1 - 0.4x && 9.6y^2 + 4\end{bmatrix}.
-\end{align}
-
+$$
+\begin{aligned}
+f(x, y) &= x^4 + 0.8 y^4 + 4x^2 + 2y^2 - xy - 0.2x^2y, \\
+\nabla f(x, y) &= \begin{bmatrix} 4x^3 + 8x - y - 0.4xy \\ 3.2y^3 + 4y - x - 0.2x^2 \end{bmatrix}, \\
+H(x, y) &= \begin{bmatrix} 12x^2 + 8 - 0.4y & -1 - 0.4x \\ -1 - 0.4x & 9.6y^2 + 4 \end{bmatrix}.
+\end{aligned}
+$$
+(下面也是写死的)
 ```python
 def f_example_2(x, y):
     return x**4 + 0.8*y**4 + 4*x**2 + 2*y**2 - x*y -0.2*x**2*y
@@ -158,6 +164,7 @@ print(f"grad f{x_0, y_0} = \n{grad_f_example_2(x_0, y_0)}")
 print(f"H{x_0, y_0} = \n{hessian_f_example_2(x_0, y_0)}")
 
 ```
+![[Pasted image 20261012005237.webp]]
 
 运行以下代码单元格，将函数的曲面及等高线可视化：
 
@@ -204,27 +211,38 @@ def plot_f_cont_and_surf(f):
 plot_f_cont_and_surf(f_example_2)
 
 ```
+![[Pasted image 20261012005252.webp]]
 
 公式 $(2)$ 所描述的二元牛顿法由以下函数实现：
 
 ```python
 def newtons_method_2(f, grad_f, hessian_f, x_y, num_iterations=100):
     for iteration in range(num_iterations):
-        x_y = x_y - np.matmul(np.linalg.inv(hessian_f(x_y[0,0], x_y[1,0])), grad_f(x_y[0,0], x_y[1,0]))
+        x_y = x_y - np.matmul(
+            np.linalg.inv(hessian_f(x_y[0, 0], x_y[1, 0])), 
+                            grad_f(x_y[0, 0], x_y[1, 0])
+        )
         print(x_y.T)
     return x_y
-
+# 下面定义的输入是 第一行是x数据 第二行是y数据
+# (输入数据规格 还是和之前几个实验一样的思路 就是每行一个维度 一整列是一个输入数据)
 ```
 
 现在运行以下代码来寻找函数的极小值点：
 
 ```python
-num_iterations_example_2 = 25; x_y_initial = np.array([[4], [4]])
-newtons_example_2 = newtons_method_2(f_example_2, grad_f_example_2, hessian_f_example_2, 
-                                     x_y_initial, num_iterations=num_iterations_example_2)
+num_iterations_example_2 = 25
+x_y_initial = np.array([[4], [4]])
+newtons_example_2 = newtons_method_2(
+    f_example_2,
+    grad_f_example_2,
+    hessian_f_example_2,
+    x_y_initial,
+    num_iterations=num_iterations_example_2,
+)
 print("Newton's method result: x_min, y_min =", newtons_example_2.T)
-
 ```
+![[Pasted image 20261012005730.webp|341]]
 
 在本例中，以 $(4, 4)$ 作为初始点，牛顿法大约经过 $9$ 次迭代即可收敛。现在让我们来看看梯度下降法的表现：
 
@@ -241,12 +259,9 @@ gd_example_2 = gradient_descent_2(grad_f_example_2, x_y_initial, learning_rate_2
 print("Gradient descent result: x_min, y_min =", gd_example_2) 
 
 ```
+(这个总的输出老长了)
+    ![[Pasted image 20261012005918.webp|388]]
 
-显而易见，梯度下降法的收敛速度远慢于牛顿法。如果尝试调大步长提高学习率，甚至可能导致算法震荡发散而完全失效。这再次体现了梯度下降法相比牛顿法的局限。然而必须注意的是，牛顿法需要求解海森矩阵的逆；当面对成千上万个参数的复杂模型时，求逆运算带来的算力开销将是极其巨大的。
+显而易见，==梯度下降法的收敛速度远慢于牛顿法==。如果尝试调大步长提高学习率，甚至可能导致算法震荡发散而完全失效。这==再次体现了梯度下降法相比牛顿法的局限==。然而必须注意的是，牛顿法需要求解海森矩阵的逆；当面对成千上万个参数的复杂模型时，==求逆运算带来的算力开销将是极其巨大的==。
 
 祝贺你顺利完成本实验！
-
-```python
-
-
-```

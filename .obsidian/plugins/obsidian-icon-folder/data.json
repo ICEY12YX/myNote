@@ -5,7 +5,11 @@
     "fontSize": 16,
     "emojiStyle": "native",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "LiBadgeAlert",
+      "LiBadgeHelp",
+      "LiAlertTriangle"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
@@ -27,5 +31,13 @@
     "lucideIconPackType": "native",
     "debugMode": false,
     "useInternalPlugins": false
+  },
+  "ALearning_人工智能/理论课程/问题合集": {
+    "iconName": "LiBadgeHelp",
+    "iconColor": "#ca4949"
+  },
+  "ALearning_人工智能/Python/特性专题": {
+    "iconName": "LiBadgeAlert",
+    "iconColor": "#22b43f"
   }
 }
