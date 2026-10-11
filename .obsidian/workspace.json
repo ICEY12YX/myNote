@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 29.278887923544744,
+        "dimension": 47.18498659517426,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -55,17 +55,17 @@
             }
           },
           {
-            "id": "246cf98ccb6573f1",
+            "id": "24058932fe1a97d2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Lab_2_Classification_with_Perceptron.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_2_Classification_with_Perceptron_ch.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C2_W3_Lab_2_Classification_with_Perceptron"
+              "title": "C2_W3_Lab_2_Classification_with_Perceptron_ch"
             }
           }
         ],
@@ -74,7 +74,7 @@
       {
         "id": "008903b748626b2d",
         "type": "tabs",
-        "dimension": 70.72111207645526,
+        "dimension": 52.81501340482574,
         "children": [
           {
             "id": "b143eb0bd2919bf4",
@@ -88,34 +88,6 @@
               },
               "icon": "lucide-file",
               "title": "01"
-            }
-          },
-          {
-            "id": "24058932fe1a97d2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "C2_W2_Assignment_ch"
-            }
-          },
-          {
-            "id": "2119f61eb6a67952",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_1_Regression_with_Perceptron_ch.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "C2_W3_Lab_1_Regression_with_Perceptron_ch"
             }
           },
           {
@@ -133,7 +105,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -167,8 +139,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "transpose",
-                "matchingCase": true,
+                "query": "",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -192,7 +164,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 241.5
+    "width": 315.1000061035156,
+    "collapsed": true
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -287,34 +260,35 @@
   },
   "active": "dfc0bafce340fabc",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012011037.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791750173544.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791750133707.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791750098157.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791750039961.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791749744616.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_2_Classification_with_Perceptron_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_1_Regression_with_Perceptron_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791747669633.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791746669424.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791744540704.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791744526779.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791744517309.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Lab_2_Classification_with_Perceptron.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/C2_W3_Assignment_ch-1791741880494.webp",
     "AAA学习日常/乱七八糟的bug问题/未命名 1.md",
     "工具使用/加速器/盘古加速器.md",
     "工具使用/wallpaper pkg文件 转 静态图片.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Lab_1_Regression_with_Perceptron.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_3_Optimization_Using_Newtons_Method_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012005918.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012005730.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012005252.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012005237.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012004926.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261012004827.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261011224719.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261011224622.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_2_Classification_with_Perceptron_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src/Pasted image 20261011223440.webp",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Assignment.md",
     "ALearning_人工智能/Python/特性专题/numpy/矩阵乘法.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
     "ALearning_人工智能/理论课程/问题合集/关于训练完以后怎么判断预测的准不准.md",
     "未命名.md",
     "未命名 1.md",
     "ALearning_人工智能/Python/future list.md",
     "ALearning_人工智能/Python/特性专题/python_base",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/英文原版/C2_W3_Lab_2_Classification_with_Perceptron.md",
     "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/Python/特性专题/numpy/轴的问题.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/英文原版/C2_W2_Assignment.md",

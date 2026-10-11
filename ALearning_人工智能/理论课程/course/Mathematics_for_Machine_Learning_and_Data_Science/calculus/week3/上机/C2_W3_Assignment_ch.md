@@ -99,11 +99,16 @@ plt.plot()
     我们上面写死了2条线,  看看效果
     反正就是一条线在上图的情况,根本分不出2类
 
-这种逻辑在现实生活里非常普遍。举个例子，假设我们希望训练一个模型，根据房屋的“面积大小”与“建造年份”来预测是否值得购买：一套又大又新的房子价格往往高不可攀让人难以承受，而一套又小又破的旧房子则缺乏购买价值。因此，最终吸引你的可能是“面积大但房龄老的房子”，或是“面积紧凑但崭新的新房”。
+这种逻辑在现实生活里非常普遍。
+举个例子，假设我们希望训练一个模型，根据房屋的==“面积大小”与“建造年份”==来预测是否值得购买：
+    或者说受欢迎程度
+一套又大又新的房子价格往往高不可攀让人难以承受，而一套又小又破的旧房子则缺乏购买价值。因此，==最终吸引你的可能是“面积大但房龄老的房子”，或是“面积紧凑但崭新的新房”。==
 
-对于这类非线性分布的分类问题，单个感知机显然已无法胜任。接下来，让我们来看看如何调整并升级模型架构来攻克这一难题。
+==对于这类非线性分布的分类问题，单个感知机显然已无法胜任。==接下来，让我们来看看如何调整并升级模型架构来攻克这一难题。
 
-在上面的图示中，需要两条直线协同配合才能形成有效的决策边界。你的直觉可能会提醒：既然一条线对应一个感知机，那么我们是否应该增加感知机的数量？答案完全正确！我们需要将数据点的坐标 $(x_1, x_2)$ 同时输入到两个独立的节点中分别计算，然后再把它们的结果汇集到下一个节点中做出统一判定。
+在上面的图示中，==需要两条直线协同配合才能形成有效的决策边界。==你的直觉可能会提醒：
+- 既然一条线对应一个感知机，那么我们是否应该增加感知机的数量？
+答案完全正确！我们需要将数据点的坐标 $(x_1, x_2)$ ==同时输入到两个独立的节点==中分别计算，然后再把它们的==结果汇集到下一个节点==中做出统一判定。
 
 现在，就让我们深入探究其中的数学奥秘，动手搭建并训练你的第一个多层神经网络吧！
 
@@ -111,59 +116,110 @@ plt.plot()
 
 ### 2.1 - 面向单个训练样本的双层神经网络模型
 
-该网络的输入层 (Input Layer) 和输出层 (Output Layer) 与单感知机模型结构相似，但在它们之间新增了一个隐藏层 (Hidden Layer) 。来自输入层且维度为 $n_x = 2$ 的训练样本 $x^{(i)}=\begin{bmatrix}x_1^{(i)} \\ x_2^{(i)}\end{bmatrix}$，首先会被送入大小为 $n_h = 2$ 的隐藏层。数据会被并行输入到隐藏层的两个感知机中：第一个感知机的权重为 $W_1^{[1]}=\begin{bmatrix}w_{1,1}^{[1]} & w_{2,1}^{[1]}\end{bmatrix}$、偏置 (Bias) 为 $b_1^{[1]}$；第二个感知机的权重为 $W_2^{[1]}=\begin{bmatrix}w_{1,2}^{[1]} & w_{2,2}^{[1]}\end{bmatrix}$、偏置为 $b_2^{[1]}$。在上标方括号 $^{[1]}$ 中的整数代表当前所在的层数——由于模型现在拥有两层，各层都有自己专属的参数与运算输出，因此需要以此严加区分。
+![[C2_W3_Assignment_ch-1791741880494.webp]]
 
+
+该网络的**输入层 (Input Layer)** 和**输出层 (Output Layer)** 与单感知机模型结构相似，但在它们之间新增了一个**隐藏层 (Hidden Layer)** 。
+来自输入层且==维度==为 $n_x = 2$ 的训练样本 $x^{(i)}=\begin{bmatrix}x_1^{(i)} \\ x_2^{(i)}\end{bmatrix}$，首先会被送入==节点大小==为 $n_h = 2$ 的**隐藏层**。数据会被并行输入到隐藏层的两个感知机中：
+- 第一个感知机的权重为 $W_1^{[1]}=\begin{bmatrix}w_{1,1}^{[1]} & w_{2,1}^{[1]}\end{bmatrix}$、偏置 (Bias) 为 $b_1^{[1]}$；
+- 第二个感知机的权重为 $W_2^{[1]}=\begin{bmatrix}w_{1,2}^{[1]} & w_{2,2}^{[1]}\end{bmatrix}$、偏置为 $b_2^{[1]}$。
+在上标方括号 $^{[1]}$ 中的整数代表==当前所在的层数==——由于模型现在拥有两层，各层都有自己专属的参数与运算输出，因此需要以此严加区分。
+
+$$
 \begin{align}
-z_1^{[1](https://www.google.com/search?q=i)} &= w_{1,1}^{[1]} x_1^{(i)} + w_{2,1}^{[1]} x_2^{(i)} + b_1^{[1]} = W_1^{[1]}x^{(i)} + b_1^{[1]},\
-z_2^{[1](https://www.google.com/search?q=i)} &= w_{1,2}^{[1]} x_1^{(i)} + w_{2,2}^{[1]} x_2^{(i)} + b_2^{[1]} = W_2^{[1]}x^{(i)} + b_2^{[1]}.\tag{1}
+z_1^{[1](i)} &= w_{1,1}^{[1]} x_1^{(i)} + w_{2,1}^{[1]} x_2^{(i)} + b_1^{[1]} = W_1^{[1]}x^{(i)} + b_1^{[1]},\\
+z_2^{[1](i)} &= w_{1,2}^{[1]} x_1^{(i)} + w_{2,2}^{[1]} x_2^{(i)} + b_2^{[1]} = W_2^{[1]}x^{(i)} + b_2^{[1]}.\tag{1}
 \end{align}
+$$
+    反正 方括号 是层数
+    圆括号 或 下面的角标 代表当前层第几个
+        圆括号 好像只有输入输出有
+        要调整的参数都是下面角标+头顶点层数的方括号
 
-对于单个训练样本 $x^{(i)}$，上述公式可以紧凑地改写为矩阵形式：
+💗💗💗
+w1,1 w2,1  前面的数代表x第几维输入(x1还是x2), 后面的数代表 现在再给那个节点干活
+
+
+对于==单个训练样本== $x^{(i)}$，上述公式可以紧凑地改写为矩阵形式：
 
 $$z^{[1](i)} = W^{[1]} x^{(i)} + b^{[1]},\tag{2}$$
 
 其中：
+- $$z^{[1](i)} = \begin{bmatrix} z_1^{[1](i)} \\ z_2^{[1](i)} \end{bmatrix}$$
+  是形状为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的列向量 (Vector)；
 
-    $z^{[1](i)} = \begin{bmatrix}z_1^{[1](i)} \\ z_2^{[1](i)}\end{bmatrix}$ 是形状为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的列向量 (Vector) ；
+- $$W^{[1]} = \begin{bmatrix} W_1^{[1]} \\ W_2^{[1]} \end{bmatrix} = \begin{bmatrix} w_{1,1}^{[1]} & w_{2,1}^{[1]} \\ w_{1,2}^{[1]} & w_{2,2}^{[1]} \end{bmatrix}$$
+  是形状为 $\left(n_h \times n_x\right) = \left(2 \times 2\right)$ 的权重矩阵 (Matrix)；
 
-    $W^{[1]} = \begin{bmatrix}W_1^{[1]} \\ W_2^{[1]}\end{bmatrix} =  \begin{bmatrix}w_{1,1}^{[1]} & w_{2,1}^{[1]} \\ w_{1,2}^{[1]} & w_{2,2}^{[1]}\end{bmatrix}$ 是形状为 $\left(n_h \times n_x\right) = \left(2 \times 2\right)$ 的权重矩阵 (Matrix) ；
+- $$b^{[1]} = \begin{bmatrix} b_1^{[1]} \\ b_2^{[1]} \end{bmatrix}$$
+  是形状为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的偏置向量。
 
-    $b^{[1]} = \begin{bmatrix}b_1^{[1]} \\ b_2^{[1]}\end{bmatrix}$ 是形状为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的偏置向量。
+(nx是输入维数 nh隐藏层节点数 m是数据个数)
+(现在x还是单个数据)
+x (nx 1)
+总之 现在一个输出要输入多个节点了  
+那对于单个输入  
+    输出 首先像图上那样 竖着长
+        所以是 (nh 1)
+    b向量随输出
+        所以也是 (nh 1)
+    所以反推w
+        是 (nh nx)
+        一行 x 一列 得到z
+            所以w 的一行是一个节点的几个参数
+            那么一列就是 针对一个输入数据的不同节点的参数
+    
 
-接下来，需要对向量 $z^{[1](i)}$ 中的每一个分量分别施加隐藏层的激活函数 (Activation Function) 。在神经网络中可以选择多种不同的激活函数，本模型采用经典的 Sigmoid 函数 $\sigma\left(x\right) = \frac{1}{1 + e^{-x}}$。请牢记它的导数性质：$\frac{d\sigma}{dx} = \sigma\left(x\right)\left(1-\sigma\left(x\right)\right)$。经激活后，隐藏层输出的是一个维度为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的激活向量：
-
+接下来，需要对向量 $z^{[1](i)}$ 中的每一个分量分别施加隐藏层的**激活函数 (Activation Function)** 。在神经网络中可以选择多种不同的激活函数，本模型采用经典的 Sigmoid 函数 $\sigma\left(x\right) = \frac{1}{1 + e^{-x}}$。请牢记它的导数性质：$\frac{d\sigma}{dx} = \sigma\left(x\right)\left(1-\sigma\left(x\right)\right)$。经激活后，隐藏层输出的是一个维度为 $\left(n_h \times 1\right) = \left(2 \times 1\right)$ 的激活向量：
+    shape没变
 $$a^{[1](i)} = \sigma\left(z^{[1](i)}\right) =  \begin{bmatrix}\sigma\left(z_1^{[1](i)}\right) \\ \sigma\left(z_2^{[1](i)}\right)\end{bmatrix}.\tag{3}$$
 
-随后，隐藏层的输出向量会被作为输入传入节点数为 $n_y = 1$ 的输出层。这部分与上一实验的内容完全一致，唯一的差异仅在于：此处将先前的原始输入 $x^{(i)}$ 替换为了隐藏层的特征表示 $a^{[1](i)}$，并且参数与输出都标注了层数上标 $^{[2]}$：
+随后，隐藏层的输出向量会被作为输入传入==节点数==为 $n_y = 1$ 的输出层。这部分与上一实验的内容完全一致，唯一的差异仅在于：此处将先前的原始输入 $x^{(i)}$ 替换为了隐藏层的特征表示 $a^{[1](i)}$，并且参数与输出都标注了层数上标 $^{[2]}$：
 
 $$z^{[2](i)} = w_1^{[2]} a_1^{[1](i)} + w_2^{[2]} a_2^{[1](i)} + b^{[2]}= W^{[2]} a^{[1](i)} + b^{[2]},\tag{4}$$
+    因为是 第一次出现a 所以是a[1]
+    后面这个z[2]再经过一次sigmoid 产出的a就是a[2]
 
-    由于 $\left(n_y \times 1\right) = \left(1 \times 1\right)$，在此模型中 $z^{[2](i)}$ 和 $b^{[2]}$ 均为标量；
 
-    $W^{[2]} = \begin{bmatrix}w_1^{[2]} & w_2^{[2]}\end{bmatrix}$ 则是维度为 $\left(n_y \times n_h\right) = \left(1 \times 2\right)$ 的行向量。
+由于 $\left(n_y \times 1\right) = \left(1 \times 1\right)$，在此模型中 $z^{[2](i)}$ 和 $b^{[2]}$ 均为标量；
+
+- $$W^{[2]} = \begin{bmatrix} w_1^{[2]} & w_2^{[2]} \end{bmatrix}$$
+  则是维度为 $\left(n_y \times n_h\right) = \left(1 \times 2\right)$ 的行向量。
+
+现在的输入是a
+a (nh 1)  随刚刚的`z[1]`
+    `z[2]` 此时肯定是 (1  1) 或(ny  1)
+    b 也是 (1  1)
+    w就是 (1  nh)  或(ny  nh)
+
+💖💖💖其实是有规律的上面这层 和 这边多看几遍
+
 
 最后，输出层同样采用 Sigmoid 函数进行非线性映射：
 
 $$a^{[2](i)} = \sigma\left(z^{[2](i)}\right).\tag{5}$$
 
-综上所述，针对单个样本 $x^{(i)}$ 的双层神经网络前向运算全流程可以通过公式 $(2) - (5)$ 完整表达。为了便于对照查阅，我们将其汇总排列在一起：
+综上所述，针对==单个样本== $x^{(i)}$ 的双层神经网络前向运算全流程可以通过公式 $(2) - (5)$ 完整表达。为了便于对照查阅，我们将其汇总排列在一起：
 
+$$
 \begin{align}
-z^{[1](https://www.google.com/search?q=i)} &= W^{[1]} x^{(i)} + b^{[1]},\
-a^{[1](https://www.google.com/search?q=i)} &= \sigma\left(z^{[1](https://www.google.com/search?q=i)}\right),\
-z^{[2](https://www.google.com/search?q=i)} &= W^{[2]} a^{[1](https://www.google.com/search?q=i)} + b^{[2]},\
-a^{[2](https://www.google.com/search?q=i)} &= \sigma\left(z^{[2](https://www.google.com/search?q=i)}\right).\
+z^{[1](i)} &= W^{[1]} x^{(i)} + b^{[1]},\\
+a^{[1](i)} &= \sigma\left(z^{[1](i)}\right),\\
+z^{[2](i)} &= W^{[2]} a^{[1](i)} + b^{[2]},\\
+a^{[2](i)} &= \sigma\left(z^{[2](i)}\right).\\
 \tag{6}
 \end{align}
+$$
 
-需要特别注意：模型中所有待优化的权重与偏置参数均不带有样本索引上标 $^{(i)}$——因为它们独立于具体的输入数据，是全数据集共享的模型参数。
+需要特别注意：==**模型中所有待优化的权重与偏置参数均不带有样本索引上标**== $^{(i)}$——因为它们独立于具体的输入数据，是全数据集共享的模型参数。
 
-最终，对于任意输入样本 $x^{(i)}$，只需依据输出概率值 $a^{[2](i)}$ 设定判别阈值，即可得到离散的分类预测类别 $\hat{y}$：当 $a^{[2](i)} > 0.5$ 时，预测 $\hat{y} = 1$；否则 $\hat{y} = 0$。
+最终，对于任意输入样本 $x^{(i)}$，只需==依据输出概率==值 $a^{[2](i)}$ ==设定判别阈值==，即可得到离散的分类预测类别 $\hat{y}$： $\hat{y} = \begin{cases} 1 & \mbox{if } a^{[2](i)} > 0.5, \\ 0 & \mbox{otherwise }. \end{cases}$.
 
 ### 2.2 - 面向多个训练样本的双层神经网络模型
 
 类似于单感知机模型，我们可以将全部 $m$ 个训练样本整合成一个形状为 ($2 \times m$) 的输入矩阵 $X$，其中每一列对应一个具体的样本向量 $x^{(i)}$。此时，公式 $(6)$ 即可优雅地转化为面向全数据集的向量化 (Vectorization) 矩阵乘法：
 
+$$
 \begin{align}
 Z^{[1]} &= W^{[1]} X + b^{[1]},\
 A^{[1]} &= \sigma\left(Z^{[1]}\right),\
@@ -171,80 +227,129 @@ Z^{[2]} &= W^{[2]} A^{[1]} + b^{[2]},\
 A^{[2]} &= \sigma\left(Z^{[2]}\right),\
 \tag{7}
 \end{align}
+$$
 
 在此计算中，标量或列向量形式的偏置 $b^{[1]}$ 会通过广播机制扩展为形状为 $\left(n_h \times m\right) = \left(2 \times m\right)$ 的矩阵，而 $b^{[2]}$ 则会被广播扩展为 $\left(n_y \times m\right) = \left(1 \times m\right)$ 的行向量。强烈建议你仔细推演公式 $(7)$ 中各个矩阵的维数，验证它们是否满足矩阵相乘的尺寸对齐法则。
+
+💖💖💖下面这个多看几遍就熟了 前面几个实验的矩阵shape也是这个思路
+输入,输出
+    数据多 就横着长
+    维度多就竖着长
+
+
+层一
+(nx是输入维数 nh隐藏层节点数 m是数据个数)
+(现在x是m个数据)
+x (nx m)
+总之 现在一个输出要输入多个节点了  
+那对于单个输入  
+    输出z(2个节点的合并) 首先像图上那样 竖着长
+        所以是 (nh m)
+    b向量随输出
+        所以也是 (nh m)
+    所以反推w
+        是 (nh nx)
+        一行 x 一列 得到z
+            所以w 的一行是一个节点的几个参数
+            那么一列就是 针对一个输入数据的不同节点的参数
+
+层二
+现在的输入是a
+a (nh m)  随刚刚的`z[1]`
+    `z[2]` 此时肯定是 (1  m) 或(ny  m)
+    b 也是 (1  m)  或(ny  m)
+    w就是 (1  nh)  或(ny  nh)
+
 
 至此，前向传播的数学表达已全部构建完成。接下来，是时候对模型的效果进行评估，并开启训练优化之路了。
 
 ### 2.3 - 代价函数与模型训练
 
-为了评估并衡量该神经网络的分类性能，我们沿用单感知机分类时所采用的对数损失函数 (Log Loss Function) 。在模型刚开始被赋予随机权重时其预测效果往往很差，我们需要通过模型训练：寻找一组最优参数组合 $W^{[1]}$、$b^{[1]}$、$W^{[2]}$ 和 $b^{[2]}$，使整体代价函数降至最低。
+为了评估并衡量该神经网络的分类性能，我们沿用单感知机分类时所采用的对数**损失函数 (Log Loss Function)** 。在模型刚开始被赋予随机权重时其预测效果往往很差，我们需要通过模型训练：寻找一组最优参数组合 $W^{[1]}$、$b^{[1]}$、$W^{[2]}$ 和 $b^{[2]}$，使整体代价函数降至最低。
 
 与单感知机神经网络类似，整体代价函数可以定义为：
+    就是输出现在是a2
+注意
+    不拿y hat写进损失函数哦
+    [[C2_W3_Lab_2_Classification_with_Perceptron_ch]]
 
-$$\mathcal{L}\left(W^{[1]}, b^{[1]}, W^{[2]}, b^{[2]}\right) = \frac{1}{m}\sum_{i=1}^{m} L\left(W^{[1]}, b^{[1]}, W^{[2]}, b^{[2]}\right) =  \frac{1}{m}\sum_{i=1}^{m}  \large\left(\small - y^{(i)}\log\left(a^{[2](i)}\right) - (1-y^{(i)})\log\left(1- a^{[2](i)}\right)  \large  \right), \small\tag{8}$$
+
+![[C2_W3_Assignment_ch-1791744540704.webp]]
 
 式中 $y^{(i)} \in \{0,1\}$ 为样本真实的分类标签，而 $a^{[2](i)}$ 则代表前向传播计算得出的连续输出概率值 (对应矩阵 $A^{[2]}$ 中的对应元素) 。
 
 为了最小化代价函数，我们使用梯度下降法 (Gradient Descent) ，按照如下规则对各项参数进行迭代更新：
 
+$$
 \begin{align}
-W^{[1]} &= W^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[1]} },\
-b^{[1]} &= b^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[1]} },\
-W^{[2]} &= W^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[2]} },\
-b^{[2]} &= b^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[2]} },\
+W^{[1]} &= W^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[1]} },\\
+b^{[1]} &= b^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[1]} },\\
+W^{[2]} &= W^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[2]} },\\
+b^{[2]} &= b^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[2]} },\\
 \tag{9}
 \end{align}
+$$
 
-其中 $\alpha$ 为控制更新步长的学习率 (Learning Rate) 。
+其中 $\alpha$ 为控制更新步长的**学习率 (Learning Rate)** 。
 
 为了完成参数的更新，我们必须分别求解出对应的偏导数 (Partial Derivative) ：$\frac{\partial \mathcal{L} }{ \partial W^{[1]}}$、$\frac{\partial \mathcal{L} }{ \partial b^{[1]}}$、$\frac{\partial \mathcal{L} }{ \partial W^{[2]}}$ 以及 $\frac{\partial \mathcal{L} }{ \partial b^{[2]}}$。
 
-让我们从网络的末端反向推演。首先回顾单感知机神经网络中关于 $\frac{\partial \mathcal{L} }{ \partial W }$ 与 $\frac{\partial \mathcal{L} }{ \partial b }$ 的计算形式：
-
+让我们从网络的末端反向推演。首先==回顾==单感知机神经网络中关于 $\frac{\partial \mathcal{L} }{ \partial W }$ 与 $\frac{\partial \mathcal{L} }{ \partial b }$ 的计算形式：
+$$
 \begin{align}
-\frac{\partial \mathcal{L} }{ \partial W } &=
-\frac{1}{m}\left(A-Y\right)X^T,\
-\frac{\partial \mathcal{L} }{ \partial b } &=
-\frac{1}{m}\left(A-Y\right)\mathbf{1},\
+\frac{\partial \mathcal{L} }{ \partial W } &= 
+\frac{1}{m}\left(A-Y\right)X^T,\\
+\frac{\partial \mathcal{L} }{ \partial b } &= 
+\frac{1}{m}\left(A-Y\right)\mathbf{1},\\
 \end{align}
+$$
+其中的 $\mathbf{1}$ 代表维度为 ($m \times 1$) 的全 1 向量。
 
-其中的 $\mathbf{1}$ 代表维度为 ($m \times 1$) 的全 1 向量。在当前的双层架构中，原先的感知机被移到了第 2 层，因此只需将对应符号进行替换：将 $W$ 替换为 $W^{[2]}$、$b$ 替换为 $b^{[2]}$、$A$ 替换为 $A^{[2]}$，而输入 $X$ 则替换为来自前一层的隐藏特征 $A^{[1]}$：
+在当前的双层架构中，原先的感知机被移到了第 2 层，因此==只需将对应符号进行替换==：将 $W$ 替换为 $W^{[2]}$、$b$ 替换为 $b^{[2]}$、$A$ 替换为 $A^{[2]}$，而输入 $X$ 则替换为来自前一层的隐藏特征 $A^{[1]}$：
 
+$$
 \begin{align}
-\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\
-\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1}.\
+\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\\
+\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1}.\\
 \tag{10}
 \end{align}
+$$
 
 接下来，推导针对第一层权重的梯度 $\frac{\partial \mathcal{L} }{ \partial W^{[1]}} =  \begin{bmatrix} \frac{\partial \mathcal{L} }{ \partial w_{1,1}^{[1]}} & \frac{\partial \mathcal{L} }{ \partial w_{2,1}^{[1]}} \\ \frac{\partial \mathcal{L} }{ \partial w_{1,2}^{[1]}} & \frac{\partial \mathcal{L} }{ \partial w_{2,2}^{[1]}} \end{bmatrix}$。在课程视频中已经阐明：
 
 $$\frac{\partial \mathcal{L} }{ \partial w_{1,1}^{[1]}}=\frac{1}{m}\sum_{i=1}^{m} \left(  \left(a^{[2](i)} - y^{(i)}\right)  w_1^{[2]}  \left(a_1^{[1](i)}\left(1-a_1^{[1](i)}\right)\right) x_1^{(i)}\right)\tag{11}$$
 
-如果对矩阵 $\frac{\partial \mathcal{L} }{ \partial W^{[1]}}$ 中的每个元素都严谨地展开求导，将会得到如下矩阵：
+如果对矩阵 $\frac{\partial \mathcal{L} }{ \partial W^{[1]}}$ 中的每个元素都严谨地展开求导，将会得到如下==矩阵==：
 
 $$\frac{\partial \mathcal{L} }{ \partial W^{[1]}} = \begin{bmatrix} \frac{\partial \mathcal{L} }{ \partial w_{1,1}^{[1]}} & \frac{\partial \mathcal{L} }{ \partial w_{2,1}^{[1]}} \\ \frac{\partial \mathcal{L} }{ \partial w_{1,2}^{[1]}} & \frac{\partial \mathcal{L} }{ \partial w_{2,2}^{[1]}} \end{bmatrix}$$
 
 $$= \frac{1}{m}\begin{bmatrix} \sum_{i=1}^{m} \left( \left(a^{[2](i)} - y^{(i)}\right) w_1^{[2]} \left(a_1^{[1](i)}\left(1-a_1^{[1](i)}\right)\right) x_1^{(i)}\right) &  \sum_{i=1}^{m} \left( \left(a^{[2](i)} - y^{(i)}\right) w_1^{[2]} \left(a_1^{[1](i)}\left(1-a_1^{[1](i)}\right)\right) x_2^{(i)}\right)  \\ \sum_{i=1}^{m} \left( \left(a^{[2](i)} - y^{(i)}\right) w_2^{[2]} \left(a_2^{[1](i)}\left(1-a_2^{[1](i)}\right)\right) x_1^{(i)}\right) &  \sum_{i=1}^{m} \left( \left(a^{[2](i)} - y^{(i)}\right) w_2^{[2]} \left(a_2^{[1](i)}\left(1-a_2^{[1](i)}\right)\right) x_2^{(i)}\right)\end{bmatrix}\tag{12}$$
 
-细致观察可以发现，其中各分项与下标的排布具有极高的对称性与规律性，这意味着它们同样可以整合为高度凝练的矩阵相乘形式！确实如此：转置矩阵 $\left(W^{[2]}\right)^T = \begin{bmatrix}w_1^{[2]} \\ w_2^{[2]}\end{bmatrix}$ 的尺寸为 $\left(n_h \times n_y\right) = \left(2 \times 1\right)$，当它与尺寸为 $\left(n_y \times m\right) = \left(1 \times m\right)$ 的误差向量 $A^{[2]} - Y$ 相乘时，即可得到一个形状为 $\left(n_h \times m\right) = \left(2 \times m\right)$ 的矩阵：
+细致观察可以发现，其中各分项与下标的排布具有极高的对称性与规律性，这意味着它们同样可以整合为高度凝练的矩阵相乘形式！
+
+从上面那个矩阵出发 想法设法把相同的部分拆出来
+    就有了下面的推导
+    很难理解 只能从上面反推
+        nh,m 是 nh,ny 乘 ny,m
+    然后继续一步步拆
+
+确实如此：转置矩阵 $\left(W^{[2]}\right)^T = \begin{bmatrix}w_1^{[2]} \\ w_2^{[2]}\end{bmatrix}$ 的尺寸为 $\left(n_h \times n_y\right) = \left(2 \times 1\right)$，当它与尺寸为 $\left(n_y \times m\right) = \left(1 \times m\right)$ 的误差向量 $A^{[2]} - Y$ 相乘时，即可得到一个形状为 $\left(n_h \times m\right) = \left(2 \times m\right)$ 的矩阵：
 
 $$\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)= \begin{bmatrix}w_1^{[2]} \\ w_2^{[2]}\end{bmatrix} \begin{bmatrix}\left(a^{[2](1)} - y^{(1)}\right) &  \cdots & \left(a^{[2](m)} - y^{(m)}\right)\end{bmatrix} =\begin{bmatrix} \left(a^{[2](1)} - y^{(1)}\right) w_1^{[2]} & \cdots & \left(a^{[2](m)} - y^{(m)}\right) w_1^{[2]} \\ \left(a^{[2](1)} - y^{(1)}\right) w_2^{[2]} & \cdots & \left(a^{[2](m)} - y^{(m)}\right) w_2^{[2]} \end{bmatrix}$$
 
-
-.
 
 现在取同为 $\left(n_h \times m\right) = \left(2 \times m\right)$ 维度的矩阵 $A^{[1]}$：
 
 $$A^{[1]} =\begin{bmatrix} a_1^{[1](1)} & \cdots & a_1^{[1](m)} \\ a_2^{[1](1)} & \cdots & a_2^{[1](m)} \end{bmatrix},$$
 
 我们可以计算：
+    注意这里是的点乘 不是dot点积 而是逐个元素相乘
 
 $$A^{[1]}\cdot\left(1-A^{[1]}\right) =\begin{bmatrix} a_1^{[1](1)}\left(1 - a_1^{[1](1)}\right) & \cdots & a_1^{[1](m)}\left(1 - a_1^{[1](m)}\right) \\ a_2^{[1](1)}\left(1 - a_2^{[1](1)}\right) & \cdots & a_2^{[1](m)}\left(1 - a_2^{[1](m)}\right) \end{bmatrix},$$
 
-这里的“$\cdot$”代表逐元素乘法 (Element by Element Multiplication，即 Hadamard 积) 。
+这里的“$\cdot$”代表**逐元素乘法 (Element by Element Multiplication**，即 Hadamard 积) 。
 
 通过逐元素相乘，我们得到：
 
@@ -261,6 +366,9 @@ $$=\begin{bmatrix} \sum_{i=1}^{m} \left( \left(a^{[2](i)} - y^{(i)}\right) w_1^{
 $$\frac{\partial \mathcal{L} }{ \partial W^{[1]}} = \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T\tag{13},$$
 
 其中“$\cdot$”依旧代表逐元素乘法。
+    可以略过证明 ,反正就用这个式子就好了
+    至少知道每个W  A是啥就好了
+        这个看前面自己写的笔记
 
 针对偏置的梯度向量 $\frac{\partial \mathcal{L} }{ \partial b^{[1]}}$ 求解过程十分类似，只是在链式法则 (Chain Rule) 的末端对应偏导项为 $1$，即 $\frac{\partial z_1^{[1](i)}}{ \partial b_1^{[1]}} = 1$。因此可得：
 
@@ -270,15 +378,17 @@ $$\frac{\partial \mathcal{L} }{ \partial b^{[1]}} = \frac{1}{m}\left(\left(W^{[2
 
 至此，公式 $(10)$、$(13)$ 和 $(14)$ 便构成了反向传播更新参数 $(9)$ 时所需的全部梯度计算法则：
 
+$$
 \begin{align}
-\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\
-\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1},\
-\frac{\partial \mathcal{L} }{ \partial W^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T,\
-\frac{\partial \mathcal{L} }{ \partial b^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)\mathbf{1},\
+\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\\
+\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1},\\
+\frac{\partial \mathcal{L} }{ \partial W^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T,\\
+\frac{\partial \mathcal{L} }{ \partial b^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)\mathbf{1},\\
 \tag{15}
 \end{align}
+$$
 
 其中 $\mathbf{1}$ 为维度为 ($m \times 1$) 的全 1 向量。
 
@@ -292,22 +402,26 @@ $$\frac{\partial \mathcal{L} }{ \partial b^{[1]}} = \frac{1}{m}\left(\left(W^{[2
 
 ```python
 m = 2000
-samples, labels = make_blobs(n_samples=m, 
-                             centers=([2.5, 3], [6.7, 7.9], [2.1, 7.9], [7.4, 2.8]), 
-                             cluster_std=1.1,
-                             random_state=0)
+samples, labels = make_blobs(
+    n_samples=m,
+    centers=([2.5, 3], [6.7, 7.9], [2.1, 7.9], [7.4, 2.8]),
+    cluster_std=1.1,
+    random_state=0,
+)
 labels[(labels == 0) | (labels == 1)] = 1
 labels[(labels == 2) | (labels == 3)] = 0
 X = np.transpose(samples)
 Y = labels.reshape((1, m))
 
-plt.scatter(X[0, :], X[1, :], c=Y, cmap=colors.ListedColormap(['blue', 'red']));
-
-print ('The shape of X is: ' + str(X.shape))
-print ('The shape of Y is: ' + str(Y.shape))
-print ('I have m = %d training examples!' % (m))
+plt.scatter(X[0, :], X[1, :], c=Y, cmap=colors.ListedColormap(["blue", "red"]))
+print("The shape of X is: " + str(X.shape))
+print("The shape of Y is: " + str(Y.shape))
+print("I have m = %d training examples!" % (m))
 
 ```
+![[C2_W3_Assignment_ch-1791746669424.webp|450]]
+解释
+    ![[C2_W3_Assignment_ch-1791747669633.webp]]
 
 ### 2.3 - 定义激活函数
 
@@ -318,7 +432,7 @@ print ('I have m = %d training examples!' % (m))
 ```python
 def sigmoid(z):
     ### START CODE HERE ### (~ 1 line of code)
-    res = None
+    res = 1 / (1 + np.exp(-z))
     ### END CODE HERE ###
     
     return res
@@ -376,11 +490,11 @@ def layer_sizes(X, Y):
     """
     ### START CODE HERE ### (~ 3 lines of code)
     # 输入层大小
-    n_x = None
+    n_x = X.shape[0]
     # 隐藏层大小
-    n_h = None
+    n_h = 2
     # 输出层大小
-    n_y = None 
+    n_y = Y.shape[0] 
     ### END CODE HERE ###
     return (n_x, n_h, n_y)
 
@@ -418,13 +532,9 @@ w3_unittest.test_layer_sizes(layer_sizes)
 
 * 务必确保参数的矩阵尺寸精确无误。如有需要，可回顾前文中的网络架构图。
 * 采用微小的随机数值对权重矩阵进行初始化。
-* 使用：`np.random.randn(a,b) * 0.01` 生成形状为 (a,b) 的随机高斯分布矩阵。
-
-
+    * 使用：`np.random.randn(a,b) * 0.01` 生成形状为 (a,b) 的随机高斯分布矩阵。
 * 偏置向量则统一初始化为全零。
-* 使用：`np.zeros((a,b))` 构建形状为 (a,b) 的全零矩阵。
-
-
+    * 使用：`np.zeros((a,b))` 构建形状为 (a,b) 的全零矩阵。
 
 ```python
 # GRADED FUNCTION: initialize_parameters
@@ -445,10 +555,10 @@ def initialize_parameters(n_x, n_h, n_y):
     """
     
     ### START CODE HERE ### (~ 4 lines of code)
-    W1 = None
-    b1 = None
-    W2 = None
-    b2 = None
+    W1 = np.random.randn(n_h, n_x) * 0.01
+    b1 = np.zeros((n_h, 1))
+    W2 = np.random.randn(n_y, n_h) * 0.01
+    b2 = np.zeros((n_y, 1))
     ### END CODE HERE ###
     
     assert (W1.shape == (n_h, n_x))
@@ -506,17 +616,18 @@ w3_unittest.test_initialize_parameters(initialize_parameters)
 **指导说明**：
 
 * 回顾前文第 2.2 节中关于分类器的数学模型公式 $(7)$：
+$$
 \begin{align}
-Z^{[1]} &= W^{[1]} X + b^{[1]},\
-A^{[1]} &= \sigma\left(Z^{[1]}\right),\
-Z^{[2]} &= W^{[2]} A^{[1]} + b^{[2]},\
-A^{[2]} &= \sigma\left(Z^{[2]}\right).\
+Z^{[1]} &= W^{[1]} X + b^{[1]},\\
+A^{[1]} &= \sigma\left(Z^{[1]}\right),\\
+Z^{[2]} &= W^{[2]} A^{[1]} + b^{[2]},\\
+A^{[2]} &= \sigma\left(Z^{[2]}\right).\\
 \end{align}
+$$
+
 * 你需要完成以下步骤：
 1. 通过键名索引 `parameters[".."]`，从参数字典 "parameters" (即 `initialize_parameters()` 的输出结果) 中提取各个模型参数。
 2. 实现前向传播 (Forward Propagation) 运算流程：将权重矩阵 `W1` 与特征输入矩阵 `X` 相乘并累加偏置向量 `b1`，求得 `Z1`；接着调用 `sigmoid` 激活函数 (Activation Function) 计算得到隐藏层激活值 `A1`。随后以同样的方式依序计算输出层的 `Z2` 与 `A2`。
-
-
 
 ```python
 # GRADED FUNCTION: forward_propagation
@@ -534,18 +645,18 @@ def forward_propagation(X, parameters):
     """
     # 从字典 "parameters" 中分别提取各层参数
     ### START CODE HERE ### (~ 4 lines of code)
-    W1 = None
-    b1 = None
-    W2 = None
-    b2 = None
+    W1 = parameters["W1"]
+    b1 = parameters["b1"]
+    W2 = parameters["W2"]
+    b2 = parameters["b2"]
     ### END CODE HERE ###
     
     # 执行前向传播以计算最终输出 A2
     ### START CODE HERE ### (~ 4 lines of code)
-    Z1 = None
-    A1 = None
-    Z2 = None
-    A2 = None
+    Z1 = np.matmul(W1, X) + b1
+    A1 = sigmoid(Z1)
+    Z2 = np.matmul(W2, A1) + b2
+    A2 = sigmoid(Z2)
     ### END CODE HERE ###
     
     assert(A2.shape == (n_y, X.shape[1]))
@@ -607,8 +718,8 @@ def compute_cost(A2, Y):
     m = Y.shape[1]
     
     ### START CODE HERE ### (~ 2 lines of code)
-    logloss = None
-    cost = None
+    logloss = -np.multiply(Y, np.log(A2)) - np.multiply(1 - Y, np.log(1 - A2))
+    cost = 1 / m * np.sum(logloss)
     ### END CODE HERE ###
 
     assert(isinstance(cost, float))
@@ -640,14 +751,16 @@ w3_unittest.test_compute_cost(compute_cost, A2)
 
 按照公式 $(15)$ 计算代价函数对各参数的偏导数 (Partial Derivative) ：
 
+$$
 \begin{align}
-\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\
-\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &=
-\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1},\
-\frac{\partial \mathcal{L} }{ \partial W^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T,\
-\frac{\partial \mathcal{L} }{ \partial b^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)\mathbf{1}.\
+\frac{\partial \mathcal{L} }{ \partial W^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\left(A^{[1]}\right)^T,\\
+\frac{\partial \mathcal{L} }{ \partial b^{[2]} } &= 
+\frac{1}{m}\left(A^{[2]}-Y\right)\mathbf{1},\\
+\frac{\partial \mathcal{L} }{ \partial W^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)X^T,\\
+\frac{\partial \mathcal{L} }{ \partial b^{[1]}} &= \frac{1}{m}\left(\left(W^{[2]}\right)^T \left(A^{[2]} - Y\right)\cdot \left(A^{[1]}\cdot\left(1-A^{[1]}\right)\right)\right)\mathbf{1}.\\
 \end{align}
+$$
 
 ```python
 def backward_propagation(parameters, cache, X, Y):
@@ -677,7 +790,7 @@ def backward_propagation(parameters, cache, X, Y):
     dZ2 = A2 - Y
     dW2 = 1/m * np.dot(dZ2, A1.T)
     db2 = 1/m * np.sum(dZ2, axis = 1, keepdims = True)
-    dZ1 = np.dot(W2.T, dZ2) * A1 * (1 - A1)
+    dZ1 = np.dot(W2.T, dZ2) * A1 * (1 - A1) #注意按照公式这里有* 就是逐个元素相乘
     dW1 = 1/m * np.dot(dZ1, X.T)
     db1 = 1/m * np.sum(dZ1, axis = 1, keepdims = True)
     
@@ -696,6 +809,7 @@ print("dW2 = " + str(grads["dW2"]))
 print("db2 = " + str(grads["db2"]))
 
 ```
+![[C2_W3_Assignment_ch-1791749744616.webp]]
 
 ### 练习 6
 
@@ -704,18 +818,18 @@ print("db2 = " + str(grads["db2"]))
 **指导说明**：
 
 * 按照第 2.3 节中的公式 $(9)$ 对各参数执行更新：
+$$
 \begin{align}
-W^{[1]} &= W^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[1]} },\
-b^{[1]} &= b^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[1]} },\
-W^{[2]} &= W^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[2]} },\
-b^{[2]} &= b^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[2]} }.\
+W^{[1]} &= W^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[1]} },\\
+b^{[1]} &= b^{[1]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[1]} },\\
+W^{[2]} &= W^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial W^{[2]} },\\
+b^{[2]} &= b^{[2]} - \alpha \frac{\partial \mathcal{L} }{ \partial b^{[2]} }.\\
 \end{align}
+$$
 * 编写代码时请遵循以下步骤：
 1. 使用 `parameters[".."]` 从字典 "parameters" (即 `initialize_parameters()` 的返回对象) 中读取现有参数。
 2. 使用 `grads[".."]` 从梯度字典 "grads" (即 `backward_propagation()` 的计算结果) 中读取对应的偏导数。
 3. 执行参数的迭代更新。
-
-
 
 ```python
 def update_parameters(parameters, grads, learning_rate=1.2):
@@ -732,26 +846,26 @@ def update_parameters(parameters, grads, learning_rate=1.2):
     """
     # 从字典 "parameters" 中提取各参数
     ### START CODE HERE ### (~ 4 lines of code)
-    W1 = None
-    b1 = None
-    W2 = None
-    b2 = None
+    W1 = parameters["W1"]
+    b1 = parameters["b1"]
+    W2 = parameters["W2"]
+    b2 = parameters["b2"]
     ### END CODE HERE ###
     
     # 从字典 "grads" 中提取各梯度
     ### START CODE HERE ### (~ 4 lines of code)
-    dW1 = None
-    db1 = None
-    dW2 = None
-    db2 = None
+    dW1 = grads["dW1"]
+    db1 = grads["db1"]
+    dW2 = grads["dW2"]
+    db2 = grads["db2"]
     ### END CODE HERE ###
     
     # 针对各项参数执行梯度下降更新
     ### START CODE HERE ### (~ 4 lines of code)
-    W1 = None
-    b1 = None
-    W2 = None
-    b2 = None
+    W1 = W1 - learning_rate * dW1
+    b1 = b1 - learning_rate * db1
+    W2 = W2 - learning_rate * dW2
+    b2 = b2 - learning_rate * db2
     ### END CODE HERE ###
     
     parameters = {"W1": W1,
@@ -821,7 +935,7 @@ def nn_model(X, Y, n_h, num_iterations=10, learning_rate=1.2, print_cost=False):
     
     # 初始化模型参数
     ### START CODE HERE ### (~ 1 line of code)
-    parameters = None
+    parameters = initialize_parameters(n_x, n_h, n_y)
     ### END CODE HERE ###
     
     # 迭代主循环
@@ -829,16 +943,16 @@ def nn_model(X, Y, n_h, num_iterations=10, learning_rate=1.2, print_cost=False):
          
         ### START CODE HERE ### (~ 4 lines of code)
         # 前向传播。输入: "X, parameters"，输出: "A2, cache"
-        A2, cache = None
+        A2, cache = forward_propagation(X, parameters)
         
         # 计算代价。输入: "A2, Y"，输出: "cost"
-        cost = None
+        cost = compute_cost(A2, Y)
         
         # 反向传播。输入: "parameters, cache, X, Y"，输出: "grads"
-        grads = None
+        grads = backward_propagation(parameters, cache, X, Y)
         
         # 梯度下降更新参数。输入: "parameters, grads, learning_rate"，输出: "parameters"
-        parameters = None
+        parameters = update_parameters(parameters, grads, learning_rate)
         ### END CODE HERE ###
         
         # 每次迭代打印当代价值
@@ -918,8 +1032,8 @@ def predict(X, parameters):
     """
     
     ### START CODE HERE ### (≈ 2 lines of code)
-    A2, cache = None
-    predictions = None
+    A2, cache = forward_propagation(X, parameters)
+    predictions = A2 > 0.5
     ### END CODE HERE ###
     
     return predictions
@@ -981,6 +1095,7 @@ plot_decision_boundary(predict, parameters, X, Y)
 plt.title("Decision Boundary for hidden layer size " + str(n_h))
 
 ```
+![[C2_W3_Assignment_ch-1791750039961.webp|390]]
 
 效果令人赞叹！可以看到，面对单条直线无能为力的复杂分类问题，仅仅引入一个简单的双层神经网络就能迎刃而解！
 
@@ -990,21 +1105,23 @@ plt.title("Decision Boundary for hidden layer size " + str(n_h))
 
 ```python
 n_samples = 2000
-samples, labels = make_blobs(n_samples=n_samples, 
-                             centers=([2.5, 3], [6.7, 7.9], [2.1, 7.9], [7.4, 2.8]), 
-                             cluster_std=1.1,
-                             random_state=0)
+samples, labels = make_blobs(
+    n_samples=n_samples,
+    centers=([2.5, 3], [6.7, 7.9], [2.1, 7.9], [7.4, 2.8]),
+    cluster_std=1.1,
+    random_state=0,
+)
 labels[(labels == 0)] = 0
 labels[(labels == 1)] = 1
 labels[(labels == 2) | (labels == 3)] = 1
 X_2 = np.transpose(samples)
-Y_2 = labels.reshape((1,n_samples))
+Y_2 = labels.reshape((1, n_samples))
 
-plt.scatter(X_2[0, :], X_2[1, :], c=Y_2, cmap=colors.ListedColormap(['blue', 'red']));
+plt.scatter(X_2[0, :], X_2[1, :], c=Y_2, cmap=colors.ListedColormap(["blue", "red"]));
 
 ```
 
-细心的你一定注意到了：在构建神经网络模型时，隐藏层中的神经元节点数量是作为一个超参数传入的。不妨动手尝试修改这个参数，观察不同的网络容量会对最终的学习决策效果产生怎样的影响：
+细心的你一定注意到了：在构建神经网络模型时，==隐藏层中的神经元节点数量是作为一个超参数传入的==。不妨动手尝试修改这个参数，观察不同的网络容量会对最终的学习决策效果产生怎样的影响：
 
 ```python
 # parameters_2 = nn_model(X_2, Y_2, n_h=1, num_iterations=3000, learning_rate=1.2, print_cost=False)
@@ -1016,12 +1133,13 @@ plot_decision_boundary(predict, parameters_2, X_2, Y_2)
 plt.title("Decision Boundary")
 
 ```
+n_h=1
+![[C2_W3_Assignment_ch-1791750133707.webp|396]]
+n_h=2
+![[C2_W3_Assignment_ch-1791750098157.webp|394]]
+n_h=15
+![[C2_W3_Assignment_ch-1791750173544.webp|404]]
 
-从图中可以看出，画面上不可避免地存在少量被误分类的数据点——在真实的客观世界中，数据集往往是线性不可分的，存在微小的误差分布纯属常态。更重要的是，在构建机器学习模型时，我们并不希望它过于严丝合缝、近乎病态地去迎合某一份特定的训练样本——因为这样极其容易丧失对未知全新数据的泛化推断能力。这种令人头疼的机器学习经典困境，正是我们常说的过拟合 (Overfitting) 现象。
+从图中可以看出，画面上不可避免地存在少量被误分类的数据点——在真实的客观世界中，数据集往往是线性不可分的，存在微小的误差分布纯属常态。更重要的是，==在构建机器学习模型时，我们并不希望它过于严丝合缝、近乎病态地去迎合某一份特定的训练样本==——因为这样极其容易丧失对未知全新数据的泛化推断能力。这种令人头疼的机器学习经典困境，正是我们常说的过拟合 (Overfitting) 现象。
 
 热烈祝贺你顺利通关本周的编程作业！
-
-```python
-
-
-```
