@@ -1,8 +1,18 @@
 ___
 # 非计分实验 - 蒙提霍尔问题 (Monty Hall problem)
 
-
 欢迎！在本次非计分实验中，你将通过探索著名的蒙提霍尔问题 (Monty Hall problem) ，领略概率 (probability) 违背直觉的奇妙特性。这个问题初看之下似乎微不足道，但它生动地展示了一个事实：概率的表现往往与我们的第一直觉大相径庭。
+
+___
+- [[#1. 问题介绍|1. 问题介绍]]
+- [[#2. 亲身体验游戏！|2. 亲身体验游戏！]]
+- [[#3. 进行多次迭代模拟|3. 进行多次迭代模拟]]
+- [[#4. 解析解 (Analytical Solution)|4. 解析解 (Analytical Solution)]]
+- [[#5 广义蒙提霍尔问题 (可选内容)|5 广义蒙提霍尔问题 (可选内容)]]
+- [[#5.1 模拟实验|5.1 模拟实验]]
+- [[#5.2 解析解|5.2 解析解]]
+
+___
 
 首先，导入实验所需的函数库：
 
@@ -21,11 +31,9 @@ import utils
 游戏分为两个阶段进行：
 
 1. 主持人让你在三扇门中任选一扇，但暂时不能打开它。
+2. **然后，主持人（他知道车在哪里）在剩下的两扇门中选了一扇并打开，露出一只山羊。**
 
-
-2. 接着，心知汽车确切位置的主持人会在剩下的两扇门中挑出一扇打开，露出一只山羊。
-
-
+![[C3_W1_Lab_1_Monty_Hall_ch-1791903197934.webp|304]]
 
 抉择的时刻到了，假设你挑选了 1 号门。就在 1 号门即将开启前，已知底细的主持人打开了 3 号门，露出一只山羊，此时 1 号门和 2 号门依然紧闭。接着主持人向你发问：
 
@@ -42,26 +50,14 @@ import utils
 运行下一个代码单元格，你可以亲自试玩一阵，尝试不同的策略。左侧面板会呈现真实的游戏界面，操作指南如下：
 
 * 只需在三扇门中任选其一即可开启一局新游戏。
-
-
 * 在你做出初步选择后，主持人会打开剩余两扇门中的一扇，且门后必定是山羊。
-
-
 * 随后你可以决定是坚持原选择还是换选另一扇门。
 
-
 * 如果你点击了主持人已经打开的那扇门，该局游戏将不作数。
-
-
 * 如果点击了三扇门以外的区域，游戏将重置且不计入统计。
 
-
 * 在揭晓奖品 (游戏结束)  后，点击屏幕任意位置即可重新开始游戏。
-
-
 * 若希望重置计数器，重新运行该单元格即可。
-
-
 
 右侧面板会记录总游玩局数以及两种策略的成功率。不妨多玩几次，看看能否发现什么规律！
 
@@ -69,6 +65,8 @@ import utils
 game = utils.monty_hall_game()
 
 ```
+![[C3_W1_Lab_1_Monty_Hall_ch-1791903676373.webp]]
+好像换门的胜率大一点呢
 
 在继续往下探索前，请确保你已经试玩了足够多次并形成了自己的假设。换门更明智吗？还是坚守初始选择更好？亦或两者完全没有差异？
 
@@ -76,34 +74,37 @@ game = utils.monty_hall_game()
 
 亲自试玩了一段时间后，你或许已经对克敌制胜的优选策略有了初步的设想。现在，你将对游戏进行成千上万次迭代模拟，观察两种策略的胜率是否确有差别。
 
-为此，我们提供了 `monty_hall` 函数。该函数接受一个布尔值 (boolean)  参数，用于控制你是否选择换门。若想了解其具体实现原理，可阅读代码注释。注意，代码中用数值 `0` 代表山羊，用数值 `1` 代表汽车：
+为此，我们提供了 `monty_hall` 函数。该函数接受一个布尔值 (boolean)  参数，用于控制你是否选择换门。若想了解其具体实现原理，可阅读代码注释。
+注意，代码中用==数值 `0` 代表山羊，用数值 `1` 代表汽车==：
 
 ```python
 def monty_hall(switch):
 
-    # All doors have a goat initially
+    # 初始状态下所有的门后面都是山羊（用 0 表示）
     doors = np.array([0, 0, 0])
 
-    # Randomnly decide which door will have a car
+    # 随机决定哪扇门后面有汽车
     winner_index = np.random.randint(0, 3)
 
-    # Place the car in the winner door
+    # 将汽车放置在中奖门后（用 1 表示）
     doors[winner_index] = 1
 
-    # Participant selects a door at random
+    # 参赛者随机选择一扇门
     choice = np.random.randint(0, 3)
 
-    # Get doors that can be opened (host cannot open the door chosen or the one with the car)
+    # 获取主持人可以打开的门（主持人不能打开参赛者选择的门，也不能打开有汽车的门）
     openable_doors = [i for i in range(3) if i not in (winner_index, choice)]
+    # 就是把主持人可以选的门 放一个list里
 
-    # Host opens one of the available doors at random
+    # 主持人在可打开的门中随机选择一扇打开
     door_to_open = np.random.choice(openable_doors)
 
-    # Switch to the other available door (the one that is not the original choice or the opened one)
+    # 如果选择换门，则切换到另一扇可用的门（既不是最初选择的门，也不是主持人打开的门）
     if switch:
         choice = [i for i in range(3) if i not in (choice, door_to_open)][0]
+    #换门就是个布尔值呢
 
-    # Return 1 if you open a door with a car, 0 otherwise
+    # 如果最终打开的门后面有汽车则返回 1，否则返回 0
     return doors[choice]
 
 ```
@@ -116,6 +117,9 @@ def monty_hall(switch):
 utils.success_rate_plot(monty_hall)
 
 ```
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909270540.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909283170.webp]]
+发现选 switch以后 胜率大大增加!!!
 
 ## 4. 解析解 (Analytical Solution)
 
@@ -131,7 +135,7 @@ $E_3$ = 汽车在 3 号门后
 
 或者用更简洁的形式表示：对于 $i = 1,2,3$，$E_i$ = 汽车在 $i$ 号门后。
 
-请注意，根据游戏规则，这些事件是互斥的 (mutually exclusive) ，换言之，汽车不可能同时出现在两扇门后。这意味着：
+请注意，根据游戏规则，这些事件是**互斥的 (mutually exclusive)** ，换言之，汽车不可能同时出现在两扇门后。这意味着：
 
 $P(E_1 \cap E_2) = 0$，$P(E_1 \cap E_3) = 0$ 且 $P(E_2 \cap E_3) = 0$。也可以写成：
 
@@ -141,27 +145,29 @@ $$P(E_i \cap E_j) = 0  \text{      对于 } i \neq j.$$
 
 $$P(E_1 \cup E_2 \cup E_3) = 1.$$
 
-事实上，这就是所有可能结果构成的集合，即样本空间 (sample space) **或**全集 (universe)  $\Omega$。
+事实上，这就是所有可能结果构成的集合，即**样本空间 (sample space)**  或 **全集 (universe)  $\Omega$。**
 
 假设你选择了 **1 号门**。由于汽车出现在三扇门中任一扇的概率均等，我们可知：
 
 $$P(E_1) = \frac{1}{3}.$$
 
-根据补集规则 (complement rule) ，汽车不在 1 号门后的概率为：
+根据补集规则 (complement rule) ，==汽车不在 1 号门==后的概率为：
 
 $$P(E_1^c) = 1 - P(E_1) = 1 - \frac{1}{3} = \frac{2}{3}$$
 
 因为全集由 $E_1 \cup E_2 \cup E_3$ 给出 (汽车在 1 号门或 2 号门或 3 号门后) ，所以 $E_1^c = E_2 \cup E_3$，进而有 $P(E_2 \cup E_3) = \frac{2}{3}$。你可以从下图中获得直观的认识。
 
-现在，在你选定 1 号门之后，主持人打开了 3 号门，露出一只山羊，并问你是否愿意换门。如果你坚持不换，获胜的概率依然保持为 $\frac{1}{3}$，因为这完全由你的初始选择决定。而如果你选择**换门**，你会发现主持人实际上**为你提供了一条额外的信息**。他向你明确排除了 3 号门，这意味着：
+现在，在你选定 1 号门之后，主持人打开了 3 号门，露出一只山羊，并问你是否愿意换门。==如果你坚持不换，获胜的概率依然保持为 $\frac{1}{3}$==，因为这完全由你的初始选择决定。
+而如果你选择**换门**，你会发现主持人实际上**为你提供了一条额外的信息**。他向你明确排除了 3 号门，❤️这意味着：
 
 $$P(E_3) = 0.$$
 
-至此，推导已基本完成，因为正如你所知：$\frac{2}{3} = P(E_2 \cup E_3) = P(E_2) + P(E_3) - P(E_2 \cap E_3)$。你已经知道 $P(E_2 \cap E_3) = 0$，因为它们是互斥事件 (汽车只可能位于三扇门中的**某一扇**之后) ，而主持人又为你提供了至关重要的补充信息：$P(E_3) = 0$。据此，你可以轻松得出结论：
+至此，推导已基本完成，因为正如你所知：$\frac{2}{3} = P(E_2 \cup E_3) = P(E_2) + P(E_3) - P(E_2 \cap E_3)$。你已经知道 $P(E_2 \cap E_3) = 0$，因为它们是互斥事件 (汽车只可能位于三扇门中的**某一扇**之后) ，而主持人又为你提供了至关重要的补充信息：$P(E_3) = 0$。据此，❤️你可以轻松得出结论：
 
 $$P(win \vert{} switch) = P(E_2) = \frac{2}{3}.$$
 
-换句话说，**在已知**汽车不在 3 号门的条件下，汽车位于 2 号门后的条件概率 (conditional probability)  为 $\frac{2}{3} \approx 0.67$，这与你在模拟实验中所看到的结果完全吻合！
+换句话说，==在已知汽车不在 3 号门的条件下，汽车位于 2 号门==后的**条件概率 (conditional probability)**  为 $\frac{2}{3} \approx 0.67$，这与你在模拟实验中所看到的结果完全吻合！
+就是3号门获胜的概率 也压在了 2号门身上
 
 ## 5 广义蒙提霍尔问题 (可选内容)
 
@@ -170,14 +176,8 @@ $$P(win \vert{} switch) = P(E_2) = \frac{2}{3}.$$
 此时的游戏规则如下：
 
 * 共有 $n$ 扇门，你必须选择其中一扇门。
-
-
 * 主持人会打开 $k$ 扇门，并展示门后的山羊。
-
-
 * 你可以选择换门，也可以坚持原先的选择。
-
-
 
 在这种情况下，换门依然是更优选择吗？它会取决于 $k$ 还是取决于 $n$ 呢？
 
@@ -187,34 +187,36 @@ $$P(win \vert{} switch) = P(E_2) = \frac{2}{3}.$$
 
 ```python
 def generalized_monty_hall(switch, n = 3, k = 1):
+    # 检查参数 k 是否合法：k 必须在 0 到 n-2 之间，这样主持人才能留下至少 1 扇可开的门
     if not (0 <= k <= n-2):
-        raise ValueError('k must be between 0 and n-2, so the Host can leave at least 1 openable door!')
+        raise ValueError('k 必须在 0 到 n-2 之间，这样主持人才能留下至少 1 扇可开的门！')
     
-    # All doors have a goat initially
+    # 初始状态下所有门后面都是山羊
     doors = np.array([0 for _ in range(n)])
     
-    # Decide which door will have a car
+    # 决定哪扇门后面有汽车
     winner = np.random.randint(0,n)
 
-    # Place the car in the winner door
+    # 将汽车放置在中奖门后（用 1.0 表示）
     doors[winner] = 1.0
     
-    # Participant selects a door at random
+    # 参赛者随机选择一扇门
     choice = np.random.randint(0,n)
     
-    # Get doors that can be opened (host cannot open the door chosen or the one with the car)
+    # 获取主持人可以打开的门（主持人不能打开参赛者选择的门，也不能打开有汽车的门）
     openable_doors = [i for i in range(n) if i not in (winner, choice)]
     
-    # Host open k of the available doors at random
+    # 主持人在可打开的门中随机选择 k 扇打开
     door_to_open = np.random.choice(openable_doors, size = k, replace = False)
+    # replace = False 代表不能选择重复的
     
-    # Switch to the other available door (the one that is not the original choice or the opened one)
+    # 如果选择换门，则切换到另一扇可用的门（既不是最初选择的门，也不是主持人打开的那些门）
     if switch:
         choices = [i for i in range(n) if i not in np.array(choice) and i not in np.array(door_to_open)]
-        # Player chooses another door at random
+        # 参赛者从剩下的门中随机选择一扇
         choice = np.random.choice(choices)
     
-    # Return 1 if you open a door with a car, 0 otherwise
+    # 如果最终打开的门后面有汽车则返回 1，否则返回 0
     return doors[choice]
 
 ```
@@ -223,6 +225,16 @@ def generalized_monty_hall(switch, n = 3, k = 1):
 utils.success_rate_plot(generalized_monty_hall)
 
 ```
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909774075.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909786490.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909808887.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909822146.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909845067.webp]]
+
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909854659.webp]]
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909880264.webp]]
+
+![[C3_W1_Lab_1_Monty_Hall_ch-1791909889644.webp]]
 
 ## 5.2 解析解
 
@@ -231,14 +243,8 @@ utils.success_rate_plot(generalized_monty_hall)
 回顾此时的游戏设定：
 
 * 共有 $n$ 扇门，你必须选择其中一扇门。
-
-
 * 主持人打开 $k$ 扇门，露出门后的山羊。
-
-
 * 你可以选择换门，也可以坚持原先的选择。
-
-
 
 核心问题是：换门在任何情况下都是更优策略吗？这一结论是否取决于 $k$ 的大小？
 
@@ -249,19 +255,18 @@ $$E_i = \text{ 汽车在第 } i \text{ 扇门后。此时，} i = 1, \ldots, n.$
 同样，由于只有 1 辆汽车，各个 $E_i$ 之间是相互排斥的。
 
 注意，由于主持人既不会打开玩家选择的门，也绝不会打开藏有汽车的门，因此 $k$ 存在一个上限，即 $n-2$，所以：
-
+    因为最后还要至少留2扇门让用户选
 $$0 \leq k \leq n-2.$$
 
 我们可以设定两个前提假设：
 
 * 玩家选择了 1 号门
-
-
 * 主持人打开了第 $2, \ldots, k+1$ 号门
 
 
-
-之所以能这样设定，是因为我们总能通过重新编号来实现这一对应关系。例如，若玩家选了 10 号门，我们可以将它重新编号为 1 号门，而原先的 1 号门则变为 10 号门。这样做仅仅是为了避免复杂的下标标记。用数学术语来说，这通常被称为不失一般性 (without loss of generality) ，因为重新编号完全不会影响最终的推导结果。
+之所以能这样设定，是因为我们总能通过重新编号来实现这一对应关系。例如，若玩家选了 10 号门，我们可以将它重新编号为 1 号门，而原先的 1 号门则变为 10 号门。这样做仅仅是为了避免复杂的下标标记。用数学术语来说，这通常被称为**不失一般性 (without loss of generality)** ，因为重新编号完全不会影响最终的推导结果。
+    这段意思是 上面固定主持人开 2到k+1扇门 不是把随机性撇去了
+    而是几号门只是编号  具体开几号门不重要  这里只是为了数学上好推导
 
 现在面对 $n$ 扇门，汽车位于 1 号门后的概率为 $\frac{1}{n}$，即：
 
@@ -291,7 +296,10 @@ $$P\left(\bigcup_{i = 2}^{n} E_i\right) = \frac{n-1}{n}.$$
 
 如果玩家随机换选一扇可用的门，那么他必须在第 $k+2, k+3, \ldots, n-1, n$ 号门中做出选择。因此，挑中汽车的概率等于：
 
-在 1 号门中**未选中汽车**的概率 $\left(P(E_1^c) = \frac{n-1}{n}\right)$，乘以**此时**挑中汽车的概率。因为剩余可选的门共有 $n-k-1$ 扇，所以此时挑中的概率为 $\frac{1}{n-k-1}$。
+在 1 号门中**不是汽车**的概率 $\left(P(E_1^c) = \frac{n-1}{n}\right)$，乘以此时**换门后 挑中汽车**的概率。因为剩余可选的门共有 $n-k-1$ 扇，所以此时挑中的概率为 $\frac{1}{n-k-1}$。
+    也可以理解为
+    (如果1号门不是汽车)
+    现在 可以换的那些门 承担了所有获胜的概率 (n-1)/n  
 
 因此，换门后的最终获胜概率为：
 
@@ -303,6 +311,6 @@ $$P(win \vert{} switch) = \frac{n-1}{n} \cdot \frac{1}{n-k-1} = \frac{1}{n} \cdo
 
 并且，等号仅在 $k = 0$ 时成立。这意味着主持人没有打开任何一扇门。
 
-因此，**换门永远是更好的选择**。这在初听时可能违背直觉，但请仔细想想：选择换门时，你其实是在充分利用主持人赋予你的**全新信息**；而如果你固执地不换门，就相当于直接无视了这份珍贵的新信息。
+因此，**换门永远是更好的选择**。这在初听时可能违背直觉，但请仔细想想：==选择换门时，你其实是在充分利用主持人赋予你的**全新信息**；而如果你固执地不换门，就相当于直接无视了这份珍贵的新信息。==
 
 **祝贺！你已顺利完成了关于蒙提霍尔问题的非计分实验！**

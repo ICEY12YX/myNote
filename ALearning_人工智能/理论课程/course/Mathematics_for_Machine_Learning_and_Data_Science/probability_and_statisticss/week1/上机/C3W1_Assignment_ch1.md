@@ -5,54 +5,9 @@ ___
 
 在本次作业中，你将像在课程视频中学习的那样，亲手实现朴素贝叶斯 (Naive Bayes) 算法来解决垃圾邮件检测问题。第 1 至 3 节为该问题提供了实用的背景知识。在第 4 节中，你将编写具体的函数来实现该算法。第 5 节则包含一些不计分但非常有趣的拓展内容。
 
-# 目录
+___
 
-* [ 1 - 简介](https://www.google.com/search?q=%231)
-
-* [ 2 - 必要的依赖导入](https://www.google.com/search?q=%232)
-
-* [ 3 - 数据集](https://www.google.com/search?q=%233)
-
-* [ 3.1 加载并探索数据集](https://www.google.com/search?q=%233.1)
-
-* [ 3.2 预处理数据集](https://www.google.com/search?q=%233.2)
-
-* [ 3.3 预处理文本](https://www.google.com/search?q=%233.3)
-
-* [ 3.4 划分训练集与测试集](https://www.google.com/search?q=%233.4)
-
-
-
-* [ 4 - 实现朴素贝叶斯算法](https://www.google.com/search?q=%234)
-
-* [ 4.1 计算 $P(\text{email} \mid \text{spam})$ 与 $P(\text{email} \mid \text{ham})$](https://www.google.com/search?q=%234.1)
-
-* [ 4.2 计算 $P(\text{spam})$ 与 $P(\text{ham})$](https://www.google.com/search?q=%234.2)
-
-* [ 4.3 组合模型](https://www.google.com/search?q=%234.3)
-
-* [ 练习 1](https://www.google.com/search?q=%23ex01)
-
-* [ 练习 2](https://www.google.com/search?q=%23ex02)
-
-* [ 练习 3](https://www.google.com/search?q=%23ex03)
-
-* [ 练习 4](https://www.google.com/search?q=%23ex04)
-
-
-
-* [ 4.4 模型表现](https://www.google.com/search?q=%234.4)
-
-
-
-* [ 5 - 附录 (非评分部分) ](https://www.google.com/search?q=%235)
-
-* [ 5.1 朴素贝叶斯模型中隐藏的问题](https://www.google.com/search?q=%235.1)
-
-* [ 5.2 提升模型表现：朴素贝叶斯的工程实践](https://www.google.com/search?q=%235.2)
-
-
-
+___
 
 ## 1 - 简介
 
