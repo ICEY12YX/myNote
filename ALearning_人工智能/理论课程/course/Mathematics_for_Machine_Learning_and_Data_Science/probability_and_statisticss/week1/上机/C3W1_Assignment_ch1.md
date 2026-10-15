@@ -6,44 +6,71 @@ ___
 在本次作业中，你将像在课程视频中学习的那样，亲手实现朴素贝叶斯 (Naive Bayes) 算法来解决垃圾邮件检测问题。第 1 至 3 节为该问题提供了实用的背景知识。在第 4 节中，你将编写具体的函数来实现该算法。第 5 节则包含一些不计分但非常有趣的拓展内容。
 
 ___
+- [[#1 - 简介|1 - 简介]]
+	- [[#1 - 简介#运用朴素贝叶斯进行垃圾邮件检测|运用朴素贝叶斯进行垃圾邮件检测]]
+- [[#2 - 必要的依赖导入|2 - 必要的依赖导入]]
+- [[#3 - 数据集|3 - 数据集]]
+	- [[#3 - 数据集#3.1 加载并探索数据集|3.1 加载并探索数据集]]
+	- [[#3 - 数据集#3.2 预处理数据集|3.2 预处理数据集]]
+	- [[#3 - 数据集#3.3 预处理文本|3.3 预处理文本]]
+	- [[#3 - 数据集#3.4 划分训练集与测试集|3.4 划分训练集与测试集]]
+- [[#4 - 实现朴素贝叶斯算法|4 - 实现朴素贝叶斯算法]]
+	- [[#4 - 实现朴素贝叶斯算法#4.1 计算 $P(\text{email} \mid \text{spam})$ 与 $P(\text{email} \mid \text{ham})$|4.1 计算 $P(\text{email} \mid \text{spam})$ 与 $P(\text{email} \mid \text{ham})$]]
+		- [[#4.1 计算 $P(\text{email} \mid \text{spam})$ 与 $P(\text{email} \mid \text{ham})$#4.1.1 处理连乘中的 0 概率|4.1.1 处理连乘中的 0 概率]]
+	- [[#4 - 实现朴素贝叶斯算法#4.2 计算 $P(\text{spam})$ 与 $P(\text{ham})$|4.2 计算 $P(\text{spam})$ 与 $P(\text{ham})$]]
+	- [[#4 - 实现朴素贝叶斯算法#4.3 组合模型|4.3 组合模型]]
+	- [[#4 - 实现朴素贝叶斯算法#练习 1|练习 1]]
+			- [[#4.1.1 处理连乘中的 0 概率#**预期输出** (键的输出顺序可能有所不同，关键在于每个单词对应的数值统计)|**预期输出** (键的输出顺序可能有所不同，关键在于每个单词对应的数值统计)]]
+	- [[#4 - 实现朴素贝叶斯算法#练习 2|练习 2]]
+			- [[#4.1.1 处理连乘中的 0 概率#**预期输出** (最后几位小数位可能略有差异)|**预期输出** (最后几位小数位可能略有差异)]]
+	- [[#4 - 实现朴素贝叶斯算法#练习 3|练习 3]]
+			- [[#4.1.1 处理连乘中的 0 概率#**预期输出** (最后几位小数位可能略有差异)|**预期输出** (最后几位小数位可能略有差异)]]
+	- [[#4 - 实现朴素贝叶斯算法#练习 4|练习 4]]
+		- [[#练习 4#**预期输出**|**预期输出**]]
+	- [[#4 - 实现朴素贝叶斯算法#4.4 模型表现|4.4 模型表现]]
+- [[#5 - 附录 (非评分部分)|5 - 附录 (非评分部分)]]
+	- [[#5 - 附录 (非评分部分)#5.1 朴素贝叶斯模型中隐藏的问题|5.1 朴素贝叶斯模型中隐藏的问题]]
+		- [[#5.1 朴素贝叶斯模型中隐藏的问题#5.1.1 数值下溢问题 (The Underflow Problem)|5.1.1 数值下溢问题 (The Underflow Problem)]]
+	- [[#5 - 附录 (非评分部分)#5.2 提升模型表现：朴素贝叶斯的工程实践|5.2 提升模型表现：朴素贝叶斯的工程实践]]
+		- [[#5.2 提升模型表现：朴素贝叶斯的工程实践#5.2.1 业务背景引入|5.2.1 业务背景引入]]
+		- [[#5.2 提升模型表现：朴素贝叶斯的工程实践#5.2.2 准确率的局限性|5.2.2 准确率的局限性]]
 
 ___
 
 ## 1 - 简介
 
-朴素贝叶斯算法是机器学习 (Machine Learning) 和数据科学 (Data Science) 领域的奠基之作，它巧妙地利用贝叶斯定理 (Bayes' Theorem) 来推断某个数据样本究竟归属于哪一个具体类别。该算法做出了一个看似天真的“朴素假设” (naive assumption) ：即各个特征之间彼此相互独立。在现实世界的数据中，这个假设几乎必然是不成立的；但正是这一假设，让算法的实现变得极其简单轻巧，而且正如你即将看到的，它所取得的效果往往令人惊艳。需要说明的是，朴素贝叶斯是一种监督学习 (Supervised Learning) 算法，这意味着它必须依赖已经标注好的数据才能正常运转。在我们即将展开的示例中，这就要求在训练算法之前，必须先收集好一批已经被明确标记为“垃圾邮件” (spam) 或“正常邮件” (ham) 的样本。
+朴素贝叶斯算法是机器学习 (Machine Learning) 和数据科学 (Data Science) 领域的奠基之作，它巧妙地利用**贝叶斯定理 (Bayes' Theorem)** 来推断某个数据样本究竟归属于哪一个具体类别。该算法做出了一个看似天真的 **“朴素假设” (naive assumption)**  ：==即各个特征之间彼此相互独立==。在现实世界的数据中，这个假设几乎必然是不成立的；但正是这一假设，让算法的实现变得极其简单轻巧，而且正如你即将看到的，它所取得的效果往往令人惊艳。需要说明的是，朴素贝叶斯是一种**监督学习 (Supervised Learning) 算法**，这意味着它必须依赖已经标注好的数据才能正常运转。在我们即将展开的示例中，这就要求在训练算法之前，必须先收集好一批已经被明确标记为“垃圾邮件” (spam) 或“正常邮件” (ham) 的样本。
 
 ### 运用朴素贝叶斯进行垃圾邮件检测
 
-本项任务专注于一个经典的二分类 (Binary Classification) 问题：区分垃圾邮件 (spam) 与非垃圾邮件（在英文日常语境中常被称为“ham”，即正常邮件）。在本次任务中，我们将垃圾邮件标记为 $1$，正常邮件标记为 $0$。
+本项任务专注于一个经典的**二分类 (Binary Classification) 问题**：区分垃圾邮件 (spam) 与非垃圾邮件（在英文日常语境中常被称为“ham”，即正常邮件）。
+在本次任务中，我们将==垃圾邮件标记为 $1$，正常邮件标记为 $0$。==
 
 对于一封给定的邮件，我们重点关注的条件概率记为：
+    下面那个email 应该意思是"还有某些特征的email"
 
 $$P(\text{spam} \mid \text{email})$$
 
-这个概率值越大，意味着该邮件属于垃圾邮件的可能性越高。在课堂讲授中提到的贝叶斯定理，正是通过以下方式应用于这一计算的：
+这个概率值越大，意味着该邮件属于垃圾邮件的可能性越高。
+    注意关心的是概率哦 不是确定哪样一定是垃圾邮件
+在课堂讲授中提到的贝叶斯定理，正是通过以下方式应用于这一计算的：
 
 $$P(\text{spam} \mid \text{email}) = \frac{P(\text{email} \mid \text{spam}) \cdot P(\text{spam})}{P(\text{email})}$$
 
 各项的具体含义如下：
 
-* $P(\text{spam})$：随机抽取一封邮件为垃圾邮件的先验概率，在数值上等同于数据集中垃圾邮件所占的比例。
-
-
-* $P(\text{email} \mid \text{spam})$：在已知邮件是垃圾邮件的前提下，出现当前特定这封邮件内容的似然概率。
-
-
+* $P(\text{spam})$：随机抽取一封邮件为垃圾邮件的**==先验概率==** ，在数值上等同于数据集中垃圾邮件所占的比例。
+* $P(\text{email} \mid \text{spam})$：在已知邮件是垃圾邮件的前提下，出现当前特定这封邮件内容的==似然概率==。
 * $P(\text{email})$：当前这封邮件内容在所有邮件中出现的总边缘概率。
 
 
-
-在这种方法中，我们可以巧妙地走一个“捷径”：直接忽略分母上的 $P(\text{email})$ 项。因为我们的最终目的并不是精确求解具体的概率数值，而是比较“这封邮件是垃圾邮件的概率”与“它是正常邮件的概率”谁大谁小。下面列出 $P(\text{spam} \mid \text{email})$ 和 $P(\text{ham} \mid \text{email})$ 的完整表达式：
+在这种方法中，我们可以巧妙地走一个“捷径”：==直接忽略分母上的 $P(\text{email})$ 项==。因为我们的最终目的==并不是精确求解具体的概率数值==，而是比较“这封邮件是垃圾邮件的概率”与“它是正常邮件的概率”==**谁大谁小**==。下面列出 $P(\text{spam} \mid \text{email})$ 和 $P(\text{ham} \mid \text{email})$ 的完整表达式：
 
 $$P(\text{spam} \mid \text{email}) = \frac{P(\text{email} \mid \text{spam}) \cdot P(\text{spam})}{P(\text{email})}$$
 
 $$P(\text{ham} \mid \text{email}) = \frac{P(\text{email} \mid \text{ham}) \cdot P(\text{ham})}{P(\text{email})}$$
 
-由于对于任何已存在的邮件都有 $P(\text{email}) > 0$，并且它在两个公式的分母中完全相同，因此比较两者大小时，只需评估分子的大小即可，完全可以把分母抛在一边。
+由于对于任何已存在的邮件都有 $P(\text{email}) > 0$，并且它在两个公式的分母中完全相同，因此比较两者大小时，==只需评估分子的大小即可==，完全可以把分母抛在一边。
 
 ## 2 - 必要的依赖导入
 
@@ -52,8 +79,6 @@ $$P(\text{ham} \mid \text{email}) = \frac{P(\text{email} \mid \text{ham}) \cdot 
 ```python
 import numpy as np
 import pandas as pd
-from nltk.corpus import stopwords
-from nltk import word_tokenize
 import string
 
 ```
@@ -62,6 +87,41 @@ import string
 import w1_unittest
 
 ```
+
+```python
+import ssl
+import nltk
+
+# 关键修复：修改默认 HTTPS 上下文，跳过读取 Windows 证书库以绕过 _ssl.c:4192 报错
+ssl._create_default_https_context = ssl._create_unverified_context
+
+# 这个库比较特殊,用到的词库需要下载
+nltk.download("punkt", download_dir="D:/anaconda/conda/envs/pytorch/nltk_data")
+nltk.download(
+    "punkt_tab",
+    download_dir="D:/anaconda/conda/envs/pytorch/nltk_data",
+)
+nltk.download(
+    "stopwords",
+    download_dir="D:/anaconda/conda/envs/pytorch/nltk_data",
+)
+
+from nltk.corpus import stopwords
+from nltk import word_tokenize
+```
+![[C3W1_Assignment_ch1-1792091380414.webp]]
+
+```python
+# 查看 stopwords 词表在本地的真实绝对路径
+print(nltk.data.find("corpora/stopwords"))
+
+# 查看 punkt 分词模型在本地的真实绝对路径
+print(nltk.data.find("tokenizers/punkt"))
+
+# 查看 punkt_tab 分词模型在本地的真实绝对路径
+print(nltk.data.find("tokenizers/punkt_tab"))
+```
+![[C3W1_Assignment_ch1-1792091406019.webp]]
 
 ## 3 - 数据集
 
@@ -74,27 +134,39 @@ dataframe_emails = pd.read_csv('emails.csv')
 dataframe_emails.head()
 
 ```
+![[C3W1_Assignment_ch1-1792091449049.webp]]
+text里面不是短短一句话就代表了整个邮件
+其实长这样
+![[C3W1_Assignment_ch1-1792092972912.webp]]
+
 
 让我们初步探索一下数据集：
 
 ```python
 print(f"Number of emails: {len(dataframe_emails)}")
-print(f"Proportion of spam emails: {dataframe_emails.spam.sum()/len(dataframe_emails):.4f}")
-print(f"Proportion of ham emails: {1-dataframe_emails.spam.sum()/len(dataframe_emails):.4f}")
+print(
+    f"Proportion of spam emails: {dataframe_emails.spam.sum() / len(dataframe_emails):.4f}"
+)
+print(
+    f"Proportion of ham emails: {1 - dataframe_emails.spam.sum() / len(dataframe_emails):.4f}"
+)
 
 ```
+![[C3W1_Assignment_ch1-1792091462403.webp]]
 
 可以看到，这个数据集是**不平衡** (unbalanced) 的。其中正常邮件的数量是垃圾邮件的两倍以上！在任何数据分析项目中，这类背景信息都至关重要，因为它可能会影响包括朴素贝叶斯在内的诸多机器学习算法的实际运行效果。
 
 ### 3.2 预处理数据集
 
-该数据表包含两列。名为 `text` 的列存储邮件的具体文本内容，名为 `spam` 的列则用数值指示该邮件是否为垃圾邮件。请记住：$1$ 代表垃圾邮件，而 $0$ 代表正常邮件 (ham) 。接下来的函数将完成两项关键的预处理步骤：
+该数据表包含两列。名为 `text` 的列存储邮件的具体文本内容，名为 `spam` 的列则用数值指示该邮件是否为垃圾邮件。
+请记住：==$1$ 代表垃圾邮件，而 $0$ 代表正常邮件 (ham) ==。
 
-* 原数据集中每封邮件开头均带有 `Subject:` 前缀。该函数会剔除每封邮件最前方的这部分字符。
+接下来的函数将完成两项关键的预处理步骤：
 
-
-* 对数据集进行随机打乱 (shuffle) 。原始数据中所有垃圾邮件都集中在最前面，其后才是正常邮件。只有先打乱数据，才能在后续合理地将数据划分为训练集和测试集。
-
+* 原数据集中每封邮件开头均带有 `Subject:` 前缀。
+    * 该函数会剔除每封邮件最前方的这部分字符。
+* 对数据集进行**随机打乱 (shuffle)** 。原始数据中所有垃圾邮件都集中在最前面，其后才是正常邮件。
+    - 只有先打乱数据，才能在后续合理地将数据划分为训练集和测试集。
 
 
 如果你对该函数中的某些 Python 写法稍有陌生也无需介意，这里展示它旨在提醒大家：在正式展开模型分析前，探索并预处理数据往往是必经的关键步骤。
@@ -119,11 +191,17 @@ def preprocess_emails(df):
     df = df.sample(frac = 1, ignore_index = True, random_state = 42)
     # 去除构成每封邮件前 9 个字符的 "Subject:" 字符串，并转换为 numpy 数组
     X = df.text.apply(lambda x: x[9:]).to_numpy()
-    # 将标签转换为 numpy 数组
+    # 将Series 转换为 numpy array
     Y = df.spam.to_numpy()
     return X, Y
 
 ```
+解释
+    ![[C3W1_Assignment_ch1-1792092209927.webp]]
+    [[疑问库]] 4
+    ![[C3W1_Assignment_ch1-1792092272894.webp]]
+    ![[C3W1_Assignment_ch1-1792092321161.webp]]
+    
 
 ```python
 X, Y = preprocess_emails(dataframe_emails)
@@ -136,6 +214,8 @@ X, Y = preprocess_emails(dataframe_emails)
 print(X[:5])
 
 ```
+![[C3W1_Assignment_ch1-1792092991907.webp]]
+
 
 以及前 $5$ 个标签：
 
@@ -143,23 +223,28 @@ print(X[:5])
 print(Y[:5])
 
 ```
+![[C3W1_Assignment_ch1-1792093001223.webp]]
 
-请注意，NumPy 数组 `X` 是由字符串构成的数组，其中每个元素代表一封邮件，且 `X` 中的索引位置与 `Y` 中的索引位置严格对应，指明了该邮件是否属于垃圾邮件。**你可以试着修改 `email_index` 的数值**，查看不同邮件的文本内容及其分类标签。牢记：0 代表正常邮件，1 代表垃圾邮件。
+请注意，NumPy 数组 `X` 是由字符串构成的数组，其中每个元素代表一封邮件，==且 `X` 中的索引位置与 `Y` 中的索引位置严格对应== ，指明了该邮件是否属于垃圾邮件。**你可以试着修改 `email_index` 的数值**，查看不同邮件的文本内容及其分类标签。
 
 ```python
 email_index = 30
-print(f"Email index {email_index}: {X[email_index]}\n\n")
-print(f"Class: {Y[email_index]}")
+print(f"Email X[index] {email_index}: {X[email_index]}\n\n")
+print(f"Class Y[index] {email_index}: {Y[email_index]}")
 
 ```
+![[C3W1_Assignment_ch1-1792093115766.webp]]
 
 ### 3.3 预处理文本
 
 这部分内容虽然在先前的课堂视频中未作深入探讨，且不包含计分任务，但它对于处理文本数据极为关键，掌握它必将为你在机器学习和数据科学道路上的探索提供极大助益！
 
-在人类语言中，通常存在一些本身并不承载太多核心语义信息的词汇，例如介词、代词等。这类词汇被称为**停用词** (stopwords) 。因为它们在几乎所有文本中都高频出现，往往无法为我们的分类任务提供有价值的区分信息。因此，文本预处理的核心思路就是剔除所有的停用词和标点符号，最终只留下一个精炼且更具代表性的词汇集合。下面的函数所做的正是这件事。
+在人类语言中，通常存在一些本身并不承载太多核心语义信息的词汇，例如介词、代词等。这类词汇被称为**停用词** (stopwords) 。因为它们在几乎所有文本中都高频出现，往往无法为我们的分类任务提供有价值的区分信息。因此，文本预处理的核心思路就是==剔除所有的停用词和标点符号==，最终只留下一个精炼且更具代表性的词汇集合。下面的函数所做的正是这件事。
 
-另一个重要步骤是邮件的**分词** (tokenization) 。所谓分词，就是将一整封邮件拆解成一系列独立的**词元** (tokens) ，本质上就是提取出其中的各个单词。最终，针对每一封邮件，处理结果都会被转化为一个 NumPy 数组，其中整齐排列着剔除了停用词和标点符号后的所有单词。
+另一个重要步骤是邮件的**分词** (tokenization) 。所谓分词，就是将一整封邮件所有句子拆解成一一个一个独立的**词元** (tokens) ，本质上就是提取出其中的各个单词。
+    像这样![[C3W1_Assignment_ch1-1792093241485.webp]]
+
+最终，针对每一封邮件，处理结果都会被转化为一个 NumPy 数组，其中整齐排列着剔除了停用词和标点符号后的所有单词。
 
 ```python
 def preprocess_text(X):
@@ -184,21 +269,23 @@ def preprocess_text(X):
     if isinstance(X, str):
         X = np.array([X])
 
-    # 结果将存储在列表中
+    # 结果列表先定义好
     X_preprocessed = []
 
     for i, email in enumerate(X):
         email = np.array([i.lower() for i in word_tokenize(email) if i.lower() not in stop]).astype(X.dtype)
         X_preprocessed.append(email)
         
+    # 单个词语
     if len(X) == 1:
         return X_preprocessed[0]
     return X_preprocessed
 
-        
-        
-
 ```
+解释
+    ![[C3W1_Assignment_ch1-1792093446214.webp]]
+    ![[C3W1_Assignment_ch1-1792093529081.webp]]
+
 
 ```python
 # 该函数运行可能需要几秒钟，通常不到 1 分钟。
@@ -206,7 +293,8 @@ X_treated = preprocess_text(X)
 
 ```
 
-预处理完成后，每封邮件的文本都被转化为了一个去除了所有停用词的 NumPy 词汇数组。下面的例子展示了一个随机抽取的邮件样本 (此处索引为 989) 在预处理前后的具体对比。你可以随意尝试不同的索引值，观察不同邮件的处理效果。这个清洗完毕的单词序列，才是后续算法真正读取和计算的输入。
+预处理完成后，每封邮件的文本text都被转化为了一个去除了所有停用词的 NumPy 词汇数组。
+下面的例子展示了一个随机抽取的邮件样本 (此处索引为 989) 在预处理前后的具体对比。你可以随意尝试不同的索引值，观察不同邮件的处理效果。这个清洗完毕的单词序列，才是后续算法真正读取和计算的输入。
 
 ```python
 email_index = 989
@@ -214,34 +302,43 @@ print(f"Email before preprocessing: {X[email_index]}")
 print(f"Email after preprocessing: {X_treated[email_index]}")
 
 ```
+![[C3W1_Assignment_ch1-1792093968590.webp]]
 
 ### 3.4 划分训练集与测试集
 
-现在我们将数据集划分为训练集与测试集。我们按照 80/20 的经典比例进行划分，即 80% 的数据用于模型训练，剩余 20% 的数据用于评估测试。
+现在我们将数据集划分为**训练集**与**测试集**。我们按照 80/20 的经典比例进行划分，即 80% 的数据用于模型训练，剩余 20% 的数据用于评估测试。
 
 ```python
 TRAIN_SIZE = int(0.80*len(X_treated)) # 80% 的样本用于训练。
 
+# 前面这么多是训练集
 X_train = X_treated[:TRAIN_SIZE]
 Y_train = Y[:TRAIN_SIZE]
+# 后面这么多是测试集
 X_test = X_treated[TRAIN_SIZE:]
 Y_test = Y[TRAIN_SIZE:]
 
 ```
 
-回想一下，整个数据集中大约有 24% 的邮件属于垃圾邮件。检查训练集和测试集中这一比例是否大致持平非常重要，否则训练出的模型可能会产生意外的偏差。
+回想一下，整个数据集中大约有 24% 的邮件属于垃圾邮件。==检查训练集和测试集中这一比例是否大致持平非常重要==，否则训练出的模型可能会产生意外的偏差。
 
 ```python
 print(f"Proportion of spam in train dataset: {sum(Y_train == 1)/len(Y_train):.4f}")
 print(f"Proportion of spam in test dataset: {sum(Y_test == 1)/len(Y_test):.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792094267219.webp]]
 
 两者虽然并非分毫不差，但数值已经非常接近，完全满足实验要求！
 
 ## 4 - 实现朴素贝叶斯算法
 
-再次重申我们的核心目标：对比 $P(\text{spam} \mid \text{email})$ 与 $P(\text{ham} \mid \text{email})$ 的相对大小，判断哪一个值更高。为了完成这一对比，我们只需分别计算 $P(\text{spam}) \cdot P(\text{email} \mid \text{spam})$ 和 $P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$ 即可。
+再次重申我们的核心目标：对比 $P(\text{spam} \mid \text{email})$ 与 $P(\text{ham} \mid \text{email})$ 的相对大小，判断哪一个值更高。
+![[C3W1_Assignment_ch1-1792094767465.webp]]
+要算的是这个的分子
+    所以p(spam)之类的是先验
+
+为了完成这一对比，我们只需分别计算 $P(\text{spam}) \cdot P(\text{email} \mid \text{spam})$ 和 $P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$ 即可。
 
 ### 4.1 计算 $P(\text{email} \mid \text{spam})$ 与 $P(\text{email} \mid \text{ham})$
 
@@ -251,23 +348,25 @@ print(f"Proportion of spam in test dataset: {sum(Y_test == 1)/len(Y_test):.4f}")
 
 $$P(\text{email} \mid \text{spam}) = P(\text{word}_1 \mid \text{spam}) \cdot P(\text{word}_2 \mid \text{spam}) \cdots P(\text{word}_n \mid \text{spam})$$
 
-这正是我们引入“朴素假设” (naive assumption) 的关键所在，也是“朴素贝叶斯”之名的由来！我们大胆假设：每个单词在邮件中出现的概率，都与其他单词的出现完全独立。不用怀疑，这个假设在现实中肯定是站不住脚的。包含“聚会 (party) ”一词的邮件，显然更有可能出现“邀请 (invitation) ”；而出现“大奖 (prize) ”的邮件，也很可能伴随着“祝贺 (congratulations) ”。然而，正是通过做出这种在统计上并不完全符合真实的独立性假设，我们才得以直接应用连乘规则。我们不必再去费心估算词与词之间极为复杂的联合条件概率网，只需简单假定各词独立，并将一系列相对简单的单词条件概率相乘即可。虽然朴素贝叶斯建立在对数据的粗糙假设之上，但正如你接下来会看到的，它往往能产生令人刮目相看的出色效果！
+这正是我们引入 **“朴素假设” (naive assumption)** 的关键所在，也是“朴素贝叶斯”之名的由来！我们大胆假设：每个单词在邮件中出现的概率，都与其他单词的出现完全独立。不用怀疑，这个假设在现实中肯定是站不住脚的。包含“聚会 (party) ”一词的邮件，显然更有可能出现“邀请 (invitation) ”；而出现“大奖 (prize) ”的邮件，也很可能伴随着“祝贺 (congratulations) ”。然而，正是通过做出这种在统计上并不完全符合真实的独立性假设，我们才得以直接应用连乘规则。我们不必再去费心估算词与词之间极为复杂的联合条件概率网，只需简单假定各词独立，并将一系列相对简单的单词条件概率相乘即可。
+虽然朴素贝叶斯建立在对数据的粗糙假设之上，但正如你接下来会看到的，它往往能产生令人刮目相看的出色效果！
 
-那么，在已知邮件为垃圾邮件的条件下，某个特定单词 $\text{word}_1$ 出现的概率到底该如何实际计算呢？公式如下：
+那么，在已知邮件为垃圾邮件的条件下，==某个特定单词 $\text{word}_1$ 出现的概率==到底该如何实际计算呢？公式如下：
 
 $$P(\text{word}_1 \mid \text{spam}) = \frac{\text{\# 包含 } \text{word}_1 \text{ 的垃圾邮件数量}}{\text{\# 垃圾邮件总数}}$$
 
 其中符号 # 代表元素个数，即分子表示包含该单词的垃圾邮件总篇数。
 
-这其实是一个非常直观的计数计算：统计出包含 $\text{word}_1$ 的垃圾邮件篇数，再除以垃圾邮件的总篇数即可。遍历数据集中出现的每一个单词并重复此过程，你就做好了评估任意邮件在垃圾或正常类别下出现概率的准备。**因此，你的第一个任务就是创建一个名为 `word_frequency` 的字典，用来记录数据集中每个单词分别在正常邮件和垃圾邮件中出现的频次**。
+这其实是一个非常直观的计数计算：统计出包含 $\text{word}_1$ 的垃圾邮件篇数，再除以垃圾邮件的总篇数即可。
+遍历数据集中出现的每一个单词并重复此过程，你就做好了评估任意邮件在垃圾或正常类别下出现概率的准备。**因此，你的第一个任务就是创建一个名为 `word_frequency` 的字典，用来记录数据集中每个单词分别在正常邮件和垃圾邮件中出现的频次**。
 
 #### 4.1.1 处理连乘中的 0 概率
 
-如果遇到某个只在垃圾邮件中出现、或从未在垃圾邮件中出现过的生词，可能会导致 $P(\text{word} \mid \text{spam}) = 0$（或者在正常邮件中出现类似情况），进而让整个乘积瞬间归零。这种情况极为不利，因为仅仅一个罕见词就会抹杀掉整封邮件累积的全部概率信息。为了消除这一隐患，你将**在统计每个单词的垃圾/正常频次时，默认从 1 开始计数**。通过人为假定每个单词都至少在垃圾邮件和正常邮件中各出现过一次（即拉普拉斯平滑思想），便彻底杜绝了计算中出现 $0$ 的可能。
+如果遇到某个只在垃圾邮件中出现、或从未在垃圾邮件中出现过的生词，可能会导致 $P(\text{word} \mid \text{spam}) = 0$（或者 $P(\text{word} \mid \text{ham}) = 0$ ），进而让整个乘积瞬间归零。这种情况极为不利，因为仅仅一个罕见词就会抹杀掉整封邮件累积的全部概率信息。为了消除这一隐患，你将**在统计每个单词的垃圾/正常频次时，默认从 1 开始计数**。==通过人为假定每个单词都至少在垃圾邮件和正常邮件中各出现过一次（即拉普拉斯平滑思想）==，便彻底杜绝了计算中出现 $0$ 的可能。
 
 ### 4.2 计算 $P(\text{spam})$ 与 $P(\text{ham})$
 
-在使用贝叶斯定理时，我们还需要结合整批邮件中正常邮件与垃圾邮件各自的宏观出现概率（先验概率）。这项计算非常简单，只需取数据集中垃圾邮件与正常邮件各自所占的比例即可：
+在使用贝叶斯定理时，我们还需要结合整批邮件中正常邮件与垃圾邮件各自的宏观出现概率 **（先验概率）** 。这项计算非常简单，只需取数据集中垃圾邮件与正常邮件各自所占的比例即可：
 
 $$P(\text{spam}) = \frac{\text{\# 垃圾邮件数量}}{\text{\# 邮件总数}}$$
 
@@ -278,7 +377,6 @@ $$P(\text{ham}) = \frac{\text{\# 正常邮件数量}}{\text{\# 邮件总数}}$$
 要评估一封邮件究竟更有可能是垃圾邮件还是正常邮件，只需将先前计算得到的各项相乘，然后对比哪一方的数值更大即可：
 
 * $P(\text{spam}) \cdot P(\text{email} \mid \text{spam})$
-
 * $P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$
 
 
@@ -304,13 +402,13 @@ def get_word_frequency(X,Y):
 
     ### START CODE HERE ###
 
-    num_emails = None
+    num_emails = len(Y)
 
     # 遍历每封处理后的邮件及其标签
     for i in range(num_emails):
         # 获取第 i 封邮件
         email = X[i] 
-        # 获取第 i 个标签。指示该邮件是否为垃圾邮件。1 = None
+        # 获取第 i 个标签。指示该邮件是否为垃圾邮件 1=spam
         # 变量名 cls 是 class 的缩写，因为 class 在 Python 中是保留关键字。
         cls = Y[i] 
         # 为了避免同一封邮件中重复计算同一个单词，通过将邮件转为集合 (set) 来去重
@@ -322,9 +420,9 @@ def get_word_frequency(X,Y):
                 word_dict[word] = {"spam": None, "ham": None}
             # 当 cls == 0 时在键 ham 下增加一次出现频次；当 cls == 1 时在 spam 下增加一次
             if cls == 0:    
-                word_dict[None][None] += 1
+                word_dict[word]["ham"] += 1
             if cls == 1:
-                word_dict[None][None] += 1
+                word_dict[word]["spam"] += 1
     
     ### END CODE HERE ###
     return word_dict
@@ -369,16 +467,20 @@ class_frequency = {'ham': sum(Y_train == 0), 'spam': sum(Y_train == 1)}
 print(class_frequency)
 
 ```
+![[C3W1_Assignment_ch1-1792095264455.webp]]
 
 若要获取训练集中垃圾邮件的占比，只需执行：
 
 ```python
 # 核心思路是计算 (垃圾邮件数量) / (邮件总数)。
 # 由于邮件非黑即白（要么是垃圾邮件，要么是正常邮件），所以邮件总数 = (正常邮件数量) + (垃圾邮件数量)。
-proportion_spam = class_frequency['spam']/(class_frequency['ham'] + class_frequency['spam'])
+proportion_spam = class_frequency["spam"] / (
+    class_frequency["ham"] + class_frequency["spam"]
+)
 print(f"The proportion of spam emails in training is: {proportion_spam:.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792095291133.webp]]
 
 可以看到，该结果与此前在数据探索单元中得到的比例完全吻合！
 
@@ -409,8 +511,8 @@ def prob_word_given_class(word, cls, word_frequency, class_frequency):
     ### START CODE HERE ###
     
     # 获取该单词在指定类别下出现的次数 (类别存储在变量中)
-    amount_word_and_class = word_frequency[None][None]
-    p_word_given_class = None/class_frequency[None]
+    amount_word_and_class = word_frequency[word][cls]
+    p_word_given_class = amount_word_and_class / class_frequency[cls]
 
     ### END CODE HERE ###
     return p_word_given_class
@@ -474,11 +576,11 @@ def prob_email_given_class(treated_email, cls, word_frequency, class_frequency):
 
     ### START CODE HERE ###
 
-    for word in None:
+    for word in treated_email:
         # 仅对存在于词频字典中的单词执行计算
         if word in word_frequency.keys(): 
             # 将 prob 乘以 P(word | class) 来更新概率。切记传入 word_frequency 和 class_frequency 参数！
-            prob *= None
+            prob *= prob_word_given_class(word, cls, word_frequency, class_frequency)
 
     return prob
 
@@ -487,9 +589,21 @@ def prob_email_given_class(treated_email, cls, word_frequency, class_frequency):
 ```python
 example_email = "Click here to win a lottery ticket and claim your prize!"
 treated_email = preprocess_text(example_email)
-prob_spam = prob_email_given_class(treated_email, cls = 'spam', word_frequency = word_frequency, class_frequency = class_frequency)
-prob_ham = prob_email_given_class(treated_email, cls = 'ham', word_frequency = word_frequency, class_frequency = class_frequency)
-print(f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nP(email | spam) = {prob_spam}\nP(email | ham) = {prob_ham}")
+prob_spam = prob_email_given_class(
+    treated_email,
+    cls="spam",
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+)
+prob_ham = prob_email_given_class(
+    treated_email,
+    cls="ham",
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+)
+print(
+    f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nP(email | spam) = {prob_spam}\nP(email | ham) = {prob_ham}"
+)
 
 ```
 
@@ -515,13 +629,12 @@ w1_unittest.test_prob_email_given_class(prob_email_given_class, word_frequency, 
 在本练习中，你将执行以下两组关键计算，从而评估一封邮件分别属于垃圾邮件和正常邮件的可能性大小：
 
 * $P(\text{spam}) \cdot P(\text{email} \mid \text{spam})$
-
 * $P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$
 
 
-算法最终会将两者中数值更高的一方作为该邮件的预测类别。请注意，下面的函数中包含一个专门的参数选项，允许函数直接返回这两个似然值，而非仅仅输出最终分类结果。
+算法最终会将两者中数值更高的一方作为该邮件的预测类别。请注意，下面的函数中包含一个专门的参数选项，允许函数==直接返回这两个似然值==，而非仅仅输出最终分类结果。
 
-**注**：你会注意到函数的最终预测输出是一个整数类别代码。虽然直接返回字符串形式的 "spam" 或 "ham" 也很直观，但让模型直接输出数值代码更有利于后续的指标评估与数学运算。
+**注**：你会注意到函数的最终预测输出是一个整数类别代码。==虽然直接返回字符串形式的 "spam" 或 "ham" 也很直观，但让模型直接输出数值代码更有利于后续的指标评估与数学运算。==
 
 ```python
 def naive_bayes(treated_email, word_frequency, class_frequency, return_likelihood = False):    
@@ -584,13 +697,17 @@ def naive_bayes(treated_email, word_frequency, class_frequency, return_likelihoo
 example_email = "Click here to win a lottery ticket and claim your prize!"
 treated_email = preprocess_text(example_email)
 
-print(f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nNaive Bayes predicts this email as: {naive_bayes(treated_email, word_frequency, class_frequency)}")
+print(
+    f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nNaive Bayes predicts this email as: {naive_bayes(treated_email, word_frequency, class_frequency)}"
+)
 
 print("\n\n")
 example_email = "Our meeting will happen in the main office. Please be there in time."
 treated_email = preprocess_text(example_email)
 
-print(f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nNaive Bayes predicts this email as: {naive_bayes(treated_email, word_frequency, class_frequency)}")
+print(
+    f"Email: {example_email}\nEmail after preprocessing: {treated_email}\nNaive Bayes predicts this email as: {naive_bayes(treated_email, word_frequency, class_frequency)}"
+)
 
 ```
 
@@ -625,10 +742,7 @@ w1_unittest.test_naive_bayes(naive_bayes, word_frequency, class_frequency)
 要计算准确率，你需要统计：
 
 * 模型成功识别为垃圾邮件的真实垃圾邮件数量（称为**真正例** (True Positives) ）
-
-
 * 模型成功识别为正常邮件的真实正常邮件数量（称为**真反例** (True Negatives) ）
-
 
 
 最后，将真正例与真反例的总和除以总观测样本数，便得到了准确率。若模型达到完美预测，准确率将为 1（即 100%）。下面的代码块实现了这一指标的计算过程：
@@ -645,9 +759,10 @@ def get_true_positives(Y_true, Y_pred):
     返回值：
     - int: 真实标签和预测标签均为 1 的真正例数量。
     """
-    # Y_true 和 Y_pred 的长度必须一致。
+    # Y_true 和 Y_pred 的长度必须一致 就不用算了全对
     if len(Y_true) != len(Y_pred):
         return "Number of true labels and predict labels must match!"
+    
     n = len(Y_true)
     true_positives = 0
     # 遍历列表中的每个元素
@@ -676,6 +791,7 @@ def get_true_negatives(Y_true, Y_pred):
     # Y_true 和 Y_pred 的长度必须一致。
     if len(Y_true) != len(Y_pred):
         return "Number of true labels and predict labels must match!"
+        
     n = len(Y_true)
     true_negatives = 0
     # 遍历列表中的每个元素
@@ -706,10 +822,11 @@ for email in X_test:
     # 添加到列表中 
     Y_pred.append(prediction)
 
-# 检查 Y_pred 与 Y_test (真实标签) 的长度是否匹配：
+# 检查 Y_pred 与 Y_test (真实标签) 的长度是否匹配：就是别有漏预测的
 print(f"Y_test and Y_pred matches in length? Answer: {len(Y_pred) == len(Y_test)}")
 
 ```
+![[C3W1_Assignment_ch1-1792096712022.webp]]
 
 ```python
 # 获取真正例数量：
@@ -727,6 +844,7 @@ accuracy = (true_positives + true_negatives)/len(Y_test)
 print(f"Accuracy is: {accuracy:.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792096778937.webp]]
 
 干得漂亮！你已经成功构建了一个扎实的朴素贝叶斯模型，尽管它仅仅基于“邮件中的每个词都是彼此孤立”这一朴素假设，却依然在测试集上取得了高达 84.82% 的优异准确率！现在，你可以在下面的代码块中输入自己编写的邮件，亲自感受模型的预测能力。
 
@@ -737,10 +855,16 @@ email = "Please meet me in 2 hours in the main building. I have an important tas
 # 预处理邮件
 treated_email = preprocess_text(email)
 # 获取预测结果，为了更清晰地打印输出，若输出为 1 则显示为 "spam"，否则显示为 "ham"。
-prediction = "spam" if naive_bayes(treated_email, word_frequency, class_frequency) == 1 else "ham"
+prediction = (
+    "spam"
+    if naive_bayes(treated_email, word_frequency, class_frequency) == 1
+    else "ham"
+)
 print(f"The email is: {email}\nThe model predicts it as {prediction}.")
 
 ```
+![[C3W1_Assignment_ch1-1792096813106.webp]]
+![[C3W1_Assignment_ch1-1792096826986.webp]]
 
 ## 5 - 附录 (非评分部分)
 
@@ -757,22 +881,30 @@ treated_email = preprocess_text(example_email)
 print(f"The email is:\n\t{example_email}\n\nAfter preprocessing:\n\t:{treated_email}")
 
 ```
+![[C3W1_Assignment_ch1-1792096882058.webp]]
 
 现在我们调用 `return_likelihood = True`，分别计算这封邮件的 $P(\text{spam}) \cdot P(\text{email} \mid \text{spam})$ 和 $P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$：
 
 ```python
-spam_likelihood, ham_likelihood = naive_bayes(treated_email, word_frequency = word_frequency, class_frequency = class_frequency, return_likelihood = True)
+spam_likelihood, ham_likelihood = naive_bayes(
+    treated_email,
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+    return_likelihood=True,
+)
 print(f"spam_likelihood: {spam_likelihood}\nham_likelihood: {ham_likelihood}")
 
 ```
+![[C3W1_Assignment_ch1-1792096928205.webp]]
 
-奇怪的事情发生了：垃圾邮件和正常邮件的似然值居然**全部变成了 0**！这怎么可能呢？顺便一提，根据我们预设的判断规则，当 $\text{spam\_likelihood} \geq \text{ham\_likelihood}$ 时模型将判定为 1（垃圾邮件），因此由于两者皆为 0，这封邮件被直接武断地归为了垃圾邮件。让我们对比一下真实标签与预测标签：
+奇怪的事情发生了：垃圾邮件和正常邮件的似然值居然**全部变成了 0**！这怎么可能呢？顺便一提，根据我们预设的判断规则，当 $\text{spam\_likelihood} \geq \text{ham\_likelihood}$ 时模型将判定为 1（垃圾邮件），==因此由于两者皆为 0，这封邮件被直接武断地归为了垃圾邮件。==让我们对比一下真实标签与预测标签：
 
 ```python
 print(f"The example email is labeled as: {Y[example_index]}")
 print(f"Naive bayes model classifies it as: {naive_bayes(treated_email, word_frequency, class_frequency)}")
 
 ```
+![[C3W1_Assignment_ch1-1792096970664.webp]]
 
 果然，这封原本正常的邮件被错误地丢进了垃圾箱！更反常的是，两个似然值竟然同时为 0。究竟是什么原因造成了这种现象？答案其实隐藏在底层的数学与计算机存储机制中！
 
@@ -786,6 +918,7 @@ $$P(\text{email} \mid \text{spam}) = P(\text{word}_1 \mid \text{spam}) \cdot P(\
 print(f"The example email has: {len(treated_email)} words in the product.")
 
 ```
+![[C3W1_Assignment_ch1-1792096994226.webp]]
 
 原来，我们正在测试的这封邮件在预处理后足足包含 2657 个单词！让我们看看其中前 3 个词在正常邮件下的条件概率 $P(\text{word} \mid \text{ham})$：
 
@@ -796,8 +929,9 @@ for i in range(3):
     print(f"Word: {word}. P({word} | ham) = {p_word_given_ham}")
 
 ```
+![[C3W1_Assignment_ch1-1792097023923.webp]]
 
-因为它们都是概率值，所以必然是介于 $0$ 到 $1$ 之间的小数。这意味着我们实际上是在将 2657 个处于 0 到 1 之间的小数连续相乘！哪怕在最理想的情况下，每个词的概率都维持在 $10^{-1}$ 的数量级（类似于上例中的第一个词），整个连乘的结果也将跌落至 $10^{-2657}$ 的微小量级——这是任何现代计算机在标准浮点数精度下都无法直接表达的**极小数值**。让我们查看一下 Python 浮点数 (float) 的存储极限：
+因为它们都是概率值，所以必然是介于 $0$ 到 $1$ 之间的小数。这意味着==我们实际上是在将 2657 个处于 0 到 1 之间的小数连续相乘！==哪怕在最理想的情况下，每个词的概率都维持在 $10^{-1}$ 的数量级（类似于上例中的第一个词），整个连乘的结果也将跌落至 $10^{-2657}$ 的==**微小量级**==——这是任何现代计算机在标准浮点数精度下都无法直接表达的**极小数值**。让我们查看一下 Python 浮点数 (float) 的存储极限：
 
 ```python
 import sys
@@ -805,12 +939,14 @@ import sys
 print(sys.float_info)
 
 ```
+输出
+sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
 
-显而易见，Python 能够表示的最小正浮点数量级大约在 $10^{-308}$，它比 $10^{-2657}$ 要庞大得多。因此，在连乘进行到一定阶段后，Python 只能无可奈何地将其截断为 0，导致所有的概率信息彻底丢失。换句话说，在当前的算法实现下，一旦邮件长度超出某个临界阈值，所有的邮件都会被无一例外地错误判定为垃圾邮件！这一问题根植于朴素贝叶斯固有的庞大连乘机制中，我们必须设法予以解决。
+显而易见，Python 能够表示的最小正浮点数量级大约在 $10^{-308}$，它比 $10^{-2657}$ 要庞大得多。因此，在连乘进行到一定阶段后，==Python 只能无可奈何地将其截断为 0==，导致所有的概率信息彻底丢失。换句话说，在当前的算法实现下，==一旦邮件长度超出某个临界阈值，所有的邮件都会被无一例外地错误判定为垃圾邮件！==这一问题根植于朴素贝叶斯固有的庞大连乘机制中，我们必须设法予以解决。
 
 #### 5.1.1 数值下溢问题 (The Underflow Problem)
 
-你所遭遇的这一瓶颈在计算机科学中被称为**数值下溢问题** (underflow problem) ，它特指因数值过于微小而超出了计算机浮点精度的表示极限。在本例中，罪魁祸首正是朴素贝叶斯中过长的连乘链条。幸运的是，数学工具为我们提供了一个极其优雅的解决方案。
+你所遭遇的这一瓶颈在计算机科学中被称为**数值下溢问题** (underflow problem) ，它特指因==数值过于微小而超出了计算机浮点精度的表示极限==。在本例中，罪魁祸首正是朴素贝叶斯中过长的连乘链条。幸运的是，数学工具为我们提供了一个极其优雅的解决方案。
 
 回想一下，在朴素贝叶斯中，我们其实根本不需要求出精确的后验概率绝对数值，算法的核心本质始终只是**比较相对大小**。这正是我们之前可以心安理得地扔掉分母的原因：
 
@@ -826,7 +962,8 @@ $$P(\text{ham}) \cdot P(\text{email} \mid \text{ham})$$
 
 只要我们能准确判断出它们谁比谁大，分类任务就能够顺利完成。
 
-此时，如果我们能找到一个数学函数，在作用于这些数值后依然能够**严格保持其原有的大小顺序**（单调性），那么比较函数变换后的输出结果，就与比较原数值具有完全相同的决策效力。
+此时，如果我们==能找到一个数学函数，在作用于这些数值后依然能够**严格保持其原有的大小顺序**（单调性）==，那么比较函数变换后的输出结果，就与比较原数值具有完全相同的决策效力。
+    那当然就是log了
 
 任何一个**严格单调递增函数**都天生具备这一优良特性：它能够严格保持极大值点的位置不变。因此，解决问题的核心就在于：寻找一个单调递增函数，把朴素贝叶斯中令人头疼的连乘积化繁为简。你能想到这样一个函数吗？没错，就是**对数函数** ($\log$)！众所周知，对数运算拥有化**乘积**为**求和**的神奇魔力！加之 $\log$ 是严格单调递增的，它完美保全了相对大小关系。因此，我们可以直接转而对比以下两个对数量：
 
@@ -845,10 +982,7 @@ $$\log \left( P(\text{email} \mid \text{class}) \right) = \log  \left(P(\text{wo
 通过这一巧妙转化，我们把原本极其危险的大规模浮点数连乘，转变成了一个在数值计算上高度稳定的大规模**对数求和**！现在，我们将运用这一数学利器来重构我们的核心函数。我们需要调整以下两个函数：
 
 * `prob_email_given_class`：将单词概率的乘积替换为对数概率的求和。
-
-
 * `naive_bayes`：将乘积 $P(\text{class}) \cdot P(\text{email} \mid \text{class})$ 替换为相应的对数相加 $\log P(\text{class}) + \log P(\text{email} \mid \text{class})$。
-
 
 
 这两个升级后的新函数将被命名为 `log_prob_email_given_class` 和 `log_naive_bayes`。
@@ -882,13 +1016,26 @@ def log_prob_email_given_class(treated_email, cls, word_frequency, class_frequen
 
 ```python
 # 考虑只有 1 个单词的邮件，因此计算退化为求 P(word | class) 或 log(P(word | class))。
-one_word_email = ['schedule']
+one_word_email = ["schedule"]
 word = one_word_email[0]
-prob_spam = prob_email_given_class(one_word_email, cls = 'spam',word_frequency = word_frequency, class_frequency = class_frequency)
-log_prob_spam = log_prob_email_given_class(one_word_email, cls = 'spam',word_frequency = word_frequency, class_frequency = class_frequency)
-print(f"For word {word}:\n\tP({word} | spam) = {prob_spam}\n\tlog(P({word} | spam)) = {log_prob_spam}")
+prob_spam = prob_email_given_class(
+    one_word_email,
+    cls="spam",
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+)
+log_prob_spam = log_prob_email_given_class(
+    one_word_email,
+    cls="spam",
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+)
+print(
+    f"For word {word}:\n\tP({word} | spam) = {prob_spam}\n\tlog(P({word} | spam)) = {log_prob_spam}"
+)
 
 ```
+![[C3W1_Assignment_ch1-1792097193725.webp]]
 
 请注意，$\text{log}$ 成功地将一个原本无限逼近 0 的极其微小的正数，转化为了一个数值规模适度、便于计算机精准处理的负数。更重要的是，整个算法现在是在安全地执行加法，而不是在危险的边缘执行连乘。
 
@@ -912,16 +1059,30 @@ def log_naive_bayes(treated_email, word_frequency, class_frequency, return_likel
     """
     
     # 使用新的对数函数计算 P(email | spam)
-    log_prob_email_given_spam = log_prob_email_given_class(treated_email, cls = 'spam',word_frequency = word_frequency, class_frequency = class_frequency) 
+    log_prob_email_given_spam = log_prob_email_given_class(
+        treated_email, 
+        cls = 'spam',
+        word_frequency = word_frequency, 
+        class_frequency = class_frequency
+    ) 
 
     # 使用上面刚刚定义的函数计算 P(email | ham)
-    log_prob_email_given_ham = log_prob_email_given_class(treated_email, cls = 'ham',word_frequency = word_frequency, class_frequency = class_frequency) 
+    log_prob_email_given_ham = log_prob_email_given_class(
+        treated_email, 
+        cls = 'ham',
+        word_frequency = word_frequency, 
+        class_frequency = class_frequency
+    ) 
 
     # 使用 class_frequency 字典并利用公式 #spam emails / #total emails 计算 P(spam)
-    p_spam = class_frequency['spam']/(class_frequency['ham'] + class_frequency['spam']) 
+    p_spam = class_frequency["spam"] / (
+        class_frequency["ham"] + class_frequency["spam"]
+    )
 
     # 使用 class_frequency 字典并利用公式 #ham emails / #total emails 计算 P(ham)
-    p_ham = class_frequency['ham']/(class_frequency['ham'] + class_frequency['spam']) 
+    p_ham = class_frequency['ham']/(
+        class_frequency['ham'] + class_frequency['spam']
+    ) 
 
     # 计算量 log(P(spam)) + log(P(email | spam))，我们称之为 log_spam_likelihood
     log_spam_likelihood = np.log(p_spam) + log_prob_email_given_spam 
@@ -945,18 +1106,28 @@ def log_naive_bayes(treated_email, word_frequency, class_frequency, return_likel
 重新审视本节开头的例子，我们将重新计算 `log_spam_likelihood` 与 `log_ham_likelihood`：
 
 ```python
-log_spam_likelihood, log_ham_likelihood = log_naive_bayes(treated_email,word_frequency = word_frequency, class_frequency = class_frequency,return_likelihood = True)
-print(f"log_spam_likelihood: {log_spam_likelihood}\nlog_ham_likelihood: {log_ham_likelihood}")
-
+log_spam_likelihood, log_ham_likelihood = log_naive_bayes(
+    treated_email,
+    word_frequency=word_frequency,
+    class_frequency=class_frequency,
+    return_likelihood=True,
+)
+print(
+    f"log_spam_likelihood: {log_spam_likelihood}\nlog_ham_likelihood: {log_ham_likelihood}"
+)
 ```
+![[C3W1_Assignment_ch1-1792097298168.webp]]
 
 太棒了！现在我们得到了两个清晰、截然不同且非零的有效数值！可以看到，`log_ham_likelihood` 明显大于 `log_spam_likelihood`，因此 `log_naive_bayes` 准确无误地将这封邮件归类为了正常邮件：
 
 ```python
 print(f"The example email is labeled as: {Y[example_index]}")
-print(f"Log Naive bayes model classifies it as: {log_naive_bayes(treated_email,word_frequency = word_frequency, class_frequency = class_frequency)}")
+print(
+    f"Log Naive bayes model classifies it as: {log_naive_bayes(treated_email, word_frequency=word_frequency, class_frequency=class_frequency)}"
+)
 
 ```
+![[C3W1_Assignment_ch1-1792097333061.webp]]
 
 依托这一改进后的算法，让我们重新评估测试集上的整体模型准确率：
 
@@ -989,6 +1160,7 @@ accuracy = (true_positives + true_negatives)/len(Y_test)
 print(f"The accuracy is: {accuracy:.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792097351592.webp]]
 
 这是一个**堪称惊艳**的飞跃！在未经任何特征工程干预的情况下，模型在测试集上的准确率从 84.82% 一跃攀升至 **99.21%**，整体准确率提升了近 17 个百分点！我们根本没有触碰底层数据集的一分一毫，这一突破完全来源于对底层**数学逻辑**的深刻理解与巧妙重构。这正是数学在工程落地中的非凡力量！
 
@@ -1008,12 +1180,12 @@ print(f"The accuracy is: {accuracy:.4f}")
 
 * 算法究竟成功逮住了多少真正的垃圾邮件？这些被称为**真正例** (True Positives) 。
 
+* 算法究竟把多少**正常邮件** **错误地当成了垃圾邮件** ？这些被称为**假正例** (False Positives) 。
+    * **这才是我们必须拿着放大镜严密监控的关键指标**。
 
-* 算法究竟把多少**正常邮件****错误地当成了垃圾邮件**？这些被称为**假正例** (False Positives) 。**这才是我们必须拿着放大镜严密监控的关键指标**。
 
 
-
-第一个问题直接引出了评估领域的另一个基石指标——召回率 (Recall) 。为了回答这个问题，我们必须统计数据集中客观存在的所有垃圾邮件总数，并看模型能够准确从中挑出多少（即真正例）。召回率的定义如下：
+第一个问题直接引出了评估领域的另一个基石指标——**召回率 (Recall)** 。为了回答这个问题，我们必须统计数据集中客观存在的所有垃圾邮件总数，并看模型能够准确从中挑出多少（即真正例）。召回率的定义如下：
 
 $$\text{recall} = \frac{\text{真正例 (被成功识别为垃圾邮件的垃圾邮件数量)}}{\text{所有客观存在的垃圾邮件总数}}$$
 
@@ -1036,6 +1208,7 @@ def get_recall(Y_true, Y_pred):
     - recall (float): 召回率得分，即真正例与实际正例总数的比值。
     """
     # 获取垃圾邮件的总数。由于数据中垃圾邮件记为 1，只需对数组 Y 中所有值求和即可。
+    # 聪明的做法
     total_number_spams = Y_test.sum()
     # 获取真正例
     true_positives = get_true_positives(Y_true, Y_pred)
@@ -1052,10 +1225,14 @@ Y_pred_naive_bayes = []
 Y_pred_log_naive_bayes = []
 
 for email in X_test:
- prediction = naive_bayes(email,word_frequency = word_frequency, class_frequency = class_frequency)
- log_prediction = log_naive_bayes(email,word_frequency = word_frequency, class_frequency = class_frequency)
- Y_pred_naive_bayes.append(prediction)
- Y_pred_log_naive_bayes.append(log_prediction)
+    prediction = naive_bayes(
+        email, word_frequency=word_frequency, class_frequency=class_frequency
+    )
+    log_prediction = log_naive_bayes(
+        email, word_frequency=word_frequency, class_frequency=class_frequency
+    )
+    Y_pred_naive_bayes.append(prediction)
+    Y_pred_log_naive_bayes.append(log_prediction)
 
 # 计算两个模型的召回率
 recall_naive_bayes = get_recall(Y_test, Y_pred_naive_bayes)
@@ -1068,12 +1245,13 @@ print(f"The proportion of spam emails the standard Naive Bayes model can correct
 print(f"The proportion of spam emails the log Naive Bayes model can correctly classify as spam (recall) is: {recall_log_naive_bayes:.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792097605096.webp]]
 
-测试表明，两个版本的模型在**捕捉垃圾邮件**方面的能力都极度敏锐，能够精准捕获超过 98% 的垃圾邮件！这个指标印证了模型的敏感度 (Sensitivity) ，展现了它在搜寻垃圾邮件时的天罗地网能力。
+测试表明，两个版本的模型在**捕捉垃圾邮件**方面的能力都极度敏锐，能够精准捕获超过 98% 的垃圾邮件！这个指标印证了模型的**敏感度 (Sensitivity)** ，展现了它在搜寻垃圾邮件时的天罗地网能力。
 
-但关键的考验在于第二个问题，它对应着另一个极其关键的质量指标——精确率 (Precision) 。
+但关键的考验在于第二个问题，它对应着另一个极其关键的质量指标——**精确率 (Precision)** 。
 
-要回答这一问题，我们必须把目光锁定在所有被模型扣上“垃圾邮件”帽子的邮件池中：在这个池子里，到底有多少是**名副其实**的真垃圾邮件？这是一个极为致命的指标，因为正如我们所见，一个把所有邮件都统统打上垃圾邮件标签的模型，固然能够斩获 100% 的垃圾邮件召回率，但它实际上完全是个灾难！在日常业务中，我们必须千方百计避免将普通正常信件扔进垃圾桶，防止用户痛失重要信息。
+要回答这一问题，我们必须把目光锁定在所有被模型扣上“垃圾邮件”帽子的邮件池中：在这个池子里，到底有多少是**名副其实**的真垃圾邮件？这是一个极为致命的指标，因为正如我们所见，==一个把所有邮件都统统打上垃圾邮件标签的模型，固然能够斩获 100% 的垃圾邮件召回率，但它实际上完全是个灾难！== 在日常业务中，我们必须千方百计避免将普通正常信件扔进垃圾桶，防止用户痛失重要信息。
 
 这一关切与**假正例** (False Positives) 紧密相连。换句话说，我们现在需要仔细清点算法到底把多少无辜的正常邮件错误归入了垃圾箱。下面的代码块实现了统计假正例数量的函数：
 
@@ -1122,10 +1300,12 @@ print(f"Number of false positives in the standard Naive Bayes model: {false_posi
 print(f"Number of false positives in the log Naive Bayes model: {false_positives_log_naive_bayes}")
 
 ```
+![[C3W1_Assignment_ch1-1792097692279.webp]]
 
 这真是一个质的飞跃！标准版朴素贝叶斯将多达 169 封正常的无辜邮件误判为了垃圾邮件，而改进后的对数版模型仅误判了 4 封！为了将这一对比量化为更具普适意义的指标，我们计算以下比率：
 
-* 在所有被模型预测为垃圾邮件的集合中，真实垃圾邮件（真正例）所占的比例。请注意，被预测为垃圾邮件的集合包含两部分：**被正确揪出的垃圾邮件**（真正例）与**被无辜冤枉的正常邮件**（假正例）。
+* 在所有被模型预测为垃圾邮件的集合中，真实垃圾邮件（真正例）所占的比例。
+    请注意，被预测为垃圾邮件的集合包含两部分：**被正确揪出的垃圾邮件**（真正例）与**被无辜冤枉的正常邮件**（假正例）。
 
 
 
@@ -1161,8 +1341,10 @@ print(f"Precision of the standard Naive Bayes model: {get_precision(Y_test, Y_pr
 print(f"Precision of the log Naive Bayes model: {get_precision(Y_test, Y_pred_log_naive_bayes):.4f}")
 
 ```
+![[C3W1_Assignment_ch1-1792097741193.webp]]
 
-数据对比令人震撼：第一版标准模型的精确率仅仅只有 59.57%。换句话说，在该模型挑出的每 100 封所谓“垃圾邮件”中，实际上只有大约 60 封是真的垃圾邮件，剩下的 40 封全是蒙受不白之冤的正常重要邮件！这表明旧模型虽然看似“灵敏”，但在实际生产环境中极不可靠。
+数据对比令人震撼：第一版标准模型的精确率仅仅只有 59.57%。换句话说，在该模型挑出的每 100 封所谓“垃圾邮件”中，实际上只有大约 60 封是真的垃圾邮件，剩下的 40 封全是蒙受不白之冤的正常重要邮件！
+这表明旧模型虽然看似“灵敏”，但在实际生产环境中极不可靠。
 
 而经过对数数值稳定性改造后的升级模型，精确率直接飙升至 **98.42%**！这意味着在它判定为垃圾邮件的 100 封信件中，大约仅有 2 封可能是误判，其余全部精准命中。输出结果的可靠度实现了质的蜕变。
 
