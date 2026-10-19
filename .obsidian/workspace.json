@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 28.55227882037534,
+        "dimension": 28.552278820375342,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -99,7 +99,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       },
       {
         "id": "008903b748626b2d",
@@ -126,12 +126,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/01.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01"
+              "title": "02"
             }
           }
         ],
@@ -194,8 +194,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 428.70001220703125,
-    "collapsed": true
+    "width": 241.5
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -290,25 +289,29 @@
   },
   "active": "164c7adadc8def97",
   "lastOpenFiles": [
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/02.md",
+    "ALearning_人工智能/理论课程/问题合集/关于数据不服从正态分布 QQ-plots长什么样.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792287014373.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792286976965.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792286599524.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792286100219.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792286069469.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792285996002.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792285901712.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792285839574.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792285688404.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src/01-1792285592277.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/公式符号/英文.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/02.md",
+    "AAA学习日常/周计划/任务.md",
+    "AAA学习日常/Gemini指令临时存.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/C3W1_Assignment_ch1.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097741193.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097692279.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097605096.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097351592.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097333061.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097328680.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097298168.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097193725.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792097023923.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src/C3W1_Assignment_ch1-1792096994226.webp",
     "AAA学习日常/周计划/疑问库.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/Rideshare_Project_Week1_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/intro-to-pandas-world-happiness_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/公式符号/英文.md",
-    "AAA学习日常/Gemini指令临时存.md",
-    "AAA学习日常/周计划/任务.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/02.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/C3_W1_Lab_2_Birthday_Problems_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/变换采样解释.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_3_Optimization_Using_Newtons_Method_ch.md",
@@ -317,7 +320,6 @@
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/C1_W4_Lab_1_Interpreting_eigenvalues_and_eigenvectors_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week2/上机/C1W2_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/上机/C2_W2_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/Rideshare_Project_Week2.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/变换采样解释-argon版.md",
@@ -327,14 +329,12 @@
     "ALearning_人工智能/理论课程/3B1B/calculus/02.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C3W2_UGL_Dice_Simulations_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C2W2_UGL_datasets_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/C3_W1_Lab_1_Monty_Hall_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/src",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/公式符号",
     "ALearning_人工智能/Python/特性专题/python_base",
     "ALearning_人工智能/理论课程/问题合集",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/src",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/英文原版",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
