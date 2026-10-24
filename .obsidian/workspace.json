@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 22.727272727272727,
+        "dimension": 25.154320987654323,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -84,12 +84,13 @@
               "title": "英文"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       },
       {
         "id": "008903b748626b2d",
         "type": "tabs",
-        "dimension": 77.27272727272727,
+        "dimension": 74.84567901234568,
         "children": [
           {
             "id": "78987867082cbf1d",
@@ -118,23 +119,9 @@
               "icon": "lucide-file",
               "title": "02"
             }
-          },
-          {
-            "id": "533882646f812877",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Learn_H265/双框架libhevc/另外的做法 解释.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "另外的做法 解释"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -154,7 +141,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -166,7 +155,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Bayes_theorem",
+                "query": "tag:#PDF",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -191,7 +180,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 338.5
+    "width": 318.5,
+    "collapsed": true
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -284,53 +274,53 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "2034f8f7830ade55",
+  "active": "c7bf045ff8ae3779",
   "lastOpenFiles": [
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225204609.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225204249.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225203946.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225203359.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225203309.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225203228.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225203203.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225202514.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225202302.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225201754.webp",
-    "Learn_C++/汇编/海蓬莱/src/Pasted image 20260225201605.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/02.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/公式符号/英文.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792719834299.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792719461943.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792718957188.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792718902956.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792718531380.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792715951449.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792715643655.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792715401855.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792715319999.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/src/02-1792714425030.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/上机/linear-regression-world-happiness.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/上机/C3W3_UGL_Central_Limit_Theorem_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/C3W4_Assignment_ch.md",
+    "AAA学习日常/周计划/任务.md",
+    "ALearning_人工智能/环境/基础环境.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week1/上机/英文原版/C1_W1_Lab_1_introduction_to_numpy_arrays.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week3/上机/C1W3_UGL_3_linear_transformations_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/上机/英文原版/C1W4_Assignment.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/英文原版/C2_W1_Assignment.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/上机/C2_W3_Lab_2_Classification_with_Perceptron_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/英文原版/C3W1_Assignment.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/C3W1_Assignment_ch1.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/英文原版/Rideshare_Project_Week2.md",
+    "Learn_H265/标准书/9.2.md",
+    "Learn_H265/标准书/9.3.1.md",
+    "Learn_H265/标准书/9.3.2 Initialization process.md",
+    "Learn_H265/双框架libhevc/01 slice_data 熵解码.md",
+    "Learn_H265/双框架libhevc/另外的做法.md",
+    "Learn_H265/双框架libhevc/另外的做法 解释.md",
     "Learn_C++/汇编/海蓬莱/src",
     "Learn_C++/汇编/海蓬莱/02 指令1.md",
     "Learn_C++/汇编/海蓬莱/03 段地址.md",
     "Learn_C++/汇编/海蓬莱/04 指令2.md",
-    "Learn_C++/汇编/海蓬莱/01 环境.md",
     "Learn_C++/汇编/海蓬莱",
     "Learn_C++/汇编",
     "Learning_article/周报/src",
-    "Learning_article/周报/论文汇报.md",
-    "Learning_article/周报/论文汇报 1.md",
-    "Learning_article/周报/未命名.md",
-    "Learning_article/周报/未命名 1.md",
-    "Learning_article/周报/周报框架.md",
-    "Learning_article/周报/6.7 周报.md",
-    "Learning_article/周报/6.21 周报.md",
-    "Learning_article/周报/6.14 周报.md",
-    "Learning_article/周报/5.30 周报.md",
-    "Learning_article/周报/5.24周报.md",
-    "Learning_article/周报/5.17周报.md",
     "Learning_article/周报",
     "Learning_article",
     "新建文件夹",
     "YAN_assignment/自然语言处理/src",
-    "YAN_assignment/自然语言处理/项目管理.md",
-    "YAN_assignment/自然语言处理/软件开发方法学论文.md",
-    "YAN_assignment/自然语言处理/软件开发方法学.md",
-    "YAN_assignment/自然语言处理/论文写作.md",
-    "YAN_assignment/自然语言处理/演讲稿.md",
-    "YAN_assignment/自然语言处理/框架整理.md",
-    "YAN_assignment/自然语言处理/建议.md",
     "YAN_assignment/自然语言处理",
-    "Learn_H265/双框架libhevc/一些疑问.md",
-    "Learn_H265/双框架libhevc/另外的做法 解释.md",
-    "Learn_H265/双框架libhevc/另外的做法.md",
     "Learn_H265/双框架libhevc/src",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
