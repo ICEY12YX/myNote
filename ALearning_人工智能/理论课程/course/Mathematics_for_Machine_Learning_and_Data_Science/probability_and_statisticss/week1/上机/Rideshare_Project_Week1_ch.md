@@ -15,8 +15,6 @@ ___
 
 ### 学习目标 (Learning Objectives) ：
 
-
-
 在本次实战中，你将在具体业务场景中应用以下课程统计学概念：
 
 * 概率 (Probability)
