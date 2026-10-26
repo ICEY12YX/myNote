@@ -58,11 +58,13 @@ data = pd.read_csv("background_color_experiment.csv")
 data.head(10)
 
 ```
+![[C3W4_Assignment_ch-1793022214598.webp]]
 
 ```python
 print(f"The dataset size is: {len(data)}")
 
 ```
+![[C3W4_Assignment_ch-1793025224900.webp]]
 
 这份数据展示了每位用户的平均会话时长以及他们所访问的网站版本。为了将两个群体分开以便于后续计算，你可以运行下面的单元格对 Pandas 数据框 (dataframe) 进行切片。如果你对 Pandas 还不够熟悉，可以回顾一下我们之前的非评分实验课。不过完全不必担心，完成本次作业并不需要你是 Pandas 专家。
 
@@ -71,14 +73,23 @@ print(f"The dataset size is: {len(data)}")
 control_sd_data = data[data["user_type"]=="control"]["session_duration"]
 variation_sd_data = data[data["user_type"]=="variation"]["session_duration"]
 
-print(f"{len(control_sd_data)} users saw the original website with an average duration of {control_sd_data.mean():.2f} minutes\n")
-print(f"{len(variation_sd_data)} users saw the new website with an average duration of {variation_sd_data.mean():.2f} minutes")
+print(
+    f"{len(control_sd_data)} users saw the original website with an average duration of {control_sd_data.mean():.2f} minutes\n"
+)
+print(
+    f"{len(variation_sd_data)} users saw the new website with an average duration of {variation_sd_data.mean():.2f} minutes"
+)
 
 ```
+![[C3W4_Assignment_ch-1793025389949.webp]]
 
-请注意，两组的人数分配并不是完全均等的。这在 A/B 测试中非常常见，因为用户被分配到哪个组别的过程本身带有随机性。
+解释
+    关于上面两句的用法可以参考上一个实验
+    可以搜这句 `fridays_and_saturdays = daily_rides[daily_rides["weekday"].isin(["Friday", "Saturday"])]["daily_rides"]`
 
-乍一看，更换背景颜色似乎确实让用户在网站上停留了更长时间。但你很清楚，不能仅凭数据的表面差异就草率下结论，因此你决定进行一次假设检验 (hypothesis test) ，以判断这两个群体的均值 (means) 之间是否存在显著差异。
+请注意，==两组的人数分配并不是完全均等的。==这在 A/B 测试中非常常见，因为用户被分配到哪个组别的过程本身带有随机性。
+
+乍一看，更换背景颜色似乎确实让用户在网站上停留了更长时间。但你很清楚，==不能仅凭数据的表面差异就草率下结论==，因此你决定进行一次假设检验 (hypothesis test) ，以判断这两个群体的均值 (means) 之间是否存在显著差异。
 
 ## 3 - 理论回顾
 
@@ -95,7 +106,7 @@ print(f"{len(variation_sd_data)} users saw the new website with an average durat
 
 $$H_0: \mu_v = \mu_c \quad \text{vs.} \quad H_1: \mu_v - \mu_c > 0$$
 
-正如你在课程中所学到的，这是一个右尾检验 (right-tailed test) ，因为你关注的是平均时间是否有所增加。从上面的数据可以看出，每个组别都有超过 2000 名用户，数据量非常充足，因此我们可以合理地依据中心极限定理 (Central Limit Theorem, CLT) ，认为每个组别的平均时间服从正态分布 (normal distribution) 。请记住，这一结论针对的是整个群体的平均时间，而不是说单个用户在网站上停留的时间服从正态分布。你并不清楚单个用户在网站上停留时间的确切分布，但中心极限定理向我们保证：只要收集到足够多的数据，群体平均时间的分布就会非常接近正态分布，且该正态分布的均值正是用户在网站上花费的真实平均时间。接下来，让我们定义另外几个量：
+正如你在课程中所学到的，这是一个**右尾检验 (right-tailed test)** ，因为你关注的是平均时间是否有所增加。从上面的数据可以看出，每个组别都有超过 2000 名用户，数据量非常充足，因此我们可以合理地依据**中心极限定理 (Central Limit Theorem, CLT)** ，认为每个组别的平均时间服从**正态分布 (normal distribution)** 。==请记住，这一结论针对的是整个群体的平均时间，而不是说单个用户在网站上停留的时间服从正态分布。==你并不清楚单个用户在网站上停留时间的确切分布，但中心极限定理向我们保证：只要收集到足够多的数据，群体平均时间的分布就会非常接近正态分布，且该正态分布的均值正是用户在网站上花费的真实平均时间。接下来，让我们定义另外几个量：
 
 * $\overline{X}_c$ - 对照组的样本均值 (sample mean) 。
 * $\overline{X}_v$ - 实验组的样本均值。
@@ -106,10 +117,9 @@ $$H_0: \mu_v = \mu_c \quad \text{vs.} \quad H_1: \mu_v - \mu_c > 0$$
 
 * $$\overline{X}_c \sim N\left(\mu_c, \left(\frac{\sigma_c}{\sqrt{n_c}}\right)^2\right)$$
 
-
 * $$\overline{X}_v \sim N\left(\mu_v, \left(\frac{\sigma_v}{\sqrt{n_v}}\right)^2\right)$$
 
-
+    对的对的
 
 需要注意的是，在正态分布的假设下，$\overline{X}_v - \overline{X}_c$ 同样服从正态分布。因此，如果 $H_0$ 为真，那么 $\mu_c = \mu_v$ 且 $\mu_v - \mu_c = 0$，由此可得：
 
@@ -118,12 +128,14 @@ $$\overline{X}_c - \overline{X}_v \sim N\left(\mu_v - \mu_c, \left(\dfrac{\sigma
 或者等价地表示为：
 
 $$\frac{\left( \overline{X}_v - \overline{X}_c \right)}{\sqrt{\left(\frac{\sigma_v}{\sqrt{n_v}}\right)^2 + \left(\frac{\sigma_c}{\sqrt{n_c}}\right)^2}} \sim N(0, 1)$$
+    对的对的
 
-不过请记住，你并不知道 $\sigma_v$ 和 $\sigma_c$ 的确切数值，因为它们是总体标准差 (population standard deviation) ，而你手头只有样本数据，所以最好的办法是计算样本标准差 (sample standard deviation) 。因此，你需要用样本标准差 $s_c$ 和 $s_v$ 分别替换 $\sigma_c$ 和 $\sigma_v$。你在课程中也学过，用样本标准差替换总体标准差后，随机变量 (random variable) 的分布就会从标准正态分布变为学生 t 分布 (t-student distribution) ：
+不过请记住，==你并不知道 $\sigma_v$ 和 $\sigma_c$ 的确切数值==，因为它们是总体标准差 (population standard deviation) ，而你手头只有样本数据，所以最好的办法是计算样本标准差 (sample standard deviation) 。因此，你需要用样本标准差 $s_c$ 和 $s_v$ 分别替换 $\sigma_c$ 和 $\sigma_v$。你在课程中也学过，用样本标准差替换总体标准差后，随机变量 (random variable) 的分布就会从标准正态分布变为学生 **t 分布 (t-student distribution)** ：
 
 $$t = \frac{\left( \overline{X}_v - \overline{X}_c \right)}{\sqrt{\left(\frac{s_v}{\sqrt{n_v}}\right)^2 + \left(\frac{s_c}{\sqrt{n_c}}\right)^2}} \sim t_d$$
 
 其中 $d$ 是该场景下的自由度 (degrees of freedom) 。如果我们假设两个群体的标准差相同，那么 $d = n_c + n_v - 2$；但目前并没有任何依据支持这一假设，因此自由度的计算公式会稍微复杂一些：
+    这里意思是说, 理论上说可以用上面的公式,但是数学家没有证明出来
 
 $$d = \frac{\left[\frac{s_{v}^2}{n_v} + \frac{s_{c}^2}{n_c} \right]^2}{\frac{(s_{v}^2/n_v)^2}{n_v-1} + \frac{(s_{c}^2/n_c)^2}{n_c-1}}$$
 
@@ -156,7 +168,7 @@ $$H_0: \mu_v = \mu_c \quad \text{vs.} \quad H_1: \mu_v - \mu_c > 0$$
 拿到这些统计量后，接下来的步骤是计算：
 
 * $d$，即学生 t 分布 $t_d$ 的自由度。
-* t 值 (t-value) ，记为 $t$。
+* t 值 (t-value) ，记为 $t$。 #t_statistic 
 * 分布 $t_d$ 对应于该 t 值的 $p$ 值，即 $p = P(t_d > t \vert{} H_0)$。
 
 最后，针对给定的显著性水平 $\alpha$，你可以根据 $p \leq \alpha$ 是否成立，来决定是否拒绝 $H_0$。
@@ -175,6 +187,7 @@ print(f"The first 10 entries for X_c are:\n{X_c[:20]}\n")
 print(f"The first 10 entries for X_v are:\n{X_v[:20]}\n")
 
 ```
+![[C3W4_Assignment_ch-1793026696168.webp]]
 
 ### 练习 1
 
@@ -191,7 +204,7 @@ print(f"The first 10 entries for X_v are:\n{X_v[:20]}\n")
 * 回想一下，样本标准差是通过将方差 (variance) 公式中的分母 $N$ 替换为 $N-1$ 来计算的。
 * 你可以使用 `len` 函数来计算数组的大小。
 * numpy 中的任何数组都有一个名为 `.mean()` 的方法来计算其均值。
-* numpy 中的任何数组都有一个名为 `.std()` 的方法来计算标准差，并且包含一个名为 `ddof` 的参数；如果你传入 `ddof = 1`，它就会使用 $N-1$ 而不是 $N$。
+* numpy 中的任何数组都有一个名为 `.std()` 的方法来计算标准差，并且包含一个名为 `ddof` 的参数；==如果你传入 `ddof = 1`，它就会使用 $N-1$ 而不是 $N$。==
 
 ```python
 def get_stats(X):
@@ -211,11 +224,11 @@ def get_stats(X):
     ### START CODE HERE ###
     
     # Get the group size
-    n = None
+    n = len(X)
     # Get the group mean
-    x = None
+    x = X.mean()
     # Get the group sample standard deviation (do not forget to pass the parameter ddof if using the method .std)
-    s = None
+    s = X.std(ddof=1)
 
     ### END CODE HERE ###
 
@@ -276,18 +289,18 @@ def degrees_of_freedom(n_v, s_v, n_c, s_c):
     # Also, note that the value s_c^2/n_c and s_v^2/n_v appears both in the numerator and denominator, so let's also compute them separately
 
     # Compute s_v^2/n_v (remember to use Python syntax or np.square)
-    s_v_n_v = None
+    s_v_n_v = s_v**2 / n_v
 
     # Compute s_c^2/n_c (remember to use Python syntax or np.square)
-    s_c_n_c = None
+    s_c_n_c = s_c**2 / n_c
 
 
     # Compute the numerator in the formula given above
-    numerator = None
+    numerator = (s_v_n_v + s_c_n_c) ** 2
 
     # Compute the denominator in the formula given above. Attention that s_c_n_c and s_v_n_v appears squared here!
     # Also, remember to use parenthesis to indicate the operation order. Note that a/b+1 is different from a/(b+1).
-    denominator = None
+    denominator = (s_v_n_v**2 / (n_v - 1)) + (s_c_n_c**2 / (n_c - 1))
     
     ### END CODE HERE ###
 
@@ -329,23 +342,22 @@ def t_value(n_v, x_v, s_v, n_c, x_c, s_c):
     # Also, let's compute again separately s_c^2/n_c and s_v^2/n_v.
 
     # Compute s_v^2/n_v (remember to use Python syntax or np.square)
-    s_v_n_v = None
+    s_v_n_v = s_v**2 / n_v
 
     # Compute s_c^2/n_c (remember to use Python syntax or np.square)
-    s_c_n_c = None
+    s_c_n_c = s_c**2 / n_c
 
     # Compute the numerator for the t-value as given in the formula above
-    numerator = None
+    numerator = x_v - x_c
 
     # Compute the denominator for the t-value as given in the formula above. You may use np.sqrt to compute the square root.
-    denominator = None
-    
+    denominator = np.sqrt(s_v_n_v + s_c_n_c)
+
     ### END CODE HERE ###
 
-    t = numerator/denominator
+    t = numerator / denominator
 
     return t
-
 ```
 
 ```python
@@ -400,10 +412,10 @@ def p_value(d, t_value):
     ### START CODE HERE ###
 
     # Load the t-student distribution with $d$ degrees of freedom. Remember that the parameter in the stats.t is given by df.
-    t_d = None
+    t_d = stats.t(df = d)
 
     # Compute the p-value, P(t_d > t). Remember to use the t_d.cdf with the proper adjustments as discussed above.
-    p = None
+    p = 1 - t_d.cdf(t_value)
 
 
     ### END CODE HERE ###
@@ -440,34 +452,34 @@ The p-value for t_30 with t-value = 1.10 is: 0.1400
 请记住，如果 p 值小于 $\alpha$，你就应当拒绝 $H_0$。
 
 ```python
-def make_decision(X_v, X_c, alpha = 0.05):
+def make_decision(X_v, X_c, alpha=0.05):
 
     ### START CODE HERE ###
 
     # Compute n_v, x_v and s_v
-    n_v, x_v, s_v = None
+    n_v, x_v, s_v = get_stats(X_v)
 
     # Compute n_c, x_c and s_c
-    n_c, x_c, s_c = None
+    n_c, x_c, s_c = get_stats(X_c)
 
     # Compute the degrees of freedom for the t-student distribution for this experiment.
     # Pay attention to the arguments order. You may look the function definition above to make sure you don't swap values.
     # Also, remember that x_c and x_v are not used in this computation
-    d = None
-    
+    d = degrees_of_freedom(n_v, s_v, n_c, s_c)
+
     # Compute the t-value
-    t = None
+    t = t_value(n_v, x_v, s_v, n_c, x_c, s_c)
 
     # Compute the p-value for the t-student distribution with d degrees of freedom
-    p = None
+    p = p_value(d, t)
 
-    # This is the decision step. Compare p with alpha to decide about rejecting H_0 or not. 
+    # This is the decision step. Compare p with alpha to decide about rejecting H_0 or not.
     # Pay attention to the return value for each block to properly write the condition.
 
-    if None:
-        return 'Reject H_0'
+    if p < alpha:
+        return "Reject H_0"
     else:
-        return 'Do not reject H_0'
+        return "Do not reject H_0"
 
     ### END CODE HERE ###
 

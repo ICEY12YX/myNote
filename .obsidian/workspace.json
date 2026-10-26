@@ -98,7 +98,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/01.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
                 "mode": "source",
                 "source": false
               },
@@ -112,12 +112,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/Rideshare_Project_Week4.md",
+                "file": "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/00_base.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rideshare_Project_Week4"
+              "title": "00_base"
             }
           },
           {
@@ -289,24 +289,27 @@
   },
   "active": "ac9eda7f1ed7297c",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/two-sample proportion testing.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/two-sample proportion testing-1793012188824.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/two-sample proportion testing-1793012182944.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/two-sample proportion testing-1793012175877.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/proportion testing.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/proportion testing-1793011996794.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/proportion testing-1793011990303.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/proportion testing-1793011984295.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/proportion testing-1793011943089.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/02.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/Rideshare_Project_Week4.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/C3W4_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/02-1793009704191.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/02-1793009657763.webp",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/src/02-1793009612402.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/Rideshare_Project_Week4.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/two-sample proportion testing.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/C3W4_Assignment_ch-1793026696168.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C2W2_UGL_datasets_ch.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/C3W4_Assignment_ch-1793025389949.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/C3W4_Assignment_ch-1793025224900.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/C3W4_Assignment_ch-1793022214598.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793022091996.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793021995590.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793021865381.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793021851975.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793021834995.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src/Rideshare_Project_Week4-1793021809482.webp",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/02.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/src",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/proportion testing.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/01.md",
     "ALearning_人工智能/理论课程/问题合集/伯努利分布的 均值和方差.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/02.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/note/02.md",
@@ -324,8 +327,6 @@
     "ALearning_人工智能/理论课程/问题合集/联合概率公式总结.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C3W2_UGL_Dice_Simulations_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C3_W2_Assignment_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/英文原版/C3_W2_Assignment.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week1/上机/英文原版/C3_W1_Lab_1_Monty_Hall.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/上机/src",
     "Learn_C++/汇编/海蓬莱/src",
     "Learn_C++/汇编/海蓬莱",
@@ -333,7 +334,6 @@
     "Learning_article/周报/src",
     "Learning_article/周报",
     "Learning_article",
-    "新建文件夹",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]

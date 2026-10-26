@@ -13,3 +13,12 @@ https://learn.deeplearning.ai/specializations/mathematics-for-machine-learning-a
 
 b站链接
 https://www.bilibili.com/video/BV1Pg4y1X7Pa/?spm_id_from=333.337.search-card.all.click&vd_source=a67a21c68e828ea4fba877169b09fd4d
+
+课程参考资料
+**本课程参考了以下书籍。**
+
+- 概率与统计（第 4 版），Morris H. DeGroot、Mark J. Schervish，Pearson，2011 年
+    
+- 统计学的全部：统计推理简明教程》，Larry Wasserman 著，施普林格出版社，2010 年
+    
+- 概率机器学习：凯文-帕特里克-墨菲（Kevin Patrick Murphy）著，麻省理工学院出版社，2022 年 3 月。麻省理工学院出版社，2022 年 3 月。
