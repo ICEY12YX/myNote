@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 19.193857965451055,
+        "dimension": 13.404825737265416,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -76,7 +76,7 @@
       {
         "id": "214a0cabd8b28f8c",
         "type": "tabs",
-        "dimension": 80.80614203454894,
+        "dimension": 86.59517426273459,
         "children": [
           {
             "id": "a97cf81a76b437e6",
@@ -91,8 +91,23 @@
               "icon": "lucide-file",
               "title": "01"
             }
+          },
+          {
+            "id": "bcd9948abedd70d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -126,7 +141,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "path:\"ALearning_人工智能/理论课程/course/Machine_Learning/unsupervised_learning_recommenders_reinforcement_learning/\" ",
+                "query": "tag:#tangent_line",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -151,8 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5,
-    "collapsed": true
+    "width": 318.5
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -245,21 +259,29 @@
       "oz-clear-unused-images:Clear Unused Images": false
     }
   },
-  "active": "88deda703186b35d",
+  "active": "bcd9948abedd70d4",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/01.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/unsupervised_learning_recommenders_reinforcement_learning/公式符号/英文.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/note/02.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/note/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793306191504.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793305695964.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793305666771.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793305538175.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793305243640.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793301649114.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793301619190.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793301541114.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793301513704.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793300325022.webp",
+    "工具使用/杂七杂八ai工具/提取视频文字.md",
+    "ALearning_人工智能/理论课程/问题合集/为什么线性回归的代价函数图形是一个“碗”？.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/week4/note/01.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793104154034.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793094111666.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793093924232.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793093607591.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793093461467.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793093278094.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793092969283.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793092604812.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793092593382.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src/01-1793092231911.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/src",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/公式符号/英文.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/公式符号",
@@ -270,7 +292,6 @@
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/上机/英文原版",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/上机",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/note",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/公式符号/英文.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/00_base.md",
     "AAA学习日常/Gemini指令临时存.md",
@@ -283,16 +304,9 @@
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/linear_algebra/要做的.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/公式符号/英文.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/C3W4_Assignment_ch.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/上机/Rideshare_Project_Week4.md",
     "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/two-sample proportion testing.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/上机/C2W2_UGL_datasets_ch.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week4/note/proportion testing.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/01.md",
-    "ALearning_人工智能/理论课程/问题合集/伯努利分布的 均值和方差.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week2/note/01.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/probability_and_statisticss/week3/note/02.md",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
