@@ -6,7 +6,7 @@
       {
         "id": "789d0349f0444f5c",
         "type": "tabs",
-        "dimension": 24.16812609457093,
+        "dimension": 21.45922746781116,
         "children": [
           {
             "id": "c28692e3c8f78c1d",
@@ -76,7 +76,7 @@
       {
         "id": "214a0cabd8b28f8c",
         "type": "tabs",
-        "dimension": 75.83187390542908,
+        "dimension": 78.54077253218884,
         "children": [
           {
             "id": "a97cf81a76b437e6",
@@ -262,15 +262,15 @@
   },
   "active": "bcd9948abedd70d4",
   "lastOpenFiles": [
-    "ALearning_人工智能/Python/特性专题/numpy/矩阵乘法.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/unsupervised_learning_recommenders_reinforcement_learning/公式符号/英文.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01.md",
+    "ALearning_人工智能/Python/特性专题/numpy/矩阵乘法.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src/01-1793384587056.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src/01-1793383898226.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src/01-1793383366568.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src/01-1793373086202.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src/01-1793372967723.webp",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/unsupervised_learning_recommenders_reinforcement_learning/公式符号/英文.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/note/01.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/上机/c1_w1_lab04_gradient_descent_soln_ch.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/上机/src/c1_w1_lab04_gradient_descent_soln_ch-1793367868679.webp",
