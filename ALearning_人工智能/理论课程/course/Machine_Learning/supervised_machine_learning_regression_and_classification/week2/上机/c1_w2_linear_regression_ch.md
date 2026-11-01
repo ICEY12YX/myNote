@@ -1,33 +1,37 @@
+___
+- [[#编程练习实验：线性回归 (Linear Regression)|编程练习实验：线性回归 (Linear Regression)]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#1 - 依赖工具包|1 - 依赖工具包]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#2 - 问题背景|2 - 问题背景]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#3 - 数据集|3 - 数据集]]
+			- [[#查看变量内容|查看变量内容]]
+			- [[#检查变量的维度 (dimensions)|检查变量的维度 (dimensions)]]
+			- [[#将数据可视化|将数据可视化]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#4 - 线性回归核心知识回顾|4 - 线性回归核心知识回顾]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#5 - 计算代价|5 - 计算代价]]
+			- [[#代价函数|代价函数]]
+			- [[#模型预测|模型预测]]
+			- [[#代码实现|代码实现]]
+		- [[#5 - 计算代价#练习 1|练习 1]]
+	- [[#编程练习实验：线性回归 (Linear Regression)#6 - 梯度下降|6 - 梯度下降]]
+		- [[#6 - 梯度下降#练习 2|练习 2]]
+		- [[#6 - 梯度下降#2.6 使用批量梯度下降学习模型参数|2.6 使用批量梯度下降学习模型参数]]
+
+
+___
+
 # 编程练习实验：线性回归 (Linear Regression) 
 
 欢迎来到你的第一个实战编程练习实验！在本次实验中，你将亲手实现单变量线性回归 (linear regression with one variable) ，用来预测一家连锁餐饮品牌的门店利润。
 
-
-# 目录大纲
--  1 - 依赖工具包 
--  2 - 单变量线性回归 
-  -  2.1 问题背景
-  -  2.2 数据集 (Dataset) 
-  -  2.3 线性回归核心知识回顾
-  -  2.4 计算代价 (Compute Cost) 
-    -  练习 1
-  -  2.5 梯度下降 (Gradient descent) 
-    -  练习 2
-  -  2.6 使用批量梯度下降学习模型参数 
-
-
 _**注意：** 为了避免自动评分系统 (autograder) 报错，请不要修改或删除本笔记本中的任何非计分单元格，也请不要额外新建任何单元格。
 **当你顺利通过本次作业的评测之后**，如果想要修改非计分代码来做一些自由探索，可以参考本笔记本文末附带的操作说明。_
 
-&lt;a name=&quot;1&quot;&gt;&lt;/a&gt;
 ## 1 - 依赖工具包 
 
 首先，让我们运行下方的代码单元格，导入本次作业所需的全部工具包：
 - numpy 是 Python 中用于处理矩阵与科学计算 (scientific computing) 的基础核心库。
 - matplotlib 是 Python 中广受欢迎的图表绘制库。
 - ``utils.py`` 中包含了本次作业所需的辅助函数，你不需要修改该文件中的任何代码。
-
-
 
 ```python
 import numpy as np
@@ -45,8 +49,9 @@ import math
 - 你的连锁品牌已经在许多城市开设了门店，因此你手里掌握着这些现有所在城市的人口规模与门店利润数据。
 - 同时，你也收集了一批候选新店所在城市的数据：
     - 对于这些候选城市，你已经掌握了当地的城市人口数量。
-    
+
 你能否利用手头的这些数据，帮自己分析并挑出哪些候选城市最有可能为餐厅带来丰厚的利润呢？
+    所以就是说, 输入数据只有一维
 
 ## 3 - 数据集
 
@@ -56,23 +61,28 @@ import math
   - `y_train` 表示该城市门店的利润。如果利润为负数，则代表该门店处于亏损状态。   
   - `X_train` 和 `y_train` 都是 NumPy 数组 (numpy arrays) 。
 
-
 ```python
 # load the dataset
 x_train, y_train = load_data()
 ```
 
 #### 查看变量内容
-在正式着手解决任何问题之前，先花点时间熟悉一下手头的数据集总是一个好习惯。  
+
+在正式着手解决任何问题之前，==先花点时间熟悉一下手头的数据集总是一个好习惯== 
 - 一个最简单直观的切入点，就是把各个变量打印出来，看看里面究竟装了些什么数据。
 
 下方的代码会打印出变量 `x_train` 的数据类型以及它的前几个元素：
-
 
 ```python
 # print x_train
 print("Type of x_train:",type(x_train))
 print("First five elements of x_train are:\n", x_train[:5]) 
+```
+
+```
+Type of x_train: <class 'numpy.ndarray'>
+First five elements of x_train are:
+ [6.1101 5.5277 8.5186 7.0032 5.8598]
 ```
 
 可以看到，`x_train` 是一个全部由大于零的小数构成的 NumPy 数组。
@@ -81,11 +91,16 @@ print("First five elements of x_train are:\n", x_train[:5])
   
 接下来，让我们再把 `y_train` 打印出来看看：
 
-
 ```python
 # print y_train
 print("Type of y_train:",type(y_train))
 print("First five elements of y_train are:\n", y_train[:5])  
+```
+
+```
+Type of y_train: <class 'numpy.ndarray'>
+First five elements of y_train are:
+ [17.592   9.1302 13.662  11.854   6.8233]
 ```
 
 同样地，`y_train` 也是一个包含小数的 NumPy 数组，其中既有正数也有负数。
@@ -99,22 +114,25 @@ print("First five elements of y_train are:\n", y_train[:5])
 
 请运行下方代码，打印出 `x_train` 和 `y_train` 的形状 (shape) ，看看你的数据集中一共包含多少个训练样本 (training examples) 。
 
-
 ```python
 print ('The shape of x_train is:', x_train.shape)
 print ('The shape of y_train is: ', y_train.shape)
 print ('Number of training examples (m):', len(x_train))
 ```
 
-可以看到，城市人口数组一共包含 97 个数据点 (data points) ，而月均利润数组也同样包含 97 个数据点。它们都是一维 (1D) NumPy 数组。
+```
+The shape of x_train is: (97,)
+The shape of y_train is:  (97,)
+Number of training examples (m): 97
+```
+
+可以看到，城市人口数组一共包含 97 个数据点 (data points) ，而月均利润数组也同样包含 97 个数据点。它们==都是一维 (1D) NumPy 数组。==
 
 #### 将数据可视化
 
 通过绘制图表将数据直观地展现出来，往往能帮我们更好地理解数据背后的规律。
 - 对于当前这个数据集，由于一共只有两个属性需要展示 (利润与人口) ，我们可以直接使用散点图 (scatter plot) 来进行可视化。
-- 在现实生活中，你遇到的许多其他问题往往会包含两个以上的属性 (比如同时包含城市人口、家庭平均收入、月均利润、月销售额等) 。即便属性超过两个，你依然可以借助散点图来两两对比，观察每一对属性之间的相互关系。
-
-
+- 在现实生活中，你遇到的许多其他问题往往会包含两个以上的属性 (比如同时包含城市人口、家庭平均收入、月均利润、月销售额等) 。==即便属性超过两个，你依然可以借助散点图来两两对比，观察每一对属性之间的相互关系。==
 
 ```python
 # Create a scatter plot of the data. To change the markers to red "x",
@@ -129,11 +147,11 @@ plt.ylabel('Profit in $10,000')
 plt.xlabel('Population of City in 10,000s')
 plt.show()
 ```
+![[c1_w2_linear_regression_ch-1793541949236.webp|407]]
 
 你的目标是构建一个能够拟合这批数据的线性回归模型 (linear regression model) 。
 - 有了这个模型之后，你只需输入任意一座新城市的人口数量，模型就能为你估算出在该城市开店预计能获得的月均利润。
 
-&lt;a name=&quot;4&quot;&gt;&lt;/a&gt;
 ## 4 - 线性回归核心知识回顾
 
 在本次编程练习中，你将使用手头的数据集来拟合线性回归的两个参数 (parameters) $(w,b)$。
@@ -143,19 +161,16 @@ plt.show()
 
 - 训练线性回归模型的本质，就是找出能够最好地拟合数据集的最佳参数组合 $(w,b)$。  
 
-    - 为了衡量某一组 $(w,b)$ 的取值究竟比另一组取值更好还是更差，我们可以借助代价函数 (cost function) $J(w,b)$ 来进行评估。
-      - $J$ 是关于 $(w,b)$ 的函数——也就是说，代价 $J(w,b)$ 的高低直接取决于你为 $(w,b)$ 挑选的具体数值。
-  
+- 为了衡量某一组 $(w,b)$ 的取值究竟比另一组取值更好还是更差，我们可以借助代价函数 (cost function) $J(w,b)$ 来进行评估。
+    - $J$ 是关于 $(w,b)$ 的函数——也就是说，代价 $J(w,b)$ 的高低直接取决于你为 $(w,b)$ 挑选的具体数值。
     - 能够让代价 $J(w,b)$ 降到最低的那一组 $(w,b)$，就是最契合你手头数据的最佳参数。
 
 
 - 为了找出能让代价 $J(w,b)$ 达到最小值的参数 $(w,b)$，我们可以使用一种叫做**梯度下降**的方法。
   - 随着梯度下降每向前迈出一步，你的参数 $(w,b)$ 就会离那个能让代价 $J(w,b)$ 降到最低的最优值 (optimal values) 更近一步。
   
-
 - 当模型训练完成后，这个线性回归模型就可以接收输入的特征 (feature) $x$ (城市人口) ，并直接输出对应的预测值 (prediction) $f_{w,b}(x)$ (在该城市开店的预计月均利润) 。
 
-&lt;a name=&quot;5&quot;&gt;&lt;/a&gt;
 ## 5 - 计算代价
 
 梯度下降通过一步步反复调整参数 $(w,b)$ 的数值，让代价 $J(w,b)$ 变得越来越小。
@@ -163,6 +178,7 @@ plt.show()
 - 在本节中，你将亲手编写一个用于计算 $J(w,b)$ 的函数，以便后续用来检验梯度下降的运行进展。
 
 #### 代价函数
+
 回想一下理论课上所学的内容，对于单变量线性回归而言，代价函数 $J(w,b)$ 的定义如下：
 
 $$J(w,b) = \frac{1}{2m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) - y^{(i)})^2$$ 
@@ -182,7 +198,6 @@ $$ f_{w,b}(x^{(i)}) = wx^{(i)} + b$$
 
 请补全下方的 `compute_cost()` 函数，用来计算代价 $J(w,b)$。
 
-&lt;a name=&quot;ex01&quot;&gt;&lt;/a&gt;
 ### 练习 1
 
 请补全下方的 `compute_cost` 函数，完成以下逻辑：
@@ -194,14 +209,11 @@ $$ f_{w,b}(x^{(i)}) = wx^{(i)} + b$$
     $$
    
     * 该样本对应的误差代价：$$cost^{(i)} =  (f_{wb} - y^{(i)})^2$$
-    
-
 * 返回所有样本汇集而成的总代价：
 $$J(\mathbf{w},b) = \frac{1}{2m} \sum\limits_{i = 0}^{m-1} cost^{(i)}$$
   * 其中，$m$ 是训练样本的数量，而 $\sum$ 则是求和算子 (summation operator) 
 
 如果在编写过程中遇到困难，可以点击下方单元格后面的提示按钮，查看具体的实现思路。
-
 
 ```python
 # UNQ_C1
@@ -227,35 +239,32 @@ def compute_cost(x, y, w, b):
     total_cost = 0
     
     ### START CODE HERE ###
-    
+    cost_sum = 0
+    for i in range(m):
+        f_wb = w * x[i] + b
+        cost = (f_wb - y[i]) ** 2
+        cost_sum = cost_sum + cost
+    total_cost = (1 / (2 * m)) * cost_sum
     ### END CODE HERE ### 
 
     return total_cost
 ```
 
-&lt;details&gt;
-  &lt;summary&gt;&lt;font size=&quot;3&quot; color=&quot;darkgreen&quot;&gt;&lt;b&gt;点击查看提示 (Click for hints) &lt;/b&gt;&lt;/font&gt;&lt;/summary&gt;
-    
-    
-   * 在代码中，你可以用如下方式来表示求和算子 (例如 $h = \sum\limits_{i = 0}^{m-1} 2i$) ：
-    
-    ```python 
+提示:
+    * 在代码中，你可以用如下方式来表示求和算子 (例如 $h = \sum\limits_{i = 0}^{m-1} 2i$) ：
+
+```python 
     h = 0
     for i in range(m):
         h = h + 2*i
-    ```
+```
   
    * 在本题中，你可以使用 `for` 循环遍历 `x` 中的所有样本，并将每一轮循环算出的 `cost` 累加到一个在循环外部初始化好的变量 (`cost_sum`) 中。
 
    * 最后，将 `cost_sum` 除以 `2m` 作为 `total_cost` 返回即可。
-   * 如果你刚开始接触 Python，请务必检查代码的缩进是否统一使用了相同数量的空格或制表符 (Tab) 。否则可能会导致输出结果异常，或者抛出 `IndentationError: unexpected indent` 缩进错误。你可以参考我们社区中的这篇帖子了解更多细节。
-
-    <details>
-          <summary><font size="2" color="darkblue"><b> 点击查看进一步提示</b></font></summary>
-        
+   * 如果你刚开始接触 Python，请务必检查代码的缩进是否统一使用了相同数量的空格或制表符 (Tab) 。否则可能会导致输出结果异常，或者抛出 `IndentationError: unexpected indent` 缩进错误。
     * 你可以按照下面的整体框架来组织该函数的代码实现：
-    
-    ```python 
+```python 
     def compute_cost(x, y, w, b):
         # number of training examples
         m = x.shape[0] 
@@ -282,9 +291,9 @@ def compute_cost(x, y, w, b):
         ### END CODE HERE ### 
 
         return total_cost
-    ```
+```
     
-    * 如果还是觉得毫无头绪，可以继续点开下方的提示，看看具体该如何计算 `f_wb` 和 `cost`。
+* 如果还是觉得毫无头绪，可以继续点开下方的提示，看看具体该如何计算 `f_wb` 和 `cost`。
     
     <details>
           <summary><font size="2" color="darkblue"><b>关于如何计算 f_wb 的提示</b></font></summary>
@@ -303,17 +312,9 @@ def compute_cost(x, y, w, b):
               &emsp; &emsp; 你可以这样计算 cost：<code>cost = (f_wb - y[i]) ** 2</code>
           </details>
     </details>
-        
-    </details>
-
-&lt;/details&gt;
-
-    
 
 
 你可以运行下方的测试代码，检验自己编写的函数是否正确：
-
-
 ```python
 # Compute cost with some initial values for paramaters w, b
 initial_w = 2
@@ -328,14 +329,12 @@ from public_tests import *
 compute_cost_test(compute_cost)
 ```
 
-**预期输出结果**：
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt;Cost at initial w:&lt;b&gt; 75.203 &lt;/td&gt; 
-  &lt;/tr&gt;
-&lt;/table&gt;
+```
+<class 'numpy.float64'>
+Cost at initial w: 75.203
+All tests passed!
+```
 
-&lt;a name=&quot;6&quot;&gt;&lt;/a&gt;
 ## 6 - 梯度下降 
 
 在本节中，你将为线性回归的参数 $w, b$ 编写梯度 (gradient) 计算函数。
@@ -353,14 +352,12 @@ $$
 \frac{\partial J(w,b)}{\partial w}  = \frac{1}{m} \sum\limits_{i = 0}^{m-1} (f_{w,b}(x^{(i)}) -y^{(i)})x^{(i)} \tag{3}
 $$
 * m 是数据集中训练样本的数量
-
-    
 * $f_{w,b}(x^{(i)})$ 是模型给出的预测值，而 $y^{(i)}$ 则是真实的目标值 (target value) 
 
 
 接下来，你将编写一个名为 `compute_gradient` 的函数，用来计算偏导数 $\frac{\partial J(w)}{\partial w}$ 和 $\frac{\partial J(w)}{\partial b}$。
 
-&lt;a name=&quot;ex02&quot;&gt;&lt;/a&gt;
+
 ### 练习 2
 
 请补全下方的 `compute_gradient` 函数，完成以下逻辑：
@@ -391,8 +388,6 @@ $$
   * 其中，$m$ 是训练样本的数量，而 $\sum$ 则是求和算子
 
 如果在编写过程中遇到困难，可以点击下方单元格后面的提示按钮，获取一步步的代码引导。
-
-
 ```python
 # UNQ_C2
 # GRADED FUNCTION: compute_gradient
@@ -416,17 +411,20 @@ def compute_gradient(x, y, w, b):
     dj_db = 0
     
     ### START CODE HERE ###
-    
+    for i in range(m):
+        f_wb = w * x[i] + b
+        error = f_wb - y[i]
+        dj_dw += error * x[i]
+        dj_db += error
+    dj_dw = dj_dw / m
+    dj_db = dj_db / m
     ### END CODE HERE ### 
         
     return dj_dw, dj_db
 ```
 
-&lt;details&gt;
-  &lt;summary&gt;&lt;font size=&quot;3&quot; color=&quot;darkgreen&quot;&gt;&lt;b&gt;点击查看提示 (Click for hints) &lt;/b&gt;&lt;/font&gt;&lt;/summary&gt;
-    
+提示:
    * 在代码中，你可以用如下方式来表示求和算子 (例如 $h = \sum\limits_{i = 0}^{m-1} 2i$) ：
-    
    ```python 
     h = 0
     for i in range(m):
@@ -436,12 +434,9 @@ def compute_gradient(x, y, w, b):
    * 在本题中，你可以使用 `for` 循环遍历 `x` 中的所有样本；针对每一个样本，将它算出的梯度分量不断累加到循环外部初始化好的变量 `dj_dw` 和 `dj_db` 上。
 
    * 最后，将 `dj_dw` 和 `dj_db` 分别除以 `m` 并返回即可。    
-    &lt;details&gt;
-          &lt;summary&gt;&lt;font size=&quot;2&quot; color=&quot;darkblue&quot;&gt;&lt;b&gt; 点击查看进一步提示&lt;/b&gt;&lt;/font&gt;&lt;/summary&gt;
-        
-    * 你可以按照下面的整体框架来组织该函数的代码实现：
-    
-    ```python 
+* 你可以按照下面的整体框架来组织该函数的代码实现：
+
+```python 
     def compute_gradient(x, y, w, b): 
         """
         Computes the gradient for linear regression 
@@ -485,9 +480,9 @@ def compute_gradient(x, y, w, b):
         ### END CODE HERE ### 
         
         return dj_dw, dj_db
-    ```
-        
-    * 如果还是觉得不太确定，可以继续点开下方的提示，看看该如何具体写出 `f_wb` 以及各个梯度分量的算式。
+```
+
+* 如果还是觉得不太确定，可以继续点开下方的提示，看看该如何具体写出 `f_wb` 以及各个梯度分量的算式。
     
     <details>
           <summary><font size="2" color="darkblue"><b>关于如何计算 f_wb 的提示</b></font></summary>
@@ -512,16 +507,9 @@ def compute_gradient(x, y, w, b):
              &emsp; &emsp; 你可以这样计算 dj_db_i：<code> dj_db_i = f_wb - y[i] </code>
     </details>
         
-    </details>
-
-&lt;/details&gt;
-
-    
 
 
 请运行下方的代码单元格，分别使用两组不同的参数初始值 $w, b$ 来检验你编写的 `compute_gradient` 函数是否正确：
-
-
 ```python
 # Compute and display gradient with w initialized to zeroes
 initial_w = 0
@@ -533,16 +521,13 @@ print('Gradient at initial w, b (zeros):', tmp_dj_dw, tmp_dj_db)
 compute_gradient_test(compute_gradient)
 ```
 
+```
+Gradient at initial w, b (zeros): -65.32884974555672 -5.83913505154639
+Using X with shape (4, 1)
+[92mAll tests passed!
+```
+
 接下来，让我们再测试一组非零的参数初始值：
-
-**预期输出结果**：
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt;Gradient at initial , b (zeros)&lt;b&gt;&lt;/td&gt;
-    &lt;td&gt; -65.32884975 -5.83913505154639&lt;/td&gt; 
-  &lt;/tr&gt;
-&lt;/table&gt;
-
 
 ```python
 # Compute and display cost and gradient with non-zero w
@@ -553,15 +538,10 @@ tmp_dj_dw, tmp_dj_db = compute_gradient(x_train, y_train, test_w, test_b)
 print('Gradient at test w, b:', tmp_dj_dw, tmp_dj_db)
 ```
 
-**预期输出结果**：
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt;Gradient at test w&lt;b&gt;&lt;/td&gt;
-    &lt;td&gt; -47.41610118 -4.007175051546391&lt;/td&gt; 
-  &lt;/tr&gt;
-&lt;/table&gt;
+```
+Gradient at test w, b: -47.41610118114435 -4.007175051546391
+```
 
-&lt;a name=&quot;2.6&quot;&gt;&lt;/a&gt;
 ### 2.6 使用批量梯度下降学习模型参数 
 
 现在，你将利用批量梯度下降 (batch gradient descent) 算法，找出线性回归模型的最优参数。回想一下，“批量” (batch) 指的是在每一轮迭代 (iteration) 中都使用全部的训练样本参与计算。
@@ -570,7 +550,6 @@ print('Gradient at test w, b:', tmp_dj_dw, tmp_dj_db)
 - 检验梯度下降是否正常工作的一个绝佳方法，就是观察每一步迭代后代价 $J(w,b)$ 的数值变化，确认它是否在一步步持续减小。
 
 - 只要你正确实现了梯度计算函数与代价计算函数，并且设置了大小合适的学习率 (learning rate) alpha，那么代价 $J(w,b)$ 就绝不会上升，而是会在算法运行结束前平稳收敛 (converge) 到一个稳定的数值。
-
 
 ```python
 def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, num_iters): 
@@ -613,7 +592,7 @@ def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, 
 
         # Save cost J at each iteration
         if i<100000:      # prevent resource exhaustion 
-            cost =  cost_function(x, y, w, b)
+            cost = cost_function(x, y, w, b)
             J_history.append(cost)
 
         # Print cost every at intervals 10 times or as many iterations if < 10
@@ -623,9 +602,9 @@ def gradient_descent(x, y, w_in, b_in, cost_function, gradient_function, alpha, 
         
     return w, b, J_history, w_history #return w and J,w history for graphing
 ```
+(后面和前面几节的代码差不多 #链接)
 
 现在，让我们运行上方的梯度下降算法，为我们的数据集自动学习出最优的模型参数：
-
 
 ```python
 # initialize fitting parameters. Recall that the shape of w is (n,)
@@ -641,20 +620,25 @@ w,b,_,_ = gradient_descent(x_train ,y_train, initial_w, initial_b,
 print("w,b found by gradient descent:", w, b)
 ```
 
-**预期输出结果**：
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt; w, b found by gradient descent&lt;b&gt;&lt;/td&gt;
-    &lt;td&gt; 1.16636235 -3.63029143940436&lt;/td&gt; 
-  &lt;/tr&gt;
-&lt;/table&gt;
+```
+Iteration    0: Cost     6.74   
+Iteration  150: Cost     5.31   
+Iteration  300: Cost     4.96   
+Iteration  450: Cost     4.76   
+Iteration  600: Cost     4.64   
+Iteration  750: Cost     4.57   
+Iteration  900: Cost     4.53   
+Iteration 1050: Cost     4.51   
+Iteration 1200: Cost     4.50   
+Iteration 1350: Cost     4.49   
+w,b found by gradient descent: 1.166362350335582 -3.63029143940436
+```
 
 接下来，我们将使用梯度下降最终学到的参数，把拟合出的回归直线画出来。
 
 回想一下，我们可以用公式 $f(x^{(i)})= wx^{(i)}+b$ 算出单个样本的预测值。
 
 为了算出整个数据集上所有样本的预测值，我们可以通过一个循环遍历全部训练样本，逐一算出每个样本对应的预测结果，如下方代码块所示：
-
 
 ```python
 m = x_train.shape[0]
@@ -665,7 +649,6 @@ for i in range(m):
 ```
 
 现在，让我们把算出的预测值连成直线画在散点图上，直观地看看线性拟合的效果：
-
 
 ```python
 # Plot the linear fit
@@ -681,16 +664,13 @@ plt.ylabel('Profit in $10,000')
 # Set the x-axis label
 plt.xlabel('Population of City in 10,000s')
 ```
+![[c1_w2_linear_regression_ch-1793544176002.webp|436]]
 
 最后，你学到的这套最优参数 $w,b$ 还可以直接用来预测新城市的潜在门店利润。不妨让我们来预测一下：在人口分别为 35,000 人和 70,000 人的两座城市开店，预计每月能获得多少利润？
 
 - 请注意，该模型接收的城市人口输入是以“万人” (10,000s) 为单位的。
-
 - 因此，35,000 人的城市人口在输入模型时，应当转换成 `np.array([3.5])`。
-
 - 同理，70,000 人的城市人口在输入模型时，应当转换成 `np.array([7.])`。
-
-
 
 ```python
 predict1 = 3.5 * w + b
@@ -700,36 +680,34 @@ predict2 = 7.0 * w + b
 print('For population = 70,000, we predict a profit of $%.2f' % (predict2*10000))
 ```
 
-**预期输出结果**：
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt; For population = 35,000, we predict a profit of&lt;b&gt;&lt;/td&gt;
-    &lt;td&gt; $4519.77 &lt;/td&gt; 
-  &lt;/tr&gt;
-  
-  &lt;tr&gt;
-    &lt;td&gt; &lt;b&gt; For population = 70,000, we predict a profit of&lt;b&gt;&lt;/td&gt;
-    &lt;td&gt; $45342.45 &lt;/td&gt; 
-  &lt;/tr&gt;
-&lt;/table&gt;
+```
+For population = 35,000, we predict a profit of $4519.77
+For population = 70,000, we predict a profit of $45342.45
+```
 
 **恭喜你完成了本次关于线性回归的实战编程练习！下一周，你将亲手构建模型去解决另一类全新的核心问题：分类 (classification) 。我们下周见！**
 
-&lt;details&gt;
-  &lt;summary&gt;&lt;font size=&quot;2&quot; color=&quot;darkgreen&quot;&gt;&lt;b&gt;如果你想要修改任何非计分单元格的代码进行自由探索，请点击此处查看说明。&lt;/b&gt;&lt;/font&gt;&lt;/summary&gt;
-    &lt;p&gt;&lt;i&gt;&lt;b&gt;重要提示：为了避免引发自动评分系统报错，请务必在已经顺利通过本次作业评测之后再进行以下操作。&lt;/b&gt;&lt;/i&gt;
-    &lt;ol&gt;
-        &lt;li&gt; 在笔记本顶部菜单栏中，依次点击 “View” &gt; “Cell Toolbar” &gt; “Edit Metadata”&lt;/li&gt;
-        &lt;li&gt; 点击你想要解锁/锁定的代码单元格旁边的 “Edit Metadata” 按钮&lt;/li&gt;
-        &lt;li&gt; 将其中的 “editable” 属性值修改为：
-            &lt;ul&gt;
-                &lt;li&gt; “true” (如果你想要解锁该单元格以便编辑) &lt;/li&gt;
-                &lt;li&gt; “false” (如果你想要重新锁定该单元格) &lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt; 在笔记本顶部菜单栏中，依次点击 “View” &gt; “Cell Toolbar” &gt; “None” 关闭元数据编辑栏 &lt;/li&gt;
-    &lt;/ol&gt;
-    &lt;p&gt; 下方是一段演示上述操作步骤的简短动图： 
-        &lt;br&gt;
-        &lt;img src=&quot;https://lh3.google.com/u/0/d/14Xy_Mb17CZVgzVAgq7NCjMVBvSae3xO1&quot; align=&quot;center&quot; alt=&quot;unlock_cells.gif&quot;&gt;
-&lt;/details&gt;
+更好的写法 
+```python
+### START CODE HERE ###
+    # 1. 广播计算预测向量 (m,) 与误差向量 (m,)
+    error = (w * x + b) - y
+    
+    # 2. 向量点积等价于平方求和，直接除以 2m
+    total_cost = np.dot(error, error) / (2 * m)
+    # 备选写法：total_cost = np.sum(error ** 2) / (2 * m)
+### END CODE HERE ###
+
+### START CODE HERE ###
+    # 1. 一次性算出全量样本的预测误差向量 (m,)
+    error = (w * x + b) - y
+    
+    # 2. 计算 dw：误差向量与特征向量做点积，严格对应 ∑(error_i * x_i)
+    dj_dw = np.dot(error, x) / m
+    
+    # 3. 计算 db：误差向量所有元素直接求和，严格对应 ∑(error_i)
+    dj_db = np.sum(error) / m
+### END CODE HERE ###
+```
+
+#疑问 怎么多用np特性 尽量消灭for循环????
