@@ -1,3 +1,10 @@
+___
+- [[#可选实验：分类 (Classification)|可选实验：分类 (Classification)]]
+	- [[#可选实验：分类 (Classification)#分类问题 (Classification Problems)|分类问题 (Classification Problems)]]
+	- [[#可选实验：分类 (Classification)#线性回归方法 (Linear Regression approach)|线性回归方法 (Linear Regression approach)]]
+	- [[#可选实验：分类 (Classification)#恭喜！|恭喜！]]
+
+___
 # 可选实验：分类 (Classification)
 
 在本实验中，你将对比回归 (regression) 与分类的异同。

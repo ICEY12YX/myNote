@@ -216,7 +216,7 @@ scores = {"Tom": 88, "Alice": 95, "Bob": 70}
 # 默认情况下，sorted 会直接把字典的 ⭐️“键”⭐️ 按字母表排好序，放进一个列表里
 sorted_keys = sorted(scores)
 print(sorted_keys)  # 输出: ['Alice', 'Bob', 'Tom']
-#疑问: 为什么输出只有键
+#为什么输出只有键
 # 因为 sorted ⭐️默认⭐️ 对字典进行排序时，只会对字典的键进行排序，而不会考虑值。
 
 ```
