@@ -1,10 +1,16 @@
+___
+- [[#非计分实验：过拟合 (Overfitting)|非计分实验：过拟合 (Overfitting)]]
+	- [[#非计分实验：过拟合 (Overfitting)#实验目标|实验目标]]
+- [[#过拟合|过拟合]]
+	- [[#过拟合#恭喜！|恭喜！]]
+
+___
 # 非计分实验：过拟合 (Overfitting) 
 
-&lt;img align=&quot;left&quot; src=&quot;./images/C1_W3_Overfitting_a.png&quot;     style=&quot; width:250px; padding: 10px; &quot; &gt;
-&lt;img align=&quot;left&quot; src=&quot;./images/C1_W3_Overfitting_b.png&quot;     style=&quot; width:250px; padding: 10px; &quot; &gt;
-&lt;img align=&quot;left&quot; src=&quot;./images/C1_W3_Overfitting_c.png&quot;     style=&quot; width:250px; padding: 10px; &quot; &gt;
+![[c1_w3_lab08_overfitting_soln-1793656213576.webp]]
 
-## 实验目标
+## 实验目标    
+
 在本实验中，你将探索：
 - 容易发生过拟合的具体场景
 - 应对过拟合的一些常用解决方案
@@ -20,7 +26,6 @@ plt.style.use('./deeplearning.mplstyle')
 
 # 过拟合
 本周的课程讲座介绍了容易出现过拟合现象的几种典型情况。运行下方的代码单元格将生成一幅交互式图表，供你深入探索过拟合问题。代码单元格下方附有进一步的操作说明。
-
 
 ```python
 plt.close("all")
@@ -43,16 +48,30 @@ ofit = overfit_example(False)
     - 添加符合整体趋势的常规样本点则有助于缓解过拟合
 - 在 `Regression` (回归) 和 `Categorical` (分类) 模式之间切换，分别尝试这两种示例。
 
+`Regression` (回归)
+![[c1_w3_lab08_overfitting_soln-1793656582883.webp|700]]
+![[c1_w3_lab08_overfitting_soln-1793656771832.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656804728.webp]]![[c1_w3_lab08_overfitting_soln-1793656792341.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656814749.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656823321.webp]]
+
+
+`Categorical` (分类)
+![[c1_w3_lab08_overfitting_soln-1793656494976.webp|700]]
+![[c1_w3_lab08_overfitting_soln-1793656857273.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656878395.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656955482.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656943379.webp]]
+![[c1_w3_lab08_overfitting_soln-1793656920388.webp]]
+
+
 如需重置图表，请重新运行该代码单元格。点击鼠标时请放慢速度，留出足够的时间让图表完成刷新后再进行下一次点击。
 
 关于底层实现的说明：
 - 图中的“ideal” (理想) 曲线代表用于生成该数据集的真实底层模型，我们在其基础上叠加了随机噪声 (noise) 从而构建出当前的数据集
-- 为了提升交互响应速度，“fit”操作并未采用纯粹的梯度下降 (gradient descent) 算法。这类优化求解方法非常适用于规模较小的数据集。
-
+- 为了提升交互响应速度，==“fit”操作并未采用纯粹的梯度下降 (gradient descent) 算法。这类优化求解方法非常适用于规模较小的数据集。
+==
 ## 恭喜！
 你已经对过拟合的成因及其解决方案建立起了直观的认识。在下一个实验中，你将深入探索一种最常用的过拟合解决方案——正则化 (Regularization) 。
 
 
-```python
-
-```

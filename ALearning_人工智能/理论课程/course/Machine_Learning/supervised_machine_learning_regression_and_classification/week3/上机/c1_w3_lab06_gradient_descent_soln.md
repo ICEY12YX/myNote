@@ -1,6 +1,21 @@
+___
+- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)|可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)]]
+	- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)#实验目标|实验目标]]
+	- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)#数据集|数据集]]
+	- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)#逻辑回归梯度下降 (Logistic Gradient Descent)|逻辑回归梯度下降 (Logistic Gradient Descent)]]
+		- [[#逻辑回归梯度下降 (Logistic Gradient Descent)#梯度下降的代码实现|梯度下降的代码实现]]
+			- [[#梯度下降的代码实现#计算梯度，代码逻辑说明|计算梯度，代码逻辑说明]]
+			- [[#梯度下降的代码实现#梯度下降主函数代码|梯度下降主函数代码]]
+			- [[#梯度下降的代码实现#让我们将梯度下降的结果绘制成图表：|让我们将梯度下降的结果绘制成图表：]]
+	- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)#另一个数据集|另一个数据集]]
+	- [[#可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent)#恭喜！|恭喜！]]
+
+___
+
 # 可选实验：逻辑回归 (Logistic Regression) 的梯度下降 (Gradient Descent) 
 
 ## 实验目标
+
 在本实验中，你将：
 - 针对逻辑回归更新梯度下降算法。
 - 在一个熟悉的数据集 (data set) 上探索梯度下降的运行过程
@@ -9,16 +24,24 @@
 ```python
 import copy, math
 import numpy as np
+
 %matplotlib widget
 import matplotlib.pyplot as plt
-from lab_utils_common import  dlc, plot_data, plt_tumor_data, sigmoid, compute_cost_logistic
+from lab_utils_common import (
+    dlc,
+    plot_data,
+    plt_tumor_data,
+    sigmoid,
+    compute_cost_logistic,
+)
 from plt_quad_logistic import plt_quad_logistic, plt_prob
-plt.style.use('./deeplearning.mplstyle')
+
+plt.style.use("../../deeplearning.mplstyle")
 ```
 
 ## 数据集
-让我们继续从决策边界 (decision boundary) 实验中使用过的那个双特征数据集开始。
 
+让我们继续从决策边界 (decision boundary) 实验中使用过的那个双特征数据集开始。
 
 ```python
 X_train = np.array([[0.5, 1.5], [1,1], [1.5, 0.5], [3, 0.5], [2, 2], [1, 2.5]])
@@ -37,9 +60,11 @@ ax.set_ylabel('$x_1$', fontsize=12)
 ax.set_xlabel('$x_0$', fontsize=12)
 plt.show()
 ```
+![[c1_w3_lab06_gradient_descent_soln-1793654805584.webp|344]]
 
 ## 逻辑回归梯度下降 (Logistic Gradient Descent) 
-&lt;img align=&quot;right&quot; src=&quot;./images/C1_W3_Logistic_gradient_descent.png&quot;     style=&quot; width:400px; padding: 10px; &quot; &gt;
+
+![[c1_w3_lab06_gradient_descent_soln-1793654832669.webp|542]]
 
 回想一下，梯度下降算法的核心是利用梯度计算 (gradient calculation) 不断迭代更新参数：
 $$\begin{align*}
@@ -64,13 +89,14 @@ $$\begin{align*}
     $g(z) = \frac{1}{1+e^{-z}}$   
     
 
-
 ### 梯度下降的代码实现
+
 梯度下降算法的实现主要包含两个核心部分：
 - 实现上方方程 (1) 的主循环。这对应下方的 `gradient_descent` 函数，在可选实验和编程练习实验中通常会直接提供给你。
 - 计算当前的梯度，即实现上方方程 (2, 3) 。这对应下方的 `compute_gradient_logistic` 函数。在本周的编程练习实验中，你将需要亲手编写这一函数。
 
 #### 计算梯度，代码逻辑说明
+
 针对所有的参数 $w_j$ 和 $b$ 实现上方的方程 (2) 和 (3) 。
 实现这一计算有许多种方式，下方代码所采用的整体思路如下：
 - 初始化用于累加 `dj_dw` 和 `dj_db` 的变量
@@ -82,7 +108,6 @@ $$\begin{align*}
 
 - 将累加完的 `dj_db` 和 `dj_dw` 除以样本总数 ($m$) 
 - 请注意，在 numpy 中，$\mathbf{x}^{(i)}$ 可以表示为 `X[i,:]` 或 `X[i]`，而 $x_{j}^{(i)}$ 则表示为 `X[i,j]`
-
 
 ```python
 def compute_gradient_logistic(X, y, w, b): 
@@ -127,15 +152,14 @@ print(f"dj_db: {dj_db_tmp}" )
 print(f"dj_dw: {dj_dw_tmp.tolist()}" )
 ```
 
-**预期输出**
 ``` 
 dj_db: 0.49861806546328574
 dj_dw: [0.498333393278696, 0.49883942983996693]
 ```
 
 #### 梯度下降主函数代码
-下方代码具体实现了前面的方程 (1) 。请花一点时间仔细阅读，将代码中的函数调用与上面的数学方程一一对应起来。
 
+下方代码具体实现了前面的方程 (1) 。请花一点时间仔细阅读，将代码中的函数调用与上面的数学方程一一对应起来。
 
 ```python
 def gradient_descent(X, y, w_in, b_in, alpha, num_iters): 
@@ -192,8 +216,22 @@ w_out, b_out, _ = gradient_descent(X_train, y_train, w_tmp, b_tmp, alph, iters)
 print(f"\nupdated parameters: w:{w_out}, b:{b_out}")
 ```
 
-#### 让我们将梯度下降的结果绘制成图表：
+```
+Iteration    0: Cost 0.684610468560574   
+Iteration 1000: Cost 0.1590977666870457   
+Iteration 2000: Cost 0.08460064176930078   
+Iteration 3000: Cost 0.05705327279402531   
+Iteration 4000: Cost 0.04290759421682   
+Iteration 5000: Cost 0.03433847729884557   
+Iteration 6000: Cost 0.02860379802212006   
+Iteration 7000: Cost 0.02450156960879306   
+Iteration 8000: Cost 0.02142370332569295   
+Iteration 9000: Cost 0.019030137124109114   
 
+updated parameters: w:[5.28 5.08], b:-14.222409982019837
+```
+
+#### 让我们将梯度下降的结果绘制成图表：
 
 ```python
 fig,ax = plt.subplots(1,1,figsize=(5,4))
@@ -212,6 +250,7 @@ x1 = -b_out/w_out[1]
 ax.plot([0,x0],[x1,0], c=dlc["dlblue"], lw=1)
 plt.show()
 ```
+![[c1_w3_lab06_gradient_descent_soln-1793655264959.webp|367]]
 
 在上方图表中：
  - 背景渐变阴影反映了模型预测 y=1 的概率 (probability)  (即通过决策边界进行二值化判定之前的连续输出结果) 
@@ -219,7 +258,8 @@ plt.show()
  
 
 ## 另一个数据集
-接下来，让我们回到单变量数据集 (one-variable data set) 。当模型只有 $w$ 和 $b$ 两个参数时，我们可以用等高线图 (contour plot) 将代价函数绘制出来，从而更直观地洞察梯度下降的工作原理。
+
+接下来，让我们回到**单变量数据集 (one-variable data set)** 。当模型只有 $w$ 和 $b$ 两个参数时，我们可以用等高线图 (contour plot) 将代价函数绘制出来，从而更直观地洞察梯度下降的工作原理。
 
 
 ```python
@@ -235,17 +275,20 @@ fig,ax = plt.subplots(1,1,figsize=(4,3))
 plt_tumor_data(x_train, y_train, ax)
 plt.show()
 ```
+![[c1_w3_lab06_gradient_descent_soln-1793655368151.webp|322]]
 
 在下方的交互式图表中，请尝试以下操作：
 - 在右上角的等高线图内部点击鼠标，改变参数 $w$ 和 $b$ 的取值。
     - 图像更新可能需要一两秒钟的时间
     - 观察左上角图表中代价值随之发生的变化。
     - 请注意，总代价是由每个样本上的损失累加而成的 (图中用垂直虚线表示每个样本的损失) 
+    ![[c1_w3_lab06_gradient_descent_soln-1793655479847.webp|650]]
+    ![[c1_w3_lab06_gradient_descent_soln-1793655508627.webp]]![[c1_w3_lab06_gradient_descent_soln-1793655524978.webp]]
 - 点击橙色按钮运行梯度下降。
     - 观察代价是如何稳步下降的 (等高线图和代价曲线图均采用 log(cost) 对数刻度绘制) 
     - 在等高线图中重新点击鼠标，即可重置模型参数以开启新一轮运行
 - 如需重置整个图表，请重新运行该代码单元格
-
+![[c1_w3_lab06_gradient_descent_soln-1793655575918.webp|545]]
 
 ```python
 w_range = np.array([-1, 7])
@@ -260,7 +303,3 @@ quad = plt_quad_logistic( x_train, y_train, w_range, b_range )
     - 探索单变量数据集上的参数优化
     - 探索双变量数据集上的参数优化
 
-
-```python
-
-```
