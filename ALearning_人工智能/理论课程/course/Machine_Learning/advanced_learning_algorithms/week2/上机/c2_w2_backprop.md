@@ -1,6 +1,32 @@
-# 选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)
-完成本次实验将帮助你深入理解大多数机器学习 (Machine Learning) 框架都在使用的一项核心算法。梯度下降 (Gradient Descent) 需要计算代价 (Cost) 关于网络中每一个参数 (Parameter) 的导数 (Derivative) 。而神经网络 (Neural Networks) 往往拥有数百万甚至数十亿个参数。*反向传播*算法正是用来高效计算这些导数的，而*计算图*则被用来简化这一运算过程。下面让我们一探究竟。
+___
+- [[#选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)|选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)]]
+	- [[#选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)#计算图|计算图]]
+		- [[#计算图#前向传播 (Forward Propagation)|前向传播 (Forward Propagation)]]
+		- [[#计算图#反向传播 (Backprop)|反向传播 (Backprop)]]
+		- [[#计算图#$\frac{\partial J}{\partial a}$|$\frac{\partial J}{\partial a}$]]
+			- [[#$\frac{\partial J}{\partial a}$#算术方法|算术方法]]
+			- [[#$\frac{\partial J}{\partial a}$#符号计算方法 (Symbolically)|符号计算方法 (Symbolically)]]
+		- [[#计算图#$\frac{\partial J}{\partial w}$|$\frac{\partial J}{\partial w}$]]
+			- [[#$\frac{\partial J}{\partial w}$#算术方法|算术方法]]
+	- [[#选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)#简单神经网络的计算图|简单神经网络的计算图]]
+		- [[#简单神经网络的计算图#前向传播|前向传播]]
+		- [[#简单神经网络的计算图#反向传播 (Backprop)|反向传播 (Backprop)]]
+		- [[#简单神经网络的计算图#$\frac{\partial J}{\partial d}$|$\frac{\partial J}{\partial d}$]]
+			- [[#$\frac{\partial J}{\partial d}$#算术方法|算术方法]]
+			- [[#$\frac{\partial J}{\partial d}$#符号计算方法|符号计算方法]]
+		- [[#简单神经网络的计算图#$\frac{\partial J}{\partial a}$|$\frac{\partial J}{\partial a}$]]
+			- [[#$\frac{\partial J}{\partial a}$#算术方法|算术方法]]
+			- [[#$\frac{\partial J}{\partial a}$#符号计算方法|符号计算方法]]
+		- [[#简单神经网络的计算图#$\frac{\partial J}{\partial c}$，$\frac{\partial J}{\partial b}$|$\frac{\partial J}{\partial c}$，$\frac{\partial J}{\partial b}$]]
+		- [[#简单神经网络的计算图#$\frac{\partial J}{\partial w}$|$\frac{\partial J}{\partial w}$]]
+	- [[#选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)#恭喜！|恭喜！]]
 
+
+
+___
+# 选修实验：使用计算图 (Computation Graph) 进行反向传播 (Back propagation)
+
+完成本次实验将帮助你深入理解大多数机器学习 (Machine Learning) 框架都在使用的一项核心算法。梯度下降 (Gradient Descent) 需要计算代价 (Cost) 关于网络中每一个参数 (Parameter) 的导数 (Derivative) 。而神经网络 (Neural Networks) 往往拥有数百万甚至数十亿个参数。**反向传播**算法正是用来高效计算这些导数的，而**计算图**则被用来简化这一运算过程。下面让我们一探究竟。
 
 ```python
 from sympy import *
@@ -19,17 +45,20 @@ from lab_utils_backprop import *
 
 我们来计算一个稍微复杂一点的表达式的导数：$J = (2+3w)^2$。我们希望求出 $J$ 关于 $w$ 的导数，即 $\frac{\partial J}{\partial w}$。
 
-
 ```python
 plt.close("all")
 plt_network(config_nw0, "./images/C2_W2_BP_network0.PNG")
 ```
+(这个图懒得存了, 反正就是一个让你填空的互动程序)
+![[c2_w2_backprop-1794091086286.webp|446]]
+
 
 从上图中可以看到，我们将该表达式拆解成了两个可以独立处理的节点 (Nodes) 。如果你通过课堂学习已经对这一过程有了很好的理解，可以直接在上面的图表中填写各个方框。你需要先从左往右依次填写蓝色方框，然后再从右往左依次填写绿色方框。
 如果你填入的数值正确，它们会显示为绿色或蓝色；如果数值有误，则会显示为红色。请注意，这个交互式图形界面并不是特别稳定，如果你在操作界面时遇到问题，只需重新运行上面的代码单元格即可重启。
 
 如果你对具体步骤还不太确定，下面我们将一步步推导这个例子。
 
+(后面没啥好看的,就是课上教你的手推反向传播)
 ### 前向传播 (Forward Propagation)   
 首先，让我们沿着前向路径计算出各个节点的数值。
 
@@ -160,6 +189,7 @@ $w$ 的一个微小变化先乘以 $\frac{\partial a}{\partial w}$，产生了�
 plt.close("all")
 plt_network(config_nw1, "./images/C2_W2_BP_network1.PNG")
 ```
+![[c2_w2_backprop-1794091220025.webp]]
 
 下面，我们将详细推导填满上述计算图所需的全部计算过程。我们依然从前向路径开始。
 

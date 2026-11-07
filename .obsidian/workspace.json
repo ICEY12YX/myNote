@@ -61,20 +61,6 @@
         "dimension": 80.6949806949807,
         "children": [
           {
-            "id": "464543458acba347",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab01_neurons_and_layers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "c2_w1_lab01_neurons_and_layers"
-            }
-          },
-          {
             "id": "31d237a074cce665",
             "type": "leaf",
             "state": {
@@ -94,7 +80,35 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week3/note/01.md",
+                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/note/01.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01"
+            }
+          },
+          {
+            "id": "464543458acba347",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_assignment.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "c2_w1_assignment"
+            }
+          },
+          {
+            "id": "b4c2d840a3dec704",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/note/01.md",
                 "mode": "source",
                 "source": false
               },
@@ -103,7 +117,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -137,7 +151,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "overfitting",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -162,8 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 346.3000183105469,
-    "collapsed": true
+    "width": 346.3000183105469
   },
   "right": {
     "id": "cf01fc0e5952b77d",
@@ -295,44 +308,45 @@
       }
     ]
   },
-  "active": "743d5fa9b5e2b5fb",
+  "active": "b4c2d840a3dec704",
   "lastOpenFiles": [
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/01.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794049712586.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794049649717.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794049608839.webp",
-    "AAA学习日常/周计划/草稿.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794048535675.webp",
-    "ALearning_人工智能/理论课程/3B1B/calculus/00_base.md",
-    "ALearning_人工智能/理论课程/3B1B/calculus/01.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_assignment.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094669565.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094657019.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094553093.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094542163.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094420771.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094386035.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794094365823.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794093971465.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794093863258.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_assignment.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_softmax.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src/c2_w2_assignment-1794092043874.webp",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_relu.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab03_coffeeroasting_numpy.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_backprop.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_derivatives.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_multiclass_tf.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/src",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab02_coffeeroasting_tf.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab01_neurons_and_layers.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/note/01.md",
+    "AAA学习日常/周计划/草稿.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week3/note/01.md",
+    "ALearning_人工智能/理论课程/问题合集/反向传播的时间复杂度.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/note/01.md",
     "AAA学习日常/周计划/疑问库.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab03_coffeeroasting_numpy.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_lab02_coffeeroasting_tf.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794011411314.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794010953400.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794009747970.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794007638787.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794007480826.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src/01-1794007422087.webp",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week3/note/01.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/英文原版/C2_W1_Lab_1_differentiation_in_python.md",
+    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week1/上机/C2_W1_Lab_1_differentiation_in_python_ch.md",
+    "ALearning_人工智能/理论课程/3B1B/calculus/00_base.md",
+    "ALearning_人工智能/理论课程/3B1B/calculus/01.md",
+    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/01.md",
     "ALearning_人工智能/理论课程/问题合集/隐藏层神经元都不加激活函数会变成什么样.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_assignment.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_softmax.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_relu.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_multiclass_tf.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_derivatives.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c2_w2_backprop.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/上机/c1_w2_lab06_sklearn_normal_soln.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/c2_w1_assignment.md",
     "AAA学习日常/周计划/任务.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/上机/src",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week3/note/01.md",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/unsupervised_learning_recommenders_reinforcement_learning/公式符号/英文.md",
-    "ALearning_人工智能/理论课程/course/Mathematics_for_Machine_Learning_and_Data_Science/calculus/week2/note/01.md",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week2/note/src",
     "ALearning_人工智能/理论课程/course/Machine_Learning/advanced_learning_algorithms/week1/note/src",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week3/上机/src",
@@ -341,7 +355,6 @@
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/上机/C2_W3_Assignment.md.docx",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/上机/src",
     "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week2/note/src",
-    "ALearning_人工智能/理论课程/course/Machine_Learning/supervised_machine_learning_regression_and_classification/week1/上机/src",
     "未命名.canvas",
     "ALearning_人工智能/未命名.canvas"
   ]
