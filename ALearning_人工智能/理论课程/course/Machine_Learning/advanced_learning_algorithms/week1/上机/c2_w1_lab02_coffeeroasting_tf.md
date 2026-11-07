@@ -1,8 +1,7 @@
 # 选修实验 - 简单神经网络 (Simple Neural Network)
+
 在本次实验中，我们将使用 Tensorflow 搭建一个小型的神经网络。
    &lt;center&gt; &lt;img  src=&quot;./images/C2_W1_CoffeeRoasting.png&quot; width=&quot;400&quot; /&gt;   &lt;center/&gt;
-
-
 
 ```python
 import numpy as np
@@ -20,7 +19,6 @@ tf.autograph.set_verbosity(0)
 ```
 
 ## 数据集 (DataSet)
-
 
 ```python
 X,Y = load_coffee_data();
