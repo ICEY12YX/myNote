@@ -1,3 +1,26 @@
+___
+- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)|选修实验：模型评估与选择 (Model Evaluation and Selection)]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#导入软件包与实验环境配置|导入软件包与实验环境配置]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#回归问题|回归问题]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#将数据集划分为训练集、交叉验证集和测试集|将数据集划分为训练集、交叉验证集和测试集]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#拟合线性模型|拟合线性模型]]
+		- [[#拟合线性模型#特征缩放 (Feature scaling)|特征缩放 (Feature scaling)]]
+		- [[#拟合线性模型#训练模型|训练模型]]
+		- [[#拟合线性模型#评估模型|评估模型]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#添加多项式特征|添加多项式特征]]
+		- [[#添加多项式特征#创建额外特征|创建额外特征]]
+		- [[#添加多项式特征#选择最佳模型|选择最佳模型]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#神经网络 (Neural Networks)|神经网络 (Neural Networks)]]
+		- [[#神经网络 (Neural Networks)#准备数据|准备数据]]
+		- [[#神经网络 (Neural Networks)#构建并训练模型|构建并训练模型]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#分类问题|分类问题]]
+		- [[#分类问题#加载数据集|加载数据集]]
+		- [[#分类问题#划分并准备数据集|划分并准备数据集]]
+		- [[#分类问题#评估分类模型的误差|评估分类模型的误差]]
+		- [[#分类问题#构建并训练模型|构建并训练模型]]
+	- [[#选修实验：模型评估与选择 (Model Evaluation and Selection)#总结|总结]]
+
+___
 # 选修实验：模型评估与选择 (Model Evaluation and Selection)
 
 在将机器学习 (Machine Learning) 应用于现实世界的问题时，量化学习算法的性能并对比不同的模型是非常常见的任务。在本次实验中，你将运用课堂上分享的实用技巧来练习这些操作。具体来说，你将：
